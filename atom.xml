@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>前端小白不自在</title>
+  
+  <subtitle>紫荆之巅</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-11-01T07:44:00.298Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>紫荆之巅</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JS/JQ获取各种高度和宽度</title>
+    <link href="http://yoursite.com/2017/10/31/jsjq%E8%8E%B7%E5%8F%96%E5%90%84%E7%A7%8D%E9%AB%98%E5%BA%A6%E5%92%8C%E5%AE%BD%E5%BA%A6/"/>
+    <id>http://yoursite.com/2017/10/31/jsjq获取各种高度和宽度/</id>
+    <published>2017-10-31T07:25:57.000Z</published>
+    <updated>2017-11-01T07:44:00.298Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript:"></a>Javascript:</h2><p>网页可见区域宽： document.body.clientWidth</p><p>网页可见区域高： document.body.clientHeight</p><p>网页可见区域宽： document.body.offsetWidth (包括边线的宽)</p><p>网页可见区域高： document.body.offsetHeight (包括边线的高)<br><a id="more"></a></p><p>网页正文全文宽： document.body.scrollWidth</p><p>网页正文全文高： document.body.scrollHeight</p><p>网页被卷去的高： document.body.scrollTop</p><p>网页被卷去的左： document.body.scrollLeft</p><p>网页正文部分上： window.screenTop</p><p>网页正文部分左： window.screenLeft</p><p>屏幕分辨率的高： window.screen.height</p><p>屏幕分辨率的宽： window.screen.width</p><p>屏幕可用工作区高度： window.screen.availHeight</p><p>屏幕可用工作区宽度： window.screen.availWidth</p><h2 id="JQuery"><a href="#JQuery" class="headerlink" title="JQuery:"></a>JQuery:</h2><p>$(document).ready(function(){</p><p>alert($(window).height()); //浏览器当前窗口可视区域高度</p><p>alert($(document).height()); //浏览器当前窗口文档的高度</p><p>alert($(document.body).height());//浏览器当前窗口文档body的高度</p><p>alert($(document.body).outerHeight(true));//浏览器当前窗口文档body的总高度 包括border padding margin</p><p>alert($(window).width()); //浏览器当前窗口可视区域宽度</p><p>alert($(document).width());//浏览器当前窗口文档对象宽度</p><p>alert($(document.body).width());//浏览器当前窗口文档body的宽度</p><p>alert($(document.body).outerWidth(true));//浏览器当前窗口文档body的总宽度 包括border padding margin</p><p>})</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Javascript&quot;&gt;&lt;a href=&quot;#Javascript&quot; class=&quot;headerlink&quot; title=&quot;Javascript:&quot;&gt;&lt;/a&gt;Javascript:&lt;/h2&gt;&lt;p&gt;网页可见区域宽： document.body.clientWidth&lt;/p&gt;
+&lt;p&gt;网页可见区域高： document.body.clientHeight&lt;/p&gt;
+&lt;p&gt;网页可见区域宽： document.body.offsetWidth (包括边线的宽)&lt;/p&gt;
+&lt;p&gt;网页可见区域高： document.body.offsetHeight (包括边线的高)&lt;br&gt;
+    
+    </summary>
+    
+      <category term="WEB前端" scheme="http://yoursite.com/categories/WEB%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="javascript" scheme="http://yoursite.com/categories/WEB%E5%89%8D%E7%AB%AF/javascript/"/>
+    
+      <category term="jquery" scheme="http://yoursite.com/categories/WEB%E5%89%8D%E7%AB%AF/javascript/jquery/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="jquery" scheme="http://yoursite.com/tags/jquery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown常用语法</title>
+    <link href="http://yoursite.com/2017/10/28/makedown%E8%AF%AD%E6%B3%95/"/>
+    <id>http://yoursite.com/2017/10/28/makedown语法/</id>
+    <published>2017-10-27T17:25:57.000Z</published>
+    <updated>2017-11-01T07:44:09.342Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="斜体、粗体和下划线"><a href="#斜体、粗体和下划线" class="headerlink" title="斜体、粗体和下划线"></a>斜体、粗体和下划线</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">*斜体*或_斜体_</div><div class="line">**粗体**</div><div class="line">***加粗斜体***</div><div class="line">~~删除线~~</div></pre></td></tr></table></figure><a id="more"></a><p>例如：</p><p><em>斜体</em>或<em>斜体</em></p><p><strong>粗体</strong></p><p><strong><em>加粗斜体</em></strong></p><p><del>删除线</del></p><hr><h2 id="分级标题"><a href="#分级标题" class="headerlink" title="分级标题"></a>分级标题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 一级标题</div><div class="line">## 二级标题</div><div class="line">### 三级标题</div><div class="line">#### 四级标题</div><div class="line">##### 五级标题</div><div class="line">###### 六级标题</div></pre></td></tr></table></figure><hr><h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">欢迎来到[前端小白不自在](http://wnagyuan0108.github.io)</div></pre></td></tr></table></figure><p>欢迎来到<a href="http://wnagyuan0108.github.io" target="_blank" rel="external">前端小白不自在</a></p><h2 id="自链接"><a href="#自链接" class="headerlink" title="自链接"></a>自链接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;http://wnagyuan0108.github.io&gt;</div></pre></td></tr></table></figure><p>例如：</p><p><a href="http://wnagyuan0108.github.io" target="_blank" rel="external">http://wnagyuan0108.github.io</a></p><hr><h2 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. 有序一</div><div class="line">2. 有序二</div><div class="line">3. 有序三</div></pre></td></tr></table></figure><p>例如：</p><ol><li>有序一</li><li>有序二</li><li>有序三</li></ol><h2 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">* 无序一</div><div class="line">* 无序二</div><div class="line">* 无序三</div><div class="line">或者</div><div class="line">- 无序一</div><div class="line">- 无序二</div><div class="line">- 无序三</div></pre></td></tr></table></figure><p>例如：</p><ul><li>无序一</li><li>无序二</li><li>无序三</li></ul><h2 id="列表对齐"><a href="#列表对齐" class="headerlink" title="列表对齐"></a>列表对齐</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-  我是前端小白不自在</div><div class="line"></div><div class="line">    我是前端小白不自在</div><div class="line">    </div><div class="line">    我是前端小白不自在(空一个tab)</div></pre></td></tr></table></figure><ul><li><p>我是前端小白不自在</p><p>  我是前端小白不自在</p><p>  我是前端小白不自在</p></li></ul><h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><p>两个tab、三个~~~、三个```</p><h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><pre><code>&gt; 我是前端小白不自在&gt;&gt; 我是前端小白不自在&gt;&gt;&gt; 我是前端小白不自在</code></pre><p>例如：</p><blockquote><p>我是前端小白不自在</p><blockquote><p>我是前端小白不自在</p><blockquote><p>我是前端小白不自在</p></blockquote></blockquote></blockquote><h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><ul><li><img src="图片地址 “图片Title”" alt="图片Alt"><pre><code>![前端小白不自在](https://ss0.baidu.com/73x1bjeh1BF3odCf/it/u=78676840,294168160&amp;fm=85&amp;s=A3F3CB26F0CEACBC7447D3010300B0CD &quot;markdown&quot;)</code></pre></li></ul><h2 id="html代码可以直接解析"><a href="#html代码可以直接解析" class="headerlink" title="html代码可以直接解析"></a>html代码可以直接解析</h2><pre><code>&lt;table&gt;    &lt;tr&gt;        &lt;th rowspan=&quot;2&quot;&gt;值班人员&lt;/th&gt;        &lt;th&gt;星期一&lt;/th&gt;        &lt;th&gt;星期二&lt;/th&gt;        &lt;th&gt;星期三&lt;/th&gt;    &lt;/tr&gt;    &lt;tr&gt;        &lt;td&gt;王园&lt;/td&gt;        &lt;td&gt;王园&lt;/td&gt;        &lt;td&gt;王园&lt;/td&gt;    &lt;/tr&gt;&lt;/table&gt;</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;斜体、粗体和下划线&quot;&gt;&lt;a href=&quot;#斜体、粗体和下划线&quot; class=&quot;headerlink&quot; title=&quot;斜体、粗体和下划线&quot;&gt;&lt;/a&gt;斜体、粗体和下划线&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;*斜体*或_斜体_&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;**粗体**&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;***加粗斜体***&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;~~删除线~~&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="WEB前端" scheme="http://yoursite.com/categories/WEB%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="技术文档" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/"/>
+    
+  </entry>
+  
+</feed>
