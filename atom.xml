@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-01T07:44:00.298Z</updated>
+  <updated>2017-11-02T07:57:28.659Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2017/10/31/jsjq%E8%8E%B7%E5%8F%96%E5%90%84%E7%A7%8D%E9%AB%98%E5%BA%A6%E5%92%8C%E5%AE%BD%E5%BA%A6/"/>
     <id>http://yoursite.com/2017/10/31/jsjq获取各种高度和宽度/</id>
     <published>2017-10-31T07:25:57.000Z</published>
-    <updated>2017-11-01T07:44:00.298Z</updated>
+    <updated>2017-11-02T07:57:28.659Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript:"></a>Javascript:</h2><p>网页可见区域宽： document.body.clientWidth</p><p>网页可见区域高： document.body.clientHeight</p><p>网页可见区域宽： document.body.offsetWidth (包括边线的宽)</p><p>网页可见区域高： document.body.offsetHeight (包括边线的高)<br><a id="more"></a></p><p>网页正文全文宽： document.body.scrollWidth</p><p>网页正文全文高： document.body.scrollHeight</p><p>网页被卷去的高： document.body.scrollTop</p><p>网页被卷去的左： document.body.scrollLeft</p><p>网页正文部分上： window.screenTop</p><p>网页正文部分左： window.screenLeft</p><p>屏幕分辨率的高： window.screen.height</p><p>屏幕分辨率的宽： window.screen.width</p><p>屏幕可用工作区高度： window.screen.availHeight</p><p>屏幕可用工作区宽度： window.screen.availWidth</p><h2 id="JQuery"><a href="#JQuery" class="headerlink" title="JQuery:"></a>JQuery:</h2><p>$(document).ready(function(){</p><p>alert($(window).height()); //浏览器当前窗口可视区域高度</p><p>alert($(document).height()); //浏览器当前窗口文档的高度</p><p>alert($(document.body).height());//浏览器当前窗口文档body的高度</p><p>alert($(document.body).outerHeight(true));//浏览器当前窗口文档body的总高度 包括border padding margin</p><p>alert($(window).width()); //浏览器当前窗口可视区域宽度</p><p>alert($(document).width());//浏览器当前窗口文档对象宽度</p><p>alert($(document.body).width());//浏览器当前窗口文档body的宽度</p><p>alert($(document.body).outerWidth(true));//浏览器当前窗口文档body的总宽度 包括border padding margin</p><p>})</p>]]></content>
     
