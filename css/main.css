@@ -1943,7 +1943,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #093ea6;
+  background: #6cc309;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3112,7 +3112,7 @@ pre .javascript .function {
   }
 }
 .site-author-image {
-  border-radius: 100%;
+  border-radius: 30px;
   padding: 2px;
   border: 2px dashed #fff;
   animation: cycle 2s 0.5s forwards;
