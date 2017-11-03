@@ -4,10 +4,7 @@ date: 2017-10-31 15:25:57
 tags: 
 - javascript
 - jquery
-categories: 
-- WEB前端
-- javascript
-- jquery
+categories: WEB前端
 copyright: true
 ---
 ## Javascript:
