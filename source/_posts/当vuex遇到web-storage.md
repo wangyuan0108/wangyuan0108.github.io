@@ -3,7 +3,8 @@ title: 当vuex遇到web storage
 categories: WEB前端
 copyright: true
 date: 2017-11-07 20:46:50
-tags: vue
+tags: 
+- vue
 - 数据管理
 - 本地存储
 ---
