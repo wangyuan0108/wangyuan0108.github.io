@@ -3,7 +3,7 @@ title: create-react-app基本自定义配置
 categories: WEB前端
 copyright: true
 date: 2018-03-17 22:13:35
-tags:
+tags: react
 ---
 create-react-app作为最常用的react脚手架集成了很多的常用功能，比如支持es6、JSX、动态import、Fetch(polyfill)、proxy、postcss、eslint等。但也有些功能并没有提供支持比如Hot-reloading和css预处理器，所以我们需要自定义配置这些功能。
 <!--more-->

@@ -3,7 +3,7 @@ title: webpack中的px2rem
 categories: WEB前端
 copyright: true
 date: 2017-12-31 00:29:15
-tags:
+tags: webpack
 ---
 # vue做移动端适配，借助px2rem插件方便的将px单位转换为rem
 
