@@ -15,7 +15,7 @@ tags: 编辑器
 
 - 安装`Setting Sync`插件
 
-##　在github上设置 Personal access tokens
+## 在github上设置 Personal access tokens
 
 - 进入github（没有的话，当然自己注册一个账号啦！）
 
