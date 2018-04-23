@@ -1,5 +1,5 @@
 ---
-title: vscode插件Settings Sync使用方法
+title: vscode 插件 Settings Sync使用方法
 categories: WEB前端
 copyright: true
 date: 2018-04-22 21:22:04
@@ -50,13 +50,13 @@ tags: 编辑器
 
 ## token失效
 
-这个问题应该是在使用的时候遇到的最多的情况，因为github的token值是有时间限制的，所以这里简单说一下解决的方法。对已经失效的token更新如图：
+这个问题应该是在使用的时候遇到的最多的情况，因为 github 的 token 值是有时间限制的，所以这里简单说一下解决的方法。对已经失效的token更新如图：
 
 ![settings](http://images.wangyuanweb.top/vscode-setting-9.png?imageView2/3/w/600/h/400/q/75%7Cimageslim)
 ![settings](http://images.wangyuanweb.top/vscode-setting-10.png?imageView2/3/w/600/h/400/q/75%7Cimageslim)
 ![settings](http://images.wangyuanweb.top/vscode-setting-11.png?imageView2/3/w/600/h/400/q/75%7Cimageslim)
 
-然后把得到的token值配置到vscode的配置文件中。
+然后把得到的 token 值配置到 vscode 的配置文件中。
 
 # 小结
 
