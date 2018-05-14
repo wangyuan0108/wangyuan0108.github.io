@@ -10,7 +10,9 @@ tags:
 
 项目中，我使用的是 vue-cli 来初始化构建项目的。文件夹目录中会有 build 和 config 两个文件夹。
 
-### ./config/index.js 修改配置
+### 修改配置文件
+
+#### ./config/index.js
 
 在此配置文件中添加需要增加的环境配置
 
@@ -51,13 +53,13 @@ build: {
     }
 ```
 
-### 修改文件 webpack.prod.conf.js 下的配置如下：
+#### webpack.prod.conf.js
 
 ```
 const env = config.build[process.env.ENV_CONFIG+'Env']
 ```
 
-### 修改文件 package.json 文件
+#### package.json
 
 ```
 "scripts": {
@@ -77,7 +79,9 @@ npm install cross-env --save-dev
 
 2.  NODE_ENV 和 ENV_CONFIG 与环境配置文件中的大小写一定要一致，不然在 linux 系统服务器下面会出现问题，已踩坑。
 
-### 添加相应的环境文件 sit.env.js 等
+### 添加相应的环境文件
+
+#### sit.env.js 等
 
 ```
 module.exports = {
