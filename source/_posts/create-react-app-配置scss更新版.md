@@ -41,23 +41,7 @@ node_modules => react-scripts => config => webpack.config.prod.js
 yarn eject
 ```
 
-然后找到项目目录下的`config`文件夹找到配置文件`webpack.config.dev.js`和`webpack.config.prod.js`，然后在loader添加如下代码:
-
-```
-{
-    test: /\.scss$/,
-    loader: [
-        require.resolve('style-loader'),
-        require.resolve('css-loader'),
-        require.resolve('sass-loader')
-    ]
-}
-```
-
-然后找到file-loader,在exclude中添加如下：
-
-```
-exclude:[/\.(js|jsx|mjs)$/,/\.html$/,/\.json$/,/\.scss$/]
-```
+然后找到项目目录下的`config`文件夹找到配置文件`webpack.config.dev.js`和`webpack.config.prod.js`，然后配置同上图所示
 
 然后执行`yarn start`
+
