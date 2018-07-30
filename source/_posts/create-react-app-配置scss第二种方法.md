@@ -1,5 +1,5 @@
 ---
-title: create-react-app 配置scss更新版
+title: create-react-app 配置scss第二种方法
 categories: WEB前端
 copyright: true
 date: 2018-07-23 17:32:11
@@ -10,13 +10,13 @@ tags:
 
 ### 背景
 
-在编写css的时候我们会用到预编译器scss，之前在用的时候找到了一种配置方法，但是现在相同配置失败，估计是更新了，于是产生了新的配置方法<!--more-->
+在编写css的时候我们会用到预编译器scss，之前在用的时候找到了一种配置方法，但是现在又找到一种配置方法<!--more-->
 
 ### 不使用yarn eject命令的配置方式
-首先安装使用scss需要的包`scss-loader`,`node-sass`.
+首先安装使用scss需要的包`sass-loader`,`node-sass`.
 
 ```
-yarn add scss-loader node-sass --dev
+yarn add sass-loader node-sass --dev
 ```
 
 用create-react-app创建好项目之后，依次查找目录找到:

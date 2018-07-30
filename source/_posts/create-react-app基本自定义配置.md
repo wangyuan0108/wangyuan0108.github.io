@@ -74,7 +74,7 @@ yarn add sass-loader node-sass --dev
                 },
               },
 ```
-然后在`use`规则的结尾加上一个`loader`如下
+然后在`use`规则的结尾加上一个`loader`如下`
 
 ```
 {
@@ -98,7 +98,7 @@ options: {
 },
 },
 {
-    loader:'sass-loder'
+    loader:require.resolve('sass-loader')
 }
 ```
 
