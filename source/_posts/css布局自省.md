@@ -16,7 +16,7 @@ tags:
 
 这里的居中布局是不定宽度为前提，固定宽度情况也包含其中。
 
-####　水平居中
+#### 水平居中
 
 1. `inline-block + text-align`
 
@@ -29,7 +29,9 @@ tags:
     display: inline-block;
 }
 ```
+
 <!--more-->
+
 这个方案的兼容性比较好，可兼容到 IE8，对于 IE567 不支持`inline-block`,需要使用 css hack 进行兼容。
 
 2. `table + margin`
@@ -414,16 +416,16 @@ css3 新属性兼容性不是很好。
 
 ```
 .parent{
-	display: table; 
+	display: table;
 	width: 100%;
 }
 .left{
-	display:table-cell; 
+	display:table-cell;
 	width: 100px;
 	margin-right: 20px;
 }
 .right{
-	display:table-cell; 
+	display:table-cell;
 }
 ```
 
@@ -441,8 +443,7 @@ css3 新属性兼容性不是很好。
 	flex:1;
 }
 ```
-
-###　并排等分，单排对齐靠左布局
+### 并排等分，单排对齐靠左布局
 
 #### flex
 
@@ -461,7 +462,7 @@ css3 新属性兼容性不是很好。
 }
 ```
 
-###　圣杯布局&双飞翼布局
+### 圣杯布局&双飞翼布局
 
 #### 圣杯布局
 
@@ -486,7 +487,6 @@ css3 新属性兼容性不是很好。
 .left {width: 100px; height: 200px; margin-left: -100%;left: -100px;}
 .right {width: 100px; height: 200px; margin-left: -100px; right: -100px;}
 .clearfix::after {content: ""; display: block; clear: both; visibility: hidden; height: 0; overflow: hidden;}
-
 ```
 
 #### 双飞翼布局
@@ -515,7 +515,6 @@ css3 新属性兼容性不是很好。
 .right {width: 100px; height: 200px; margin-left: -100px;}
 .footer {height: 50px;}
 .clearfix::after {content: ""; display: block; clear: both; visibility: hidden; height: 0; overflow: hidden;}
-
 ```
 
 ### 定位布局
@@ -541,5 +540,4 @@ css3 新属性兼容性不是很好。
 .main { margin:0 100px;}
 .left { position: absolute; left: 0; top: 0;}
 .right { position: absolute; right: 0; top: 0;}
-
 ```
