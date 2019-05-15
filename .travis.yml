@@ -1,0 +1,35 @@
+language: node_js
+node_js:
+- 8.9.0
+cache:
+  directories:
+  - node_modules
+before_install:
+- npm install hexo-cli -g
+install:
+- npm install
+script:
+- hexo clean
+- hexo generate
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "wangyuan0108"
+  - git config user.email "870147852@qq.com"
+  - git add .
+  - git commit -m "TravisCI 自动部署"
+  # Github Pages
+  - git push --force --quiet "https://${CI_TOKEN}@${GH_REF}" master:master 
+  # Coding Pages
+  # - git push --force --quiet "https://coding用户名:${CO_TOKEN}@${CO_REF}" master:master
+
+branches:
+  only:
+  - hexo   这里替换你要监听的分支
+
+env:
+ global:
+   # Github Pages
+   - GH_REF: github.com/wangyuan0108/wangyuan0108.github.io  这里替换你的github仓库地址
+   # Coding Pages
+   # - CO_REF: git.coding.net/bule/bule.coding.me.git  这里替换你的coding仓库地址
