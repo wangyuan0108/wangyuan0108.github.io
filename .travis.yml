@@ -26,11 +26,11 @@ after_script:
 
 branches:
   only:
-  - hexo   这里替换你要监听的分支
+  - hexo
 
 env:
  global:
    # Github Pages
-   - GH_REF: github.com/wangyuan0108/wangyuan0108.github.io  这里替换你的github仓库地址
+   - GH_REF: github.com/wangyuan0108/wangyuan0108.github.io
    # Coding Pages
    # - CO_REF: git.coding.net/bule/bule.coding.me.git  这里替换你的coding仓库地址
