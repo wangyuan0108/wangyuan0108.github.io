@@ -21,5 +21,21 @@
     "hexo-server": "^0.2.0",
     "hexo-tag-aplayer": "^3.0.4",
     "hexo-util": "^0.6.3"
+  },
+  "devDependencies": {
+    "yuque-hexo": "^1.6.1"
+  },
+  "yuqueConfig": {
+    "baseUrl": "https://www.yuque.com/api/v2",
+    "login": "wangyuan0108",
+    "repo": "blog",
+    "mdNameFormat": "title",
+    "postPath": "source/_posts/yuque"
+  },
+  "scripts": {
+    "sync": "yuque-hexo sync",
+    "clean:yuque": "yuque-hexo clean",
+    "deploy": "npm run sync && hexo clean && hexo g -d",
+    "dev": "hexo clean && hexo server"
   }
 }
