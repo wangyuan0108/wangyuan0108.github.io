@@ -356,7 +356,7 @@ han: false
 # Disqus
 disqus:
   enable: false
-  shortname: wangyuan
+  shortname: water
   count: true
 
 # Hypercomments
