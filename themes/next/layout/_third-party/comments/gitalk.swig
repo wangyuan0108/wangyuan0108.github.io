@@ -4,13 +4,17 @@
   <div id="gitalk-container"></div>
   <script type="text/javascript">
     var gitalk = new Gitalk({
+      // id: location.pathname,
+      // distractionFreeMode: '{{ theme.gitalk.distractionFreeMode }}'
+      id: (location.pathname).split("/").pop().substring(0, 49),
+      distractionFreeMode: true,
+      language: language,
       clientID: '{{ theme.gitalk.clientID }}',
       clientSecret: '{{ theme.gitalk.clientSecret }}',
       repo: '{{ theme.gitalk.repo }}',
       owner: '{{ theme.gitalk.owner }}',
       admin: ['{{ theme.gitalk.admin }}'],
-      id: location.pathname,
-      distractionFreeMode: '{{ theme.gitalk.distractionFreeMode }}'
+
     })
     gitalk.render('gitalk-container')
   </script>
