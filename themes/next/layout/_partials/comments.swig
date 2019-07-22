@@ -46,7 +46,8 @@
     <div class="comments" id="comments">
       <div id="lv-container" data-id="city" data-uid="{{ theme.livere_uid }}"></div>
     </div>
-
+  {% elseif theme.gitalk.enable %}
+    <div id="gitalk-container"></div>
   {% elseif theme.changyan.appid and theme.changyan.appkey %}
     <div class="comments" id="comments">
       <div id="SOHUCS"></div>
@@ -74,6 +75,5 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
       <div id="vcomments"></div>
     </div>
   {% endif %}
-  {% elseif theme.gitalk.enable %}
-    <div id="gitalk-container"></div>
+
   {% endif %}
