@@ -364,7 +364,7 @@ disqus:
 
 # changyanchangyan
 changyan:
-  enable: true
+  enable: false
   appid: cytqIYxtl
   appkey: e098d827fab2cdc3a582a5f033c09973
 
@@ -388,6 +388,15 @@ valine:
 # You can get your uid from https://livere.com/insight/myCode (General web site)
 # livere_uid: MTAyMC8zMTY0Mi84MjA2
 
+# gitalk
+gitalk:
+  enable: true # 是否启用
+  owner: water # 用户名
+  repo: BlogComment # 存放评论的仓库名
+  clientID: ffd881dec36d246d9f17 # Github Application 的 clientID
+  clientSecret: 76516f15f6a0e34af1058429383f99583b25d8f2 # Github Application 的 clientSecret
+  admin: water # 用户名
+  distractionFreeMode: false # 评论时遮照效果的开关
 # Gitment
 # Introduction: https://imsun.net/posts/gitment-introduction/
 gitment:
