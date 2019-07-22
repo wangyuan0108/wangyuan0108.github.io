@@ -391,11 +391,11 @@ valine:
 # gitalk
 gitalk:
   enable: true # 是否启用
-  owner: water # 用户名
-  repo: BlogComment # 存放评论的仓库名
+  owner: wangyuan0108 # 用户名
+  repo: wangyuan0108.github.io # 存放评论的仓库名
   clientID: ffd881dec36d246d9f17 # Github Application 的 clientID
   clientSecret: 76516f15f6a0e34af1058429383f99583b25d8f2 # Github Application 的 clientSecret
-  admin: water # 用户名
+  admin: wangyuan0108 # 用户名
   distractionFreeMode: false # 评论时遮照效果的开关
 # Gitment
 # Introduction: https://imsun.net/posts/gitment-introduction/
