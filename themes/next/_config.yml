@@ -363,10 +363,10 @@ disqus:
 #hypercomments_id:
 
 # changyanchangyan
-changyan:
-  enable: false
-  appid: cytqIYxtl
-  appkey: e098d827fab2cdc3a582a5f033c09973
+# changyan:
+#   enable: false
+#   appid: cytqIYxtl
+#   appkey: e098d827fab2cdc3a582a5f033c09973
 
 
 # Valine.
