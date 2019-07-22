@@ -1,7 +1,7 @@
 {% if page.comments && theme.gitalk.enable %}
   <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-  <script src="{{ site.baseurl }}/js/md5.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.11.0/js/md5.min.js"></script>
   <div id="gitalk-container"></div>
   <script type="text/javascript">
     var gitalk = new Gitalk({
