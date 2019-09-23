@@ -72,9 +72,9 @@ pagination_dir: page
 
 # 自动生成sitemap
 sitemap:
-path: sitemap.xml
-# baidusitemap:
-# path: baidusitemap.xml
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
 
 nofollow:
     enable: true
