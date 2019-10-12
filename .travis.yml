@@ -19,7 +19,7 @@ after_script:
   - git config user.name "wangyuan0108"
   - git config user.email "870147852@qq.com"
   - git add .
-  - git commit -m "TravisCI 自动部署 at `date +"%Y-%m-%d %H:%M"`"
+  - git commit -m "TravisCI 自动部署 at `date +"%Y-%m-%d %H:%M:%S"`"
   # Github Pages
   - git push --force --quiet "https://${CI_TOKEN}@${GH_REF}" master:master 
   # Coding Pages
