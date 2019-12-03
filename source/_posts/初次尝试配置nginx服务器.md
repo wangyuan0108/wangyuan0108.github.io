@@ -9,9 +9,9 @@ tags:
 ### 安装
 
 一般服务器是 linux 系统，所以我也是在这个系统下安装使用 nginx 的，简单记录下使用过程
-
-1. 在 linux 系统上安装 nginx 有很多方式，我这里选择一个比较简单的方式 yum 来进行安装。一般买的服务器都默认装好了以下工具，如果没有就安装一下：
 <!--more-->
+1. 在 linux 系统上安装 nginx 有很多方式，我这里选择一个比较简单的方式 yum 来进行安装。一般买的服务器都默认装好了以下工具，如果没有就安装一下：
+
 ```js
     yum -y install gcc gcc-c++ autoconf pcre-devel make automake
     yum -y install wget httpd-tools vim
