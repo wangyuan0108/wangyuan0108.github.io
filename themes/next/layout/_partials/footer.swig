@@ -21,7 +21,9 @@
   {% endif %}
 </div>
 <div>
-  浙ICP备17051886号-1
+  <a href="http://www.beian.miit.gov.cn">
+    浙ICP备17051886号-1
+  </a>
 </div>
 <!--{% if theme.footer.powered %}
   <div class="powered-by">{#
