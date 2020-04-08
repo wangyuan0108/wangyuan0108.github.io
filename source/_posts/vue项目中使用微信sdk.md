@@ -16,7 +16,7 @@ tags:
 
 首现我使用的是 vue-cli 创建的项目，在文件目录中有一个模版 html 文件，我们去微信官方文档获取到当前的 sdk 的最新版本链接，然后放到我们的 html 文件中。
 
-```js
+```html
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
