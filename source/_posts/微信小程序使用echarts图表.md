@@ -58,6 +58,7 @@ Page({
   onLoad(){
       // 在需要的地方获取dom
       this.echartsComponnet1 = this.selectComponent('#mychart-dom-bar1')
+      this.init_echarts1({ value: res.data.rotateSpeed || 0, name: 'x1000' })
   }
   // 初始化
     init_echarts1 (data) {
