@@ -1,5 +1,5 @@
 ---
-title: react + typeScripr使用技巧
+title: react + typeScriprt使用技巧
 categories: WEB前端
 copyright: true
 date: 2020-06-16 15:21:44
