@@ -1,7 +1,14 @@
-User-agent: * Allow: /
+User-agent: * 
+Allow: /
 Allow: /archives/
+Allow: /tags/ 
+Allow: /categories/
+Allow: /resources/
 Disallow: /vendors/
-Disallow: /categories/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
 
 
 Sitemap: https://www.wangyuanweb.top/sitemap.xml
