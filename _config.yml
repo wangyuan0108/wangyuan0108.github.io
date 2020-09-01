@@ -97,8 +97,6 @@ search:
 deploy:
   type: git
   # repository: https://github.com/wangyuan0108/wangyuan0108.github.io.git
-  # repo: git@github.com:wangyuan0108/wangyuan0108.github.io.git
+  repo: git@github.com:wangyuan0108/wangyuan0108.github.io.git
   ## repo: https://wangyuan0108:password@github.com/wangyuan0108/wangyuan0108.github.io.git
-  github: git@github.com:wangyuan0108/wangyuan0108.github.io.git
-  coding: git@e.coding.net:icewaterfront/rizhi/blog.git
   branch: master
