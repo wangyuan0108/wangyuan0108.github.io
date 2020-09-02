@@ -35,13 +35,13 @@
     "adapter": "hexo",
     "concurrency": 5,
     "baseUrl": "https://www.yuque.com/api/v2",
-    "login": "wangyuan0108",
+    "login": "https://www.yuque.com/icewater",
     "repo": "blog",
     "onlyPublished": false,
     "onlyPublic": false
   },
   "scripts": {
-    "sync": "YUQUE_TOKEN=Kiv1UYEsr4VYjOTLIrECIAL1yLinfeyQL76DSYCe yuque-hexo sync",
+    "sync": "YUQUE_TOKEN=Nr0KTnmDHNz8UlR3ydHMXNGnudAnapKIgJqofGeB yuque-hexo sync",
     "clean:yuque": "yuque-hexo clean",
     "deploy": "npm run sync && hexo clean && hexo g -d",
     "dev": "hexo clean && hexo server"
