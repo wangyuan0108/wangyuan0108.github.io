@@ -29,11 +29,16 @@
     "yuque-hexo": "^1.6.5"
   },
   "yuqueConfig": {
+    "postPath": "source/_posts/yuque",
+    "cachePath": "yuque.json",
+    "mdNameFormat": "title",
+    "adapter": "hexo",
+    "concurrency": 5,
     "baseUrl": "https://www.yuque.com/api/v2",
     "login": "wangyuan0108",
     "repo": "blog",
-    "mdNameFormat": "title",
-    "postPath": "source/_posts/yuque"
+    "onlyPublished": false,
+    "onlyPublic": false
   },
   "scripts": {
     "sync": "YUQUE_TOKEN=Kiv1UYEsr4VYjOTLIrECIAL1yLinfeyQL76DSYCe yuque-hexo sync",
