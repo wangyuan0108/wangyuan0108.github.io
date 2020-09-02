@@ -36,7 +36,7 @@
     "postPath": "source/_posts/yuque"
   },
   "scripts": {
-    "sync": "yuque-hexo sync",
+    "sync": "YUQUE_TOKEN=Kiv1UYEsr4VYjOTLIrECIAL1yLinfeyQL76DSYCe yuque-hexo sync",
     "clean:yuque": "yuque-hexo clean",
     "deploy": "npm run sync && hexo clean && hexo g -d",
     "dev": "hexo clean && hexo server"
