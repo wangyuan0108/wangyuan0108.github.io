@@ -4,7 +4,7 @@
 
 
 {% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
-
+<meta name="referrer" content="no-referrer" />
 {% block page_class %}page-post-detail{% endblock %}
 
 
