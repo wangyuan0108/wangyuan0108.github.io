@@ -26,7 +26,7 @@
     "hexo-util": "^0.6.3"
   },
   "devDependencies": {
-    "yuque-hexo": "^1.6.1"
+    "yuque-hexo": "^1.6.5"
   },
   "yuqueConfig": {
     "baseUrl": "https://www.yuque.com/api/v2",
