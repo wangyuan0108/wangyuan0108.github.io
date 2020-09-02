@@ -35,7 +35,7 @@
     "adapter": "hexo",
     "concurrency": 5,
     "baseUrl": "https://www.yuque.com/api/v2",
-    "login": "https://www.yuque.com/icewater",
+    "login": "icewater",
     "repo": "blog",
     "onlyPublished": false,
     "onlyPublic": false
