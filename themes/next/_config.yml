@@ -374,11 +374,11 @@ disqus:
 # more info please open https://github.com/xCss/Valine
 valine:
   enable: false
-  appid:  # your leancloud application appid
-  appkey:  # your leancloud application appkey
+  appid:  07n3074XAQEb58DvjBF5HnlV-gzGzoHsz # your leancloud application appid
+  appkey:  0HbRzaC25zC1hFausmSxplaV # your leancloud application appkey
   notify: false # mail notifier , https://github.com/xCss/Valine/wiki
   verify: false # Verification code
-  placeholder: Comment input placeholder
+  placeholder: 各位道友，请举手发言 # Comment input placeholder
 
 # Support for youyan comments system.
 # You can get your uid from http://www.uyan.cc
@@ -390,7 +390,7 @@ valine:
 
 # gitalk
 gitalk:
-  enable: true # 是否启用
+  enable: false # 是否启用
   owner: wangyuan0108 # 用户名
   repo: wangyuan0108.github.io # 存放评论的仓库名
   clientID: ffd881dec36d246d9f17 # Github Application 的 clientID
