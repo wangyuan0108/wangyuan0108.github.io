@@ -174,7 +174,8 @@ export default defineConfig({
   routes: [{ path: '/', component: '@/pages/index' }],
 })
 ```
-
+**有个注意的地方就是antd@4.0的图标库单独分出去了，使用的时候要单独安装**
+具体详见[文档](https://ant.design/components/icon-cn/)
 ### 使用 dva 数据流
 
 插件是`@umijs/plugin-dva`,启用方式是配置开启
