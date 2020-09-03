@@ -24,7 +24,7 @@ after_script:
   # Github Pages
   - git push --force --quiet "https://${CI_TOKEN}@${GH_REF}" master:master 
   # Coding Pages
-  - git push --force --quiet "https://water:${CO_TOKEN}@${CO_REF}" master:master
+  - git push --force --quiet "https://mFOHoiSjQU:${CO_TOKEN}@${CO_REF}" master:master
 
 branches:
   only:
