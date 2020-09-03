@@ -373,7 +373,7 @@ disqus:
 # You can get your appid and appkey from https://leancloud.cn
 # more info please open https://github.com/xCss/Valine
 valine:
-  enable: false
+  enable: true
   appid:  07n3074XAQEb58DvjBF5HnlV-gzGzoHsz # your leancloud application appid
   appkey:  0HbRzaC25zC1hFausmSxplaV # your leancloud application appkey
   notify: false # mail notifier , https://github.com/xCss/Valine/wiki
