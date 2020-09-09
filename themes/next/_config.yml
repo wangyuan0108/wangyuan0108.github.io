@@ -130,6 +130,7 @@ social:
   #Instagram: https://instagram.com/yourname || instagram
   #Skype: skype:yourname?call|chat || skype
   知乎: http://www.zhihu.com/people/web-kai-fa-zhe
+  掘金: https://juejin.im/user/2207475076971533/posts
 
 social_icons:
   enable: true
@@ -137,6 +138,7 @@ social_icons:
   transition: false
   GitHub: github
   知乎: zhihu
+  掘金: juejin
 
 # Blog rolls
 links_icon: link
