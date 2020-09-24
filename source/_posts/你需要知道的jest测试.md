@@ -8,17 +8,17 @@ tags:
 
 ## 简介
 
-引入jest官网的一段话：
+引入 jest 官网的一段话：
 
-> Jest是一个令人愉快的 JavaScript 测试框架，专注于简洁明快。他适用但不局限于使用以下技术的项目：[Babel](https://babeljs.io/), [TypeScript](https://www.typescriptlang.org/), [Node](https://nodejs.org/en/), [React](https://reactjs.org/), [Angular](https://angular.io/), [Vue](https://vuejs.org/)
+> Jest 是一个令人愉快的 JavaScript 测试框架，专注于简洁明快。他适用但不局限于使用以下技术的项目：[Babel](https://babeljs.io/), [TypeScript](https://www.typescriptlang.org/), [Node](https://nodejs.org/en/), [React](https://reactjs.org/), [Angular](https://angular.io/), [Vue](https://vuejs.org/)
 
-如官网所说，jest是一个易于使用的测试框架，很多框架的单元测试也都选择使用jest。所以jest也是我们的一大利器，学习一下总是好的<!--more-->
+如官网所说，jest 是一个易于使用的测试框架，很多框架的单元测试也都选择使用 jest。所以 jest 也是我们的一大利器，学习一下总是好的<!--more-->
 
 ## 开始
 
 ### 安装
 
-可以使用npm或者yarn来进行安装
+可以使用 npm 或者 yarn 来进行安装
 
 ```
 npm install jest --save-dev
@@ -31,29 +31,29 @@ yarn add jest --dev
 - 先编写一个需要测试的函数
 
 ```js
-function sum(a, b){
-	return a + b
+function sum(a, b) {
+  return a + b
 }
 module.exports = sum
 ```
 
-- 创建一个sum.test.js文件，并写入我们的测试用例
+- 创建一个 sum.test.js 文件，并写入我们的测试用例
 
 ```js
 const sum = require('./sum')
-test('adds 1 + 2 to equal 3',()=>{
-	// 精确匹配等于3
-	expect(sum(1,2)).toBe(3)
+test('adds 1 + 2 to equal 3', () => {
+  // 精确匹配等于3
+  expect(sum(1, 2)).toBe(3)
 })
 ```
 
-- Package.json中配置脚本命令
+- Package.json 中配置脚本命令
 
 ```json
 {
-	"scripts": {
-		"test": "jest"
-	}
+  "scripts": {
+    "test": "jest"
+  }
 }
 ```
 
@@ -72,37 +72,37 @@ PASS  ./sum.test.js
 ✓ adds 1 + 2 to equal 3 (5ms)
 ```
 
-当结果出现pass说明测试通过且jest测试框架安装成功！
+当结果出现 pass 说明测试通过且 jest 测试框架安装成功！
 
-## 常用测试api
+## 常用测试 api
 
 ##### 普通匹配器
 
 - toBeNull
 
-判断是否匹配null
+判断是否匹配 null
 
 - toBeUndefined
 
-判断是否匹配undefined
+判断是否匹配 undefined
 
 - toBeDefined
 
-与toBeUndefined相反，匹配非undefined
+与 toBeUndefined 相反，匹配非 undefined
 
 - toBeTruthy
 
-判断布尔值为true
+判断布尔值为 true
 
 - toBeFalsy
 
-判断布尔值为false
+判断布尔值为 false
 
 - not
 
 取反
 
-- toEqual和toBe
+- toEqual 和 toBe
 
 `toBe` 使用 `Object.is` 来测试精确相等。 如果您想要检查对象的值，请使用 `toEqual` 代替
 
@@ -110,21 +110,21 @@ PASS  ./sum.test.js
 
 ```js
 test('null', () => {
-  const a = null;
-  expect(a).toBeNull();
-  expect(a).toBeDefined();
-  expect(a).not.toBeUndefined();
-  expect(a).not.toBeTruthy();
-  expect(a).toBeFalsy();
-});
+  const a = null
+  expect(a).toBeNull()
+  expect(a).toBeDefined()
+  expect(a).not.toBeUndefined()
+  expect(a).not.toBeTruthy()
+  expect(a).toBeFalsy()
+})
 
 test('zero', () => {
-  const b = 0;
-  expect(b).not.toBeNull();
-  expect(b).toBeDefined();
-  expect(b).not.toBeUndefined();
-  expect(b).not.toBeTruthy();
-  expect(b).toBeFalsy();
+  const b = 0
+  expect(b).not.toBeNull()
+  expect(b).toBeDefined()
+  expect(b).not.toBeUndefined()
+  expect(b).not.toBeTruthy()
+  expect(b).toBeFalsy()
 })
 ```
 
@@ -162,22 +162,22 @@ test('zero', () => {
 
 ```js
 test('two plus two', () => {
-  const value = 2 + 2;
-  expect(value).toBeGreaterThan(3);
-  expect(value).toBeGreaterThanOrEqual(3.5);
-  expect(value).toBeLessThan(5);
-  expect(value).toBeLessThanOrEqual(4.5);
+  const value = 2 + 2
+  expect(value).toBeGreaterThan(3)
+  expect(value).toBeGreaterThanOrEqual(3.5)
+  expect(value).toBeLessThan(5)
+  expect(value).toBeLessThanOrEqual(4.5)
 
   // toBe and toEqual are equivalent for numbers
-  expect(value).toBe(4);
-  expect(value).toEqual(4);
-});
+  expect(value).toBe(4)
+  expect(value).toEqual(4)
+})
 
 test('两个浮点数字相加', () => {
-  const value = 0.1 + 0.2;
+  const value = 0.1 + 0.2
   //expect(value).toBe(0.3);  这句会报错，因为浮点数有舍入误差
-  expect(value).toBeCloseTo(0.3); // 这句可以运行
-});
+  expect(value).toBeCloseTo(0.3) // 这句可以运行
+})
 ```
 
 ##### 字符串匹配器
@@ -190,12 +190,12 @@ test('两个浮点数字相加', () => {
 
 ```js
 test('there is no I in team', () => {
-  expect('team').not.toMatch(/I/);
-});
+  expect('team').not.toMatch(/I/)
+})
 
 test('but there is a "stop" in Christoph', () => {
-  expect('Christoph').toMatch(/stop/);
-});
+  expect('Christoph').toMatch(/stop/)
+})
 ```
 
 ##### 数组匹配器
@@ -207,40 +207,32 @@ test('but there is a "stop" in Christoph', () => {
 例子：
 
 ```js
-const shoppingList = [
-  'diapers',
-  'kleenex',
-  'trash bags',
-  'paper towels',
-  'beer',
-];
+const shoppingList = ['diapers', 'kleenex', 'trash bags', 'paper towels', 'beer']
 
 test('the shopping list has beer on it', () => {
-  expect(shoppingList).toContain('beer');
-  expect(new Set(shoppingList)).toContain('beer');
-});
+  expect(shoppingList).toContain('beer')
+  expect(new Set(shoppingList)).toContain('beer')
+})
 ```
 
-##### Throw error匹配器
+##### Throw error 匹配器
 
 例子：
 
 ```js
 function compileAndroidCode() {
-  throw new Error('you are using the wrong JDK');
+  throw new Error('you are using the wrong JDK')
 }
 
 test('compiling android goes as expected', () => {
-  expect(compileAndroidCode).toThrow();
-  expect(compileAndroidCode).toThrow(Error);
+  expect(compileAndroidCode).toThrow()
+  expect(compileAndroidCode).toThrow(Error)
 
   // You can also use the exact error message or a regexp
-  expect(compileAndroidCode).toThrow('you are using the wrong JDK');
-  expect(compileAndroidCode).toThrow(/JDK/);
-});
+  expect(compileAndroidCode).toThrow('you are using the wrong JDK')
+  expect(compileAndroidCode).toThrow(/JDK/)
+})
 ```
-
-
 
 ## 多次测试前后准备的钩子函数
 
@@ -248,59 +240,59 @@ test('compiling android goes as expected', () => {
 
 ```js
 beforeEach(() => {
-  initializeCityDatabase();
-});
+  initializeCityDatabase()
+})
 
 afterEach(() => {
-  clearCityDatabase();
-});
+  clearCityDatabase()
+})
 
 test('city database has Vienna', () => {
-  expect(isCity('Vienna')).toBeTruthy();
-});
+  expect(isCity('Vienna')).toBeTruthy()
+})
 
 test('city database has San Juan', () => {
-  expect(isCity('San Juan')).toBeTruthy();
-});
+  expect(isCity('San Juan')).toBeTruthy()
+})
 ```
 
 在某些情况下，你只需要在文件的开头做一次设置，缓存数据方便后面的操作。Jest 提供 `beforeAll` 和 `afterAll` 处理这种情况
 
 ```js
 beforeAll(() => {
-  return initializeCityDatabase();
-});
+  return initializeCityDatabase()
+})
 
 afterAll(() => {
-  return clearCityDatabase();
-});
+  return clearCityDatabase()
+})
 
 test('city database has Vienna', () => {
-  expect(isCity('Vienna')).toBeTruthy();
-});
+  expect(isCity('Vienna')).toBeTruthy()
+})
 
 test('city database has San Juan', () => {
-  expect(isCity('San Juan')).toBeTruthy();
-});
+  expect(isCity('San Juan')).toBeTruthy()
+})
 ```
 
-## 关于分组块describe
+## 关于分组块 describe
 
 ```js
 beforeAll(() => {
-  return initializeCityDatabase();
-});
+  return initializeCityDatabase()
+})
 
 afterAll(() => {
-  return clearCityDatabase();
-});
+  return clearCityDatabase()
+})
 
 test('city database has Vienna', () => {
-  expect(isCity('Vienna')).toBeTruthy();
-});
+  expect(isCity('Vienna')).toBeTruthy()
+})
 
 test('city database has San Juan', () => {
-  expect(isCity('San Juan')).toBeTruthy();
+  expect(isCity('San Juan')).toBeTruthy()
 })
 ```
 
@@ -308,4 +300,4 @@ test('city database has San Juan', () => {
 
 ## 小结
 
-以上就是关于jest测试的一些简单使用的总结和记录。欢迎大家查阅指正，觉得有帮助的给个赞，谢谢啦！
+以上就是关于 jest 测试的一些简单使用的总结和记录。欢迎大家查阅指正，觉得有帮助的给个赞，谢谢啦！
