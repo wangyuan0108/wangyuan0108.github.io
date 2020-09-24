@@ -110,21 +110,21 @@ PASS  ./sum.test.js
 
 ```js
 test('null', () => {
-  const n = null;
-  expect(n).toBeNull();
-  expect(n).toBeDefined();
-  expect(n).not.toBeUndefined();
-  expect(n).not.toBeTruthy();
-  expect(n).toBeFalsy();
+  const a = null;
+  expect(a).toBeNull();
+  expect(a).toBeDefined();
+  expect(a).not.toBeUndefined();
+  expect(a).not.toBeTruthy();
+  expect(a).toBeFalsy();
 });
 
 test('zero', () => {
-  const z = 0;
-  expect(z).not.toBeNull();
-  expect(z).toBeDefined();
-  expect(z).not.toBeUndefined();
-  expect(z).not.toBeTruthy();
-  expect(z).toBeFalsy();
+  const b = 0;
+  expect(b).not.toBeNull();
+  expect(b).toBeDefined();
+  expect(b).not.toBeUndefined();
+  expect(b).not.toBeTruthy();
+  expect(b).toBeFalsy();
 })
 ```
 
@@ -304,3 +304,8 @@ test('city database has San Juan', () => {
 })
 ```
 
+分组和命名空间差不多,就是把我们的测试分块整理下，这样测试就比较有条理。
+
+## 小结
+
+以上就是关于jest测试的一些简单使用的总结和记录。欢迎大家查阅指正，觉得有帮助的给个赞，谢谢啦！
