@@ -152,7 +152,7 @@ docker run -d --name sentry-worker-1 -e SENTRY_SECRET_KEY='n8ntkj(u3z5(o18tm*wpr
 
 **创建项目**
 
-![img](https://gitee.com/wangyuan0108/image/raw/master/9f4d95dd2e0f44f99b9a08d8143e5875~tplv-k3u1fbpfcp-zoom-1.image)
+![image-20200927112855400](https://gitee.com/wangyuan0108/image/raw/master/image-20200927112855400.png)
 
 这里我们选 **javascript** 项目名叫 **myapp**
 
