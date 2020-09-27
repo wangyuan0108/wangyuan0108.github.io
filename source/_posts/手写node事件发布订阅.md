@@ -1,10 +1,3 @@
-<!--
- * @Author: wangyuan
- * @Date: 2020-09-27 15:16:08
- * @LastEditTime: 2020-09-27 15:18:48
- * @LastEditors: wangyuan
- * @Description: 
--->
 ---
 title: 手写node事件发布订阅
 categories: WEB前端
