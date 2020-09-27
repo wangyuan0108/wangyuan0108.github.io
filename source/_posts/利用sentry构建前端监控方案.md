@@ -142,11 +142,11 @@ docker run -d --name sentry-worker-1 -e SENTRY_SECRET_KEY='n8ntkj(u3z5(o18tm*wpr
 
 账号密码是刚才创建的管理员的密码
 
-![img](https://gitee.com/wangyuan0108/image/raw/master/2cc29a8a25364bc9b0814a9f238029d0~tplv-k3u1fbpfcp-zoom-1.image)
+![image-20200927111801382](https://gitee.com/wangyuan0108/image/raw/master/image-20200927111801382.png)
 
-配置后台地址、预警邮件地址、以及其他的一些功能
+监控的错误详情
 
-![img](https://gitee.com/wangyuan0108/image/raw/master/97f4a470607a4bd4bcd6f50869688a8e~tplv-k3u1fbpfcp-zoom-1.image)
+![image-20200927112011576](https://gitee.com/wangyuan0108/image/raw/master/image-20200927112011576.png)
 
 ## 项目接入监控
 
@@ -189,7 +189,7 @@ Sentry.init({
 
 1. sentry 后台配置 authToken 用于上传sourcemap 使用，如下图注意勾选
 
-![img](https://gitee.com/wangyuan0108/image/raw/master/131c846fc37a43758a9fd130eacaff62~tplv-k3u1fbpfcp-zoom-1.image)
+![image-20200927112142155](https://gitee.com/wangyuan0108/image/raw/master/image-20200927112142155.png)
 
 1. 下载 webpack 插件
 
