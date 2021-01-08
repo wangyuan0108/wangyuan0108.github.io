@@ -151,7 +151,9 @@ links_layout: block
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.gif
 # in site  directory(source/uploads): /uploads/avatar.gif
-avatar: http://dinping.wangyuanweb.top/18-8-20/2106997.jpg
+# avatar: http://dinping.wangyuanweb.top/18-8-20/2106997.jpg
+avatar: https://gitee.com/wangyuan0108/image/raw/master/1.jpeg
+
 
 # Table Of Contents in the Sidebar
 toc:
