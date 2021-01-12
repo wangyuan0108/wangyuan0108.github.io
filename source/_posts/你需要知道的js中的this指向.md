@@ -3,7 +3,6 @@ title: 你需要知道的js中的this指向
 categories: WEB前端
 copyright: true
 date: 2021-01-12 10:30:44
-top: true
 tags: js
 ---
 
