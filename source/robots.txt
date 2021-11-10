@@ -1,7 +1,7 @@
-User-agent: * 
+User-agent: *
 Allow: /
 Allow: /archives/
-Allow: /tags/ 
+Allow: /tags/
 Allow: /categories/
 Allow: /resources/
 Disallow: /vendors/
@@ -11,5 +11,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 
 
-Sitemap: https://www.wangyuanweb.top/sitemap.xml
-Sitemap: https://www.wangyuanweb.top/baidusitemap.xml
+Sitemap: https://water.buging.cn/sitemap.xml
+Sitemap: https://water.buging.cn/baidusitemap.xml
