@@ -44,3 +44,13 @@ IdentityFile ~/.ssh/id_rsa
 ```
 ssh -T git@gitlab.xxx.com
 ```
+
+```
+// 全局配置
+$ git config --global user.name  'gitlab账号名' 
+$ git config --global user.email  'gitlab账号邮箱'
+
+// 本地配置
+$ git config --local user.name  'github账号名'   
+$ git config --local user.email  'github邮箱' 
+```
