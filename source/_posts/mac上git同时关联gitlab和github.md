@@ -6,7 +6,7 @@ date: 2022-12-29 11:31:57
 tags:
 ---
 ## 一、生成ssh密钥并配置
-分别对gitlab和github生成对应的密钥（默认情况下本地生成的秘钥位于/Users/用户名/.ssh/）
+分别对gitlab和github生成对应的密钥（默认情况下本地生成的秘钥位于/Users/用户名/.ssh/）<!--more-->
 ### 1 、生成gitlab密钥并配置
     打开Timinal终端，输入命令：
 ```
