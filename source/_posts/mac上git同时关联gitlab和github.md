@@ -56,11 +56,15 @@ $ git config --local user.email  'github邮箱'
 ```
 
 到这里，多账号的配置基本上已经完成了，但是还有一个不足的地方就是虽然私钥根据域名自动选择了，但是提交的配置还是共享 .gitconfig 中的配置，例如 user.name 和 user.email，能不能根据仓库所在的不同位置选择不同的全局配置文件呢？ 答案是可以的，打开 ~/.gitconfig 文件，在末尾添加下面的配置：
+```
 [includeIf "gitdir:~/work/gitlab/"]
     path = .gitconfig-gitlab
-复制代码
+```
+
 然后再建一个 ~/.gitconfig-gitlab 文件，里面写全局配置，例如：
+```
 [user]
     name = keliq
     email = keliq
+```
 那么只要仓库被放到了 ~/work/gitlab 目录下面，默认就会使用这个配置了！
