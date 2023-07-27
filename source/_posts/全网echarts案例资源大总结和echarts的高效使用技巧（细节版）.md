@@ -11,7 +11,7 @@ theme: mk-cute
 
 ##### 一.前言。
 众所周知，在现今的开发大环境下，数据可视化（大屏化）项目在前端开发中的比重越来越大。而其中使用率最高的插件无疑就是 [Apache Echarts](https://echarts.apache.org/zh/index.html)。（ps: 以下简称为echarts）。本文就结合vue框架来讲解如何快速、高效、优雅地在项目中使用echarts。当然，本文篇幅也会为读者精心准备目前网络上**最全面、最高效**的**echarts案例资源站集合**。
-
+<!--more-->
 
 ##### 二. 全网最全的echarts图表案例和实例资源站整理。
 1. 资源一：**[分享你我](http://chart.majh.top/)**  *（推荐指数：⭐⭐⭐⭐）*
