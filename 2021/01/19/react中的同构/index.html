@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Water">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="忆" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="随着越来越多新型前端框架的推出，SSR 这个概念在前端开发领域的流行度越来越高，也有越来越多的项目采用这种技术方案进行了实现。SSR 产生的背景是什么？适用的场景是什么？实现的原理又是什么？希望大家在这篇文章中能够找到你想要的答案。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react中的同构">
+<meta property="og:url" content="https://water.buging.cn/2021/01/19/react中的同构/index.html">
+<meta property="og:site_name" content="忆">
+<meta property="og:description" content="随着越来越多新型前端框架的推出，SSR 这个概念在前端开发领域的流行度越来越高，也有越来越多的项目采用这种技术方案进行了实现。SSR 产生的背景是什么？适用的场景是什么？实现的原理又是什么？希望大家在这篇文章中能够找到你想要的答案。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://gitee.com/wangyuan0108/image/raw/master/v2-721ab4c7d9e55d6b22da5109787a6617_r.jpg">
+<meta property="og:image" content="https://gitee.com/wangyuan0108/image/raw/master/v2-8fa23eb7918b58d1436e9aaffe3cc25b_r.jpg">
+<meta property="og:image" content="https://gitee.com/wangyuan0108/image/raw/master/v2-221bc777b5190dbdcf86db3d4870691d_r.jpg">
+<meta property="og:image" content="https://gitee.com/wangyuan0108/image/raw/master/v2-744285853e079518979f68f981c5c821_r.jpg">
+<meta property="og:updated_time" content="2023-08-01T06:26:37.598Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react中的同构">
+<meta name="twitter:description" content="随着越来越多新型前端框架的推出，SSR 这个概念在前端开发领域的流行度越来越高，也有越来越多的项目采用这种技术方案进行了实现。SSR 产生的背景是什么？适用的场景是什么？实现的原理又是什么？希望大家在这篇文章中能够找到你想要的答案。">
+<meta name="twitter:image" content="https://gitee.com/wangyuan0108/image/raw/master/v2-721ab4c7d9e55d6b22da5109787a6617_r.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://water.buging.cn/2021/01/19/react中的同构/">
+
+
+
+
+
+  <title>react中的同构 | 忆</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/wangyuan0108" class="github-corner" aria-label="View source on Github" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">忆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">平凡之路</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://water.buging.cn/2021/01/19/react中的同构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Water">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/wangyuan0108/image/1.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="忆">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">react中的同构</h2>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-19T13:55:10+00:00">
+                2021-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WEB前端/" itemprop="url" rel="index">
+                    <span itemprop="name">WEB前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2021/01/19/react中的同构/" class="leancloud_visitors" data-flag-title="react中的同构">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  20
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>随着越来越多新型前端框架的推出，SSR 这个概念在前端开发领域的流行度越来越高，也有越来越多的项目采用这种技术方案进行了实现。SSR 产生的背景是什么？适用的场景是什么？实现的原理又是什么？希望大家在这篇文章中能够找到你想要的答案。<a id="more"></a></p>
+<p>说到 SSR，很多人的第一反应是“服务器端渲染”，但我更倾向于称之为“同构”，所以首先我们来对“客户端渲染”，“服务器端渲染”，“同构”这三个概念简单的做一个分析：</p>
+<p><strong>客户端渲染</strong>：客户端渲染，页面初始加载的 HTML 页面中无网页展示内容，需要加载执行JavaScript 文件中的 React 代码，通过 JavaScript 渲染生成页面，同时，JavaScript 代码会完成页面交互事件的绑定，详细流程可参考下图（图片取材自 <a href="https://link.zhihu.com/?target=http%3A//fullstackacademy.com" rel="external nofollow noopener noreferrer" target="_blank">http://fullstackacademy.com</a>）：</p>
+<p><img src="https://gitee.com/wangyuan0108/image/raw/master/v2-721ab4c7d9e55d6b22da5109787a6617_r.jpg" alt="img"></p>
+<p><strong>服务器端渲染</strong>：用户请求服务器，服务器上直接生成 HTML 内容并返回给浏览器。服务器端渲染来，页面的内容是由 Server 端生成的。一般来说，服务器端渲染的页面交互能力有限，如果要实现复杂交互，还是要通过引入 JavaScript 文件来辅助实现。服务器端渲染这个概念，适用于任何后端语言。</p>
+<p><img src="https://gitee.com/wangyuan0108/image/raw/master/v2-8fa23eb7918b58d1436e9aaffe3cc25b_r.jpg" alt="img"></p>
+<p><strong>同构</strong>：同构这个概念存在于 Vue，React 这些新型的前端框架中，同构实际上是客户端渲染和服务器端渲染的一个整合。我们把页面的展示内容和交互写在一起，让代码执行两次。在服务器端执行一次，用于实现服务器端渲染，在客户端再执行一次，用于接管页面交互，详细流程可参考下图（图片取材自 <a href="https://link.zhihu.com/?target=http%3A//fullstackacademy.com" rel="external nofollow noopener noreferrer" target="_blank">http://fullstackacademy.com</a>）:</p>
+<p><img src="https://gitee.com/wangyuan0108/image/raw/master/v2-221bc777b5190dbdcf86db3d4870691d_r.jpg" alt="img"></p>
+<p>一般情况下，当我们使用 React 编写代码时，页面都是由客户端执行 JavaScript 逻辑动态挂 DOM 生成的，也就是说这种普通的单页面应用实际上采用的是客户端渲染模式。在大多数情况下，客户端渲染完全能够满足我们的业务需求，那为什么我们还需要 SSR 这种同构技术呢？</p>
+<h2 id="使用-SSR-技术的主要因素："><a href="#使用-SSR-技术的主要因素：" class="headerlink" title="使用 SSR 技术的主要因素："></a>使用 SSR 技术的主要因素：</h2><ol>
+<li>CSR 项目的 TTFP（Time To First Page）时间比较长，参考之前的图例，在 CSR 的页面渲染流程中，首先要加载 HTML 文件，之后要下载页面所需的 JavaScript 文件，然后 JavaScript 文件渲染生成页面。在这个渲染过程中至少涉及到两个 HTTP 请求周期，所以会有一定的耗时，这也是为什么大家在低网速下访问普通的 React 或者 Vue 应用时，初始页面会有出现白屏的原因。</li>
+<li>CSR 项目的 SEO 能力极弱，在搜索引擎中基本上不可能有好的排名。因为目前大多数搜索引擎主要识别的内容还是 HTML，对 JavaScript 文件内容的识别都还比较弱。如果一个项目的流量入口来自于搜索引擎，这个时候你使用 CSR 进行开发，就非常不合适了。</li>
+</ol>
+<p>SSR 的产生，主要就是为了解决上面所说的两个问题。在 React 中使用 SSR 技术，我们让 React 代码在服务器端先执行一次，使得用户下载的 HTML 已经包含了所有的页面展示内容，这样，页面展示的过程只需要经历一个 HTTP 请求周期，TTFP 时间得到一倍以上的缩减。</p>
+<p>同时，由于 HTML 中已经包含了网页的所有内容，所以网页的 SEO 效果也会变的非常好。之后，我们让 React 代码在客户端再次执行，为 HTML 网页中的内容添加数据及事件的绑定，页面就具备了 React 的各种交互能力。</p>
+<p>但是，SSR 这种理念的实现，并非易事。我们来看一下在 React 中实现 SSR 技术的架构图：</p>
+<p><img src="https://gitee.com/wangyuan0108/image/raw/master/v2-744285853e079518979f68f981c5c821_r.jpg" alt="img"></p>
+<p>使用 SSR 这种技术，将使原本简单的 React 项目变得非常复杂，项目的可维护性会降低，代码问题的追溯也会变得困难。</p>
+<p>所以，使用 SSR 在解决问题的同时，也会带来非常多的副作用，有的时候，这些副作用的伤害比起 SSR 技术带来的优势要大的多。从个人经验上来说，我一般建议大家，除非你的项目特别依赖搜索引擎流量，或者对首屏时间有特殊的要求，否则不建议使用 SSR。</p>
+<p>好，如果你确实遇到了 React 项目中要使用 SSR 的场景并决定使用 SSR，那么接下来我们就结合上面这张 SSR 架构图，开启 SSR 技术点的难点剖析。</p>
+<p>在开始之前，我们先来分析下虚拟 DOM 和 SSR 的关系。</p>
+<h2 id="SSR-之所以能够实现，本质上是因为虚拟-DOM-的存在"><a href="#SSR-之所以能够实现，本质上是因为虚拟-DOM-的存在" class="headerlink" title="SSR 之所以能够实现，本质上是因为虚拟 DOM 的存在"></a>SSR 之所以能够实现，本质上是因为虚拟 DOM 的存在</h2><p>上面我们说过，SSR 的工程中，React 代码会在客户端和服务器端各执行一次。你可能会想，这没什么问题，都是 JavaScript 代码，既可以在浏览器上运行，又可以在 Node 环境下运行。但事实并非如此，如果你的 React 代码里，存在直接操作 DOM 的代码，那么就无法实现 SSR 这种技术了，因为在 Node 环境下，是没有 DOM 这个概念存在的，所以这些代码在 Node 环境下是会报错的。</p>
+<p>好在 React 框架中引入了一个概念叫做虚拟 DOM，虚拟 DOM 是真实 DOM 的一个 JavaScript 对象映射，React 在做页面操作时，实际上不是直接操作 DOM，而是操作虚拟 DOM，也就是操作普通的 JavaScript 对象，这就使得 SSR 成为了可能。在服务器，我可以操作 JavaScript 对象，判断环境是服务器环境，我们把虚拟 DOM 映射成字符串输出；在客户端，我也可以操作 JavaScript 对象，判断环境是客户端环境，我就直接将虚拟 DOM 映射成真实 DOM，完成页面挂载。</p>
+<p>其他的一些框架，比如 Vue，它能够实现 SSR 也是因为引入了和 React 中一样的虚拟 DOM 技术。</p>
+<p>好，接下来我们回过头看流程图，前两步不说了，服务器端渲染肯定要先向 Node 服务器发送请求。重点是第 3 步，大家可以看到，服务器端要根据请求的地址，判断要展示什么样的页面了，这一步叫做服务器端路由。</p>
+<p>我们再看第 10 步，当客户端接收到 JavaScript 文件后，要根据当前的路径，在浏览器上再判断当前要展示的组件，重新进行一次客户端渲染，这个时候，还要经历一次客户端路由（前端路由）。</p>
+<p>那么，我们下面要说的就是服务器端路由和客户端路由的区别。</p>
+<h2 id="SSR-中客户端渲染与服务器端渲染路由代码的差异"><a href="#SSR-中客户端渲染与服务器端渲染路由代码的差异" class="headerlink" title="SSR 中客户端渲染与服务器端渲染路由代码的差异"></a>SSR 中客户端渲染与服务器端渲染路由代码的差异</h2><p>实现 React 的 SSR 架构，我们需要让相同的 React 代码在客户端和服务器端各执行一次。大家注意，这里说的相同的 React 代码，指的是我们写的各种组件代码，所以在同构中，只有组件的代码是可以公用的，而路由这样的代码是没有办法公用的，大家思考下这是为什么呢？其实原因很简单，在服务器端需要通过请求路径，找到路由组件，而在客户端需通过浏览器中的网址，找到路由组件，是完全不同的两套机制，所以这部分代码是肯定无法公用。我们来看看在 SSR 中，前后端路由的实现代码：</p>
+<p><strong>客户端路由：</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">      &lt;BrowserRouter&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          &lt;Route path=<span class="string">'/'</span> component=&#123;Home&#125;&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>BrowserRouter&gt;</span><br><span class="line">    &lt;<span class="regexp">/Provider&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">ReactDom.render(&lt;App/</span>&gt;, <span class="built_in">document</span>.querySelector(<span class="string">'#root'</span>))</span><br></pre></td></tr></table></figure>
+<p>客户端路由代码非常简单，大家一定很熟悉，BrowserRouter 会自动从浏览器地址中，匹配对应的路由组件显示出来。</p>
+<p><strong>服务器端路由代码：</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> </span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">      &lt;StaticRouter location=&#123;req.path&#125; context=&#123;context&#125;&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          &lt;Route path=<span class="string">'/'</span> component=&#123;Home&#125;&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>StaticRouter&gt;</span><br><span class="line">    &lt;<span class="regexp">/Provider&gt;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">Return ReactDom.renderToString(&lt;App/</span>&gt;)</span><br></pre></td></tr></table></figure>
+<p>服务器端路由代码相对要复杂一点，需要你把 location（当前请求路径）传递给 StaticRouter 组件，这样 StaticRouter 才能根据路径分析出当前所需要的组件是谁。（PS：StaticRouter 是 React-Router 针对服务器端渲染专门提供的一个路由组件。）</p>
+<p>通过 BrowserRouter 我们能够匹配到浏览器即将显示的路由组件，对浏览器来说，我们需要把组件转化成 DOM，所以需要我们使用 ReactDom.render 方法来进行 DOM 的挂载。而 StaticRouter 能够在服务器端匹配到将要显示的组件，对服务器端来说，我们要把组件转化成字符串，这时我们只需要调用 ReactDom 提供的 renderToString 方法，就可以得到 App 组件对应的 HTML 字符串。</p>
+<p>对于一个 React 应用来说，路由一般是整个程序的执行入口。在 SSR 中，服务器端的路由和客户端的路由不一样，也就意味着服务器端的入口代码和客户端的入口代码是不同的。</p>
+<p>我们知道， React 代码是要通过 Webpack 打包之后才能运行的，也就是第 3 步和第10 步运行的代码，实际上是源代码打包过后生成的代码。上面也说到，服务器端和客户端渲染中的代码，只有一部分一致，其余是有区别的。所以，针对代码运行环境的不同，要进行有区别的 Webpack 打包。</p>
+<h2 id="服务器端代码和客户端代码的打包差异"><a href="#服务器端代码和客户端代码的打包差异" class="headerlink" title="服务器端代码和客户端代码的打包差异"></a>服务器端代码和客户端代码的打包差异</h2><p>简单写两个 Webpack 配置文件作为 DEMO：</p>
+<p><strong>客户端 Webpack 配置</strong>：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  entry: './src/client/index.js',</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: 'index.js',</span><br><span class="line">    path: path.resolve(__dirname, 'public')</span><br><span class="line">  &#125;,</span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [&#123;</span><br><span class="line">      test: /\.js?$/,</span><br><span class="line">      loader: 'babel-loader'</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">      test: /\.css?$/,</span><br><span class="line">      use: ['style-loader', &#123;</span><br><span class="line">        loader: 'css-loader',</span><br><span class="line">        options: &#123;modules: true&#125;</span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">      test: /\.(png|jpeg|jpg|gif|svg)?$/,</span><br><span class="line">      loader: 'url-loader',</span><br><span class="line">      options: &#123;</span><br><span class="line">        limit: 8000,</span><br><span class="line">        publicPath: '/'</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>服务器端 Webpack 配置</strong>:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  target: 'node',</span><br><span class="line">  entry: './src/server/index.js',</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: 'bundle.js',</span><br><span class="line">    path: path.resolve(__dirname, 'build')</span><br><span class="line">  &#125;,</span><br><span class="line">  externals: [nodeExternals()],</span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [&#123;</span><br><span class="line">      test: /\.js?$/,</span><br><span class="line">      loader: 'babel-loader'</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">      test: /\.css?$/,</span><br><span class="line">      use: ['isomorphic-style-loader', &#123;</span><br><span class="line">        loader: 'css-loader',</span><br><span class="line">        options: &#123;modules: true&#125;</span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">      test: /\.(png|jpeg|jpg|gif|svg)?$/,</span><br><span class="line">      loader: 'url-loader',</span><br><span class="line">      options: &#123;</span><br><span class="line">        limit: 8000,</span><br><span class="line">        outputPath: '../public/',</span><br><span class="line">        publicPath: '/'</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面我们说了，在 SSR 中，服务器端渲染的代码和客户端的代码的入口路由代码是有差异的，所以在 Webpack 中，Entry 的配置首先肯定是不同的。</p>
+<p>在服务器端运行的代码，有时我们需要引入 Node 中的一些核心模块，我们需要 Webpack 做打包的时候能够识别出类似的核心模块，一旦发现是核心模块，不必把模块的代码合并到最终生成的代码中，解决这个问题的方法非常简单，在服务器端的 Webpack配置中，你只要加入 target: node 这个配置即可。</p>
+<p>服务器端渲染的代码，如果加载第三方模块，这些第三方模块也是不需要被打包到最终的源码中的，因为 Node 环境下通过 NPM 已经安装了这些包，直接引用就可以，不需要额外再打包到代码里。为了解决这个问题，我们可以使用 webpack-node-externals 这个插件，代码中的 nodeExternals 指的就是这个插件，通过这个插件，我们就能解决这个问题。关于 Node 这里的打包问题，可能看起来有些抽象，不是很明白的同学可以仔细读一下 webpack-node-externals 相关的文章或文档，你就能很好的明白这里存在的问题了。</p>
+<p>接下来我们继续分析，当我们的 React 代码中引入了一些 CSS 样式代码时，服务器端打包的过程会处理一遍 CSS，而客户端又会处理一遍。查看配置，我们可以看到，服务器端打包时我们用了 isomorphic-style-loader，它处理 CSS 的时候，只在对应的 DOM 元素上生成 class 类名，然后返回生成的 CSS 样式代码。</p>
+<p>而在客户端代码打包配置中，我们使用了 css-loader 和 style-loader，css-loader 不但会在 DOM 上生成 class 类名，解析好的 CSS 代码，还会通过 style-loader 把代码挂载到页面上。不过这么做，由于页面上的样式实际上最终是由客户端渲染时添加上的，所以页面可能会存在一开始没有样式的情况，为了解决这个问题， 我们可以在服务器端渲染时，拿到 isomorphic-style-loader 返回的样式代码，然后以字符串的形式添加到服务器端渲染的 HTML 之中。</p>
+<p>而对于图片等类型的文件引入，url-loader 也会在服务器端代码和客户端代码打包的过程中分别进行打包，这里，我偷了一个懒，无论服务器端打包还是客户端打包，我都让打包生成的文件存储在 public 目录下，这样，虽然文件会打包出来两遍，但是后打包出来的文件会覆盖之前的文件，所以看起来还是只有一份文件。</p>
+<p>当然，这样做的性能和优雅性并不高，只是给大家提供一个小的思路，如果想进行优化，你可以让图片的打包只进行一次，借助一些 Webpack 的插件，实现这个也并非难事，你甚至可以自己也写一个 loader，来解决这样的问题。</p>
+<p>如果你的 React 应用中没有异步数据的获取，单纯的做一些静态内容展示，经过上面的配置，你会发现一个简单的 SSR 应用很快的就可以被实现出来了。但是，真正的一个 React 项目中，我们肯定要有异步数据的获取，绝大多数情况下，我们还要使用 Redux 管理数据。而如果想在 SSR 应用中实现，就不是这么简单了。</p>
+<h2 id="SSR-中异步数据的获取-Redux-的使用"><a href="#SSR-中异步数据的获取-Redux-的使用" class="headerlink" title="SSR 中异步数据的获取 + Redux 的使用"></a>SSR 中异步数据的获取 + Redux 的使用</h2><p>客户端渲染中，异步数据结合 Redux 的使用方式遵循下面的流程（对应图中第 12 步）：</p>
+<ol>
+<li>创建 Store</li>
+<li>根据路由显示组件</li>
+<li>派发 Action 获取数据</li>
+<li>更新 Store 中的数据</li>
+<li>组件 Rerender</li>
+</ol>
+<p>而在服务器端，页面一旦确定内容，就没有办法 Rerender 了，这就要求组件显示的时候，就要把 Store 的数据都准备好，所以服务器端异步数据结合 Redux 的使用方式，流程是下面的样子（对应图中第 4 步）：</p>
+<ol>
+<li>创建 Store</li>
+<li>根据路由分析 Store 中需要的数据</li>
+<li>派发 Action 获取数据</li>
+<li>更新Store 中的数据</li>
+<li>结合数据和组件生成 HTML，一次性返回</li>
+</ol>
+<p>下面，我们分析下<strong>服务器端渲染</strong>这部分的流程：</p>
+<ol>
+<li>创建 Store：这一部分有坑，要注意避免，大家知道，客户端渲染中，用户的浏览器中永远只存在一个 Store，所以代码上你可以这么写：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = createStore(reducer, defaultState)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store;</span><br></pre></td></tr></table></figure>
+<p>然而在服务器端，这么写就有问题了，因为服务器端的 Store 是所有用户都要用的，如果像上面这样构建 Store，Store 变成了一个单例，所有用户共享 Store，显然就有问题了。所以在服务器端渲染中，Store 的创建应该像下面这样，返回一个函数，每个用户访问的时候，这个函数重新执行，为每个用户提供一个独立的 Store：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getStore = <span class="function">(<span class="params">req</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> createStore(reducer, defaultState);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> getStore;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>根据路由分析 Store 中需要的数据： 要想实现这个步骤，在服务器端，首先我们要分析当前出路由要加载的所有组件，这个时候我们可以借助一些第三方的包，比如说 react-router-config, 具体这个包怎么使用，不做过多说明，大家可以查看文档，使用这个包，传入服务器请求路径，它就会帮助你分析出这个路径下要展示的所有组件。</li>
+<li>派发 Action 获取数据: 接下来，我们在每个组件上增加一个获取数据的方法：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Home.loadData = <span class="function">(<span class="params">store</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> store.dispatch(getHomeList())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个方法需要你把服务器端渲染的 Store 传递进来，它的作用就是帮助服务器端的 Store 获取到这个组件所需的数据。 所以，组件上有了这样的方法，同时我们也有当前路由所需要的所有组件，依次调用各个组件上的 loadData 方法，就能够获取到路由所需的所有数据内容了。</p>
+<ol>
+<li>更新 Store 中的数据: 其实，当我们执行第三步的时候，已经在更新 Store 中的数据了，但是，我们要在生成 HTML 之前，保证所有的数据都获取完毕，这怎么处理呢？</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// matchedRoutes 是当前路由对应的所有需要显示的组件集合</span></span><br><span class="line">matchedRoutes.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (item.route.loadData) &#123;</span><br><span class="line">    <span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      item.route.loadData(store).then(resolve).catch(resolve);</span><br><span class="line">    &#125;)</span><br><span class="line">    promises.push(promise);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.all(promises).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 生成 HTML 逻辑</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>这里，我们使用 Promise 来解决这个问题，我们构建一个 Promise 队列，等待所有的 Promise 都执行结束后，也就是所有 store.dispatch 都执行完毕后，再去生成 HTML。这样的话，我们就实现了结合 Redux 的 SSR 流程。</p>
+<p>在上面，我们说到，服务器端渲染时，页面的数据是通过 loadData 函数来获取的。而在客户端，数据获取依然要做，因为如果这个页面是你访问的第一个页面，那么你看到的内容是服务器端渲染出来的，但是如果经过 react-router 路由跳转道第二个页面，那么这个页面就完全是客户端渲染出来的了，所以客户端也要去拿数据。</p>
+<p>在客户端获取数据，使用的是我们最习惯的方式，通过 componentDidMount 进行数据的获取。这里要注意的是，componentDidMount 只在客户端才会执行，在服务器端这个生命周期函数是不会执行的。所以我们不必担心 componentDidMount 和 loadData 会有冲突，放心使用即可。这也是为什么数据的获取应该放到 componentDidMount 这个生命周期函数中而不是 componentWillMount 中的原因，可以避免服务器端获取数据和客户端获取数据的冲突。</p>
+<h2 id="Node-只是一个中间层"><a href="#Node-只是一个中间层" class="headerlink" title="Node 只是一个中间层"></a>Node 只是一个中间层</h2><p>上一部分我们说到了获取数据的问题，在 SSR 架构中，一般 Node 只是一个中间层，用来做 React 代码的服务器端渲染，而 Node 需要的数据通常由 API 服务器单独提供。</p>
+<p>这样做一是为了工程解耦，二也是为了规避 Node 服务器的一些计算性能问题。</p>
+<p>请大家关注图中的第 4 步和第 12，13 步，我们接下来分析这几个步骤。</p>
+<p>服务器端渲染时，直接请求 API 服务器的接口获取数据没有任何问题。但是在客户端，就有可能存在跨域的问题了，所以，这个时候，我们需要在服务器端搭建 Proxy 代理功能，客户端不直接请求 API 服务器，而是请求 Node 服务器，经过代理转发，拿到 API 服务器的数据。</p>
+<p>这里你可以通过 express-http-proxy 这样的工具帮助你快速搭建 Proxy 代理功能，但是记得配置的时候，要让代理服务器不仅仅帮你转发请求，还要把 cookie 携带上，这样才不会有权限校验上的一些问题。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Node 代理功能实现代码</span></span><br><span class="line">app.use(<span class="string">'/api'</span>, proxy(<span class="string">'http://apiServer.com'</span>, &#123;</span><br><span class="line">  proxyReqPathResolver: <span class="function"><span class="keyword">function</span> (<span class="params">req</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'/ssr'</span> + req.url;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>到这里，整个 SSR 的流程体系中关键知识点的原理就串联起来了，如果你之前适用过 SSR 框架，那么这些知识点的整理我相信可以从原理层面很好的帮助到你。</p>
+<p>当然，我也考虑到阅读本篇文章的同学可能有很大一部分对 SSR 的基础知识非常有限，看了文章可能会云里雾里，这里为了帮助这些同学，我编写了一个非常简单的 SSR 框架，代码放在这里：</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//files.alicdn.com/tpsservice/bf46acacaab649752e9c9121bdfb7f70.zip" rel="external nofollow noopener noreferrer" target="_blank">https://files.alicdn.com/tpsservice/bf46acacaab649752e9c9121bdfb7f70.zip</a></p>
+<p>初学者结合上面的流程图，一步步梳理流程图中的逻辑，梳理结束后，回来再看一遍这篇文章，相信大家就豁然开朗了。</p>
+<p>当然在真正实现 SSR 架构的过程中，难点有时不是实现的思路，而是细节的处理。比如说如何针对不同页面设置不同的 title 和 description 来提升 SEO 效果，这时候，我们其实可以用 react-helmet 这样的工具帮我们达成目标，这个工具对客户端和服务器端渲染的效果都很棒，值得推荐。还有一些诸如工程目录的设计，404，301 重定向情况的处理等等，不过这些问题，我们只需要在实践中遇到的时候逐个攻破就可以了。</p>
+
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+     <div>
+        
+          
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2021/01/19/react中的同构/">react中的同构</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Water 的个人博客">Water</a></p>
+  <p><span>发布时间:</span>2021年01月19日 - 13:01</p>
+  <p><span>最后更新:</span>2023年08月01日 - 06:08</p>
+  <p><span>原始链接:</span><a href="/2021/01/19/react中的同构/" title="react中的同构">https://water.buging.cn/2021/01/19/react中的同构/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://water.buging.cn/2021/01/19/react中的同构/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+        
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/weixinpay.jpg" alt="Water 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Water 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/01/12/你需要知道的js中的this指向/" rel="next" title="你需要知道的js中的this指向">
+                <i class="fa fa-chevron-left"></i> 你需要知道的js中的this指向
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/03/04/容易混淆的umi创建命令/" rel="prev" title="容易混淆的umi创建命令">
+                容易混淆的umi创建命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank" rel="external nofollow noopener noreferrer">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="vcomments"></div>
+    </div>
+  
+
+  
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://cdn.jsdelivr.net/gh/wangyuan0108/image/1.jpeg" alt="Water">
+            
+              <p class="site-author-name" itemprop="name">Water</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">93</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wangyuan0108" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/web-kai-fa-zhe" target="_blank" title="知乎" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/2207475076971533/posts" target="_blank" title="掘金" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+
+
+            
+
+          </div>
+          <!--<div>
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=509313150&auto=1&height=66"></iframe>
+          </div>-->
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-SSR-技术的主要因素："><span class="nav-number">1.</span> <span class="nav-text">使用 SSR 技术的主要因素：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSR-之所以能够实现，本质上是因为虚拟-DOM-的存在"><span class="nav-number">2.</span> <span class="nav-text">SSR 之所以能够实现，本质上是因为虚拟 DOM 的存在</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSR-中客户端渲染与服务器端渲染路由代码的差异"><span class="nav-number">3.</span> <span class="nav-text">SSR 中客户端渲染与服务器端渲染路由代码的差异</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器端代码和客户端代码的打包差异"><span class="nav-number">4.</span> <span class="nav-text">服务器端代码和客户端代码的打包差异</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSR-中异步数据的获取-Redux-的使用"><span class="nav-number">5.</span> <span class="nav-text">SSR 中异步数据的获取 + Redux 的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-只是一个中间层"><span class="nav-number">6.</span> <span class="nav-text">Node 只是一个中间层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结："><span class="nav-number">7.</span> <span class="nav-text">总结：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Water</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">博客全站共&#58;</span>
+    
+    <span title="博客全站共">143.8k字</span>
+  
+</div>
+<div>
+  <a href="http://www.beian.miit.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">
+    浙ICP备17051886号-1
+  </a>
+</div>
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7-rc3/dist/Valine.min.js"></script>
+  <script type="text/javascript">
+    new Valine({
+        av: AV,
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        app_id: '07n3074XAQEb58DvjBF5HnlV-gzGzoHsz',
+        app_key: '0HbRzaC25zC1hFausmSxplaV',
+        placeholder: '各位道友，请举手发言'
+    });
+  </script>
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("07n3074XAQEb58DvjBF5HnlV-gzGzoHsz", "0HbRzaC25zC1hFausmSxplaV");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/src/love.js"></script> -->

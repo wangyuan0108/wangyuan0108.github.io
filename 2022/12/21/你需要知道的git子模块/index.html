@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Water">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="忆" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="概念先引用 git 的官方定义描述：  A submodule is a repository embedded inside another repository. The submodule has its own history; the repository it is embedded in is called a superproject.  子模块（submodule）是一个内嵌在其">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你需要知道的git子模块">
+<meta property="og:url" content="https://water.buging.cn/2022/12/21/你需要知道的git子模块/index.html">
+<meta property="og:site_name" content="忆">
+<meta property="og:description" content="概念先引用 git 的官方定义描述：  A submodule is a repository embedded inside another repository. The submodule has its own history; the repository it is embedded in is called a superproject.  子模块（submodule）是一个内嵌在其">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2023-08-01T06:26:37.602Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="你需要知道的git子模块">
+<meta name="twitter:description" content="概念先引用 git 的官方定义描述：  A submodule is a repository embedded inside another repository. The submodule has its own history; the repository it is embedded in is called a superproject.  子模块（submodule）是一个内嵌在其">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://water.buging.cn/2022/12/21/你需要知道的git子模块/">
+
+
+
+
+
+  <title>你需要知道的git子模块 | 忆</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/wangyuan0108" class="github-corner" aria-label="View source on Github" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">忆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">平凡之路</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://water.buging.cn/2022/12/21/你需要知道的git子模块/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Water">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/wangyuan0108/image/1.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="忆">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">你需要知道的git子模块</h2>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-12-21T13:21:25+00:00">
+                2022-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WEB前端/" itemprop="url" rel="index">
+                    <span itemprop="name">WEB前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2022/12/21/你需要知道的git子模块/" class="leancloud_visitors" data-flag-title="你需要知道的git子模块">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>先引用 <code>git</code> 的官方定义描述：</p>
+<blockquote>
+<p>A submodule is a repository embedded inside another repository. The submodule has its own history; the repository it is embedded in is called a superproject.</p>
+</blockquote>
+<p>子模块（<code>submodule</code>）是一个内嵌在其他 git 仓库（父工程）中的 git 仓库，子模块有自己的 git 记录。</p>
+<p>通常，如果一个仓库存在子模块，父工程目录下的 <code>.git/modules/</code> 目录中会存在一个 <code>git</code> 目录，子模块的仓库目录会存在于父工程的仓库目录中，并且子模块的仓库目录中也会存在一个 <code>.git</code> 目录；<a id="more"></a></p>
+<p>使用场景：</p>
+<ul>
+<li>想要在一个工程中使用另一个工程，但是那个工程包含了单独的提交记录，<code>submodule</code> 就可以实现在一个工程中引入另一个工程，同时保留二者的提交记录并且区分开来；目前 <code>submodule</code> 还能实现单独开发子工程，并且不会影响父工程，父工程可以在需要的时候更新子模块的版本；</li>
+<li>想要把一个工程拆分成多个仓库并进行集中管理，这可以用来实现 <code>git</code> 当前的限制，实现更细粒度的访问，解决当仓库过于庞大时所出现的传输量大、提交记录冗杂、权限分设等问题；</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="新增子模块"><a href="#新增子模块" class="headerlink" title="新增子模块"></a>新增子模块</h3><p>向一个项目中添加子模块：</p>
+<pre><code>git submodule add https://github.com/yyy/xxx.git
+</code></pre><p>之后会 <code>clone</code> 该子模块对应的远程项目文件到本地父项目目录下的同名文件夹中（<code>./xxx/</code>），父项目下也会多一个叫 <code>.gitmodules</code> 的文件，内容大致为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[submodule &quot;xxx&quot;]</span><br><span class="line">	path = xxx</span><br><span class="line">	url = git@github.com:yyy/xxx.git</span><br></pre></td></tr></table></figure></p>
+<p>如果存在多个子模块，则会继续向该文件中追加与上面相同格式的内容；</p>
+<p>同时父项目下的 <code>.git</code> 目录中也会新增 <code>/modules/xxx/</code> 目录，里面的内容对应子模块仓库中原有的 <code>.git</code> 目录中的文件，此时虽然子模块目录下的 <code>.git</code> 依然存在，但是已经由一个文件夹变成了文件，内容为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitdir: ../.git/modules/xxx</span><br></pre></td></tr></table></figure></p>
+<p>即指向了父项目的 <code>.git/modules/xxx</code> 目录；如果运行 <code>git config --list</code> 查看项目的配置，也会发现多了类似下面两行的内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">submodule.xxx.url=git@github.com:yyy/xxx.git</span><br><span class="line">submodule.xxx.active=true</span><br></pre></td></tr></table></figure></p>
+<p>如果修改 <code>submodule.xxx.url</code> 的值，则会覆盖 <code>.gitmodules</code> 文件中对应的 <code>url</code> 值；</p>
+<h3 id="查看子模块"><a href="#查看子模块" class="headerlink" title="查看子模块"></a>查看子模块</h3><p>查看当前项目下的子模块：</p>
+<blockquote>
+<p><code>git submodule</code></p>
+</blockquote>
+<p> 或者</p>
+<blockquote>
+<p><code>git submodule status</code></p>
+</blockquote>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">70c316ecb7c41a5bdf8a37ff93bf866d3b903388 xxx (heads/master)</span><br></pre></td></tr></table></figure></p>
+<p>如果将父项目推送到远程仓库（如 Github），在网页浏览该项目时子模块所在的目录会多一个类似 <strong><code>@70c316e</code></strong> 的后缀，即上面查看子模块命令输出内容的 hash 值的前面部分，点击这个目录会跳转到这个子模块对应的仓库地址（另一个 url）；</p>
+<p>如果执行：</p>
+<pre><code>git submodule deinit
+</code></pre><p>删除了子模块，则再次查看时输出会是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-70c316ecb7c41a5bdf8a37ff93bf866d3b903388 xxx</span><br></pre></td></tr></table></figure></p>
+<h3 id="拉取子模块"><a href="#拉取子模块" class="headerlink" title="拉取子模块"></a>拉取子模块</h3><p>如果要 <code>clone</code> 一个项目，并且包含其子模块的文件，则需要给 <code>git clone</code> 命令最后加上 <code>--recurse-submodules</code> 或者 <code>--recursive</code> 参数（<strong>否则</strong>只会下载一个空的子模块文件）：</p>
+<pre><code>git clone https://github.com/yyy/xxx.git --recursive
+</code></pre><p>当然，克隆时忘记了加这个参数，后续也有办法去拉取子模块的文件，首先执行：</p>
+<pre><code>git submodule init
+</code></pre><p>这会初始化子模块相关配置，比如自动在 <code>config</code> 中加入下面两行内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">submodule.xxx.url=git@github.com:yyy/xxx.git</span><br><span class="line">submodule.xxx.active=true</span><br></pre></td></tr></table></figure></p>
+<p>然后执行：</p>
+<pre><code>git submodule update
+</code></pre><p>就可以拉取到子模块仓库中的文件了，也可以将这两步命令合并为一步：</p>
+<pre><code>git submodule update --init
+</code></pre><p>要拉取所有层层嵌套的子模块，则执行：</p>
+<pre><code>git submodule update --init --recursive
+</code></pre><p>之前 <code>clone</code> 时加参数不过是自动执行初始化配置并拉取子模块（甚至嵌套的子模块）中的文件罢了；</p>
+<p>命令默认拉取<strong>主分支</strong>（<code>master</code>），想要修改这个默认拉取分支可以修改 <code>.gitmodules</code> 文件中子模块对应的 <code>branch</code> 值，或者执行：</p>
+<pre><code>git config submodule.xxx.branch dev
+</code></pre><p>或者执行同时将配置写入文件，这样其他人拉取父项目也会获取该配置：</p>
+<pre><code>git config -f .gitmodules submodule.xxx.branch dev
+</code></pre><h3 id="更新子模块"><a href="#更新子模块" class="headerlink" title="更新子模块"></a>更新子模块</h3><h4 id="拉取更新"><a href="#拉取更新" class="headerlink" title="拉取更新"></a>拉取更新</h4><p>获取子模块仓库的最新提交，同步远程分支的变更，可以直接在子模块目录下执行：</p>
+<pre><code>git pull
+</code></pre><p>或者在父目录下执行：</p>
+<pre><code>git submodule update --remote
+</code></pre><p>这里给 <code>git submodule update</code> 加上 <strong><code>--remote</code></strong> 是为了直接从子模块的当前分支的远程追踪分支获取最新变更，不加则是默认从父项目的 <code>SHA-1</code> 记录中获取变更；当有多个子模块时，该命令默认拉取<strong>所有</strong>子模块的变更，指定更新子模块 <code>xxx</code> 需要执行：</p>
+<pre><code>git submodule update --remote xxx
+</code></pre><p>如果将修改子模块的相关变更推送到父项目的远程，其他人拉取代码时，只用 <code>git pull</code> 的话只会把子模块的相关修改拉取到父项目，具体变更并<strong>不会更新</strong>到子模块中，在父项目里执行：</p>
+<blockquote>
+<p><code>git diff --submodule</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Submodule xxx a6e2962..70c316e (rewind):</span><br><span class="line">  &lt; add file</span><br></pre></td></tr></table></figure>
+<p>注意子模块提交记录中前的 <strong><code>&lt;</code></strong> 符号，表示变更未更新到子模块文件夹里，所以更新子模块变更需要执行：</p>
+<pre><code>git submodule update --init --recursive
+</code></pre><p>或者直接在父项目拉取时同时更新子模块（需要子模块已经 <code>init</code>，否则仍然拉取不到文件）：</p>
+<pre><code>git pull --recurse-submodules
+</code></pre><h4 id="分支切换"><a href="#分支切换" class="headerlink" title="分支切换"></a>分支切换</h4><p>更新完子模块（<code>git submodule update</code>）后，虽然会将文件变更同步到子模块目录下，但是此时子模块并没有处于任何已有分支下，去子模块目录下检查一下分支就会发现：</p>
+<blockquote>
+<p><code>git branch -vv</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* (HEAD detached at 16d1b6b) 16d1b6b mod file</span><br><span class="line">  master                     16d1b6b [origin/master] mod file</span><br></pre></td></tr></table></figure>
+<p>当前分支并不是 <code>master</code>，而是一个 <code>detached</code> 状态的编号分支，官方文档称为“游离的 HEAD”，虽然可以提交，但是并没有本地分支跟踪这些更改，意味着下次更新子模块就会<strong>丢失</strong>这些更改；</p>
+<p>所以在子模块下开始开发前，需要先<strong>切换</strong>到某个已有分支或者创建新的分支，比如进入主分支：</p>
+<pre><code>git checkout master
+</code></pre><h4 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h4><p>除了默认的分支同步更新操作，也可以执行其他类型的分支更新行为，比如 <code>merge</code>，<code>rebase</code> 等；如将父项目中记录的子模块最新变更（分支是 <code>submodule.xxx.branch</code> 中配置的，默认主分支 <code>master</code>）<code>merge</code> 到子模块的当前分支中，则执行：</p>
+<pre><code>git submodule update --remote --merge
+</code></pre><p><code>rebase</code> 到子模块当前分支则执行：</p>
+<pre><code>git submodule update --remote --rebase
+</code></pre><h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p>如果其他人修改了子模块的内容并提交了记录，父项目也提交并推送了远程仓库，但是子模块<strong>没有</strong>推送其对应的远程仓库，<br>那么其他人拉取父项目代码变更时没有问题，但是<strong>更新</strong>子模块时就会遇到下面的问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fatal: remote error: upload-pack: not our ref 16d1b6b94e3245f3a7fb4f43e5b6f44b14027fbb</span><br><span class="line">Fetched in submodule path &apos;xxx&apos;, but it did not contain 16d1b6b94e3245f3a7fb4f43e5b6f44b14027fbb.</span><br><span class="line">Direct fetching of that commit failed.</span><br></pre></td></tr></table></figure></p>
+<p>即由于其他人没有及时将子模块的提交 <code>push</code> 的子模块的远程仓库，我们本地父项目有了关于子模块最新的变更，但是在子模块的仓库中却找不到，就报错了，让对方在子模块下 <code>push</code> 一下这边再重新更新就行了；</p>
+<p>为了避免制造这一不必要的麻烦，可以把在父项目中推送远程的命令替换为：</p>
+<pre><code>git push --recurse-submodules=check
+</code></pre><p>这样如果子模块（与父项目记录的对应分支）存在未 <code>push</code> 的提交，就会报错，并且子模块有推送失败的，父项目也会推送失败；需要在推送父项目时自动推送未推送的子模块，则执行：</p>
+<pre><code>git push --recurse-submodules=on-demand
+</code></pre><p>觉得每次手输太麻烦，就直接将其写入配置：</p>
+<pre><code>git config push.recurseSubmodules check
+</code></pre><p>如果父项目中子模块的仓库地址（<code>submodule.xxx.url</code>）被其他协作者修改了，那么我们再更新子模块时就可能遇到问题，需要执行：</p>
+<pre><code>git submodule sync --recursive
+</code></pre><p>同步完 <code>url</code>，然后再重新初始化更新：</p>
+<pre><code>git submodule update --int --recursive
+</code></pre><h3 id="删除子模块"><a href="#删除子模块" class="headerlink" title="删除子模块"></a>删除子模块</h3><p>在确认移除子模块前，需要先将其取消注册（<code>unregister</code>），即删除该子模块相关的配置文件（<code>git config</code>），比如要移除子模块 <code>xxx</code>，则执行：</p>
+<pre><code>git submodule deinit xxx
+</code></pre><p>然后子模块的相关配置会被删除（<code>.gitmodules</code> 和 <code>.git/modules/xxx</code> 中的配置会保留），子模块对应的目录也会被清空（子模块目录本身会保留），再运行 <code>git submodule status</code> 查看子模块则会输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-70c316ecb7c41a5bdf8a37ff93bf866d3b903388 xxx</span><br></pre></td></tr></table></figure></p>
+<p>前缀 <strong><code>-</code></strong> 表示该子模块已经被取消注册，可理解为暂时移除，想必官方这样做也是给我们提供反悔的余地，因为想要<strong>恢复</strong>刚才删除的子模块，重新执行 <code>git submodule update --init xxx</code> 就能重新初始子模块并拉取文件；</p>
+<p>由于还有一些配置文件仍然被保留，所以想要<strong>彻底删除</strong>的话，需要继续手动删除这里配置文件，即：</p>
+<ul>
+<li>删除子模块对应的目录 <code>xxx</code>；</li>
+<li>删除 <code>.gitmoduls</code> 中子模块 <code>xxx</code> 对应的区块配置；</li>
+<li>删除 <code>.git/modules/</code> 目录下的子模块目录 <code>xxx</code>；</li>
+<li>删除子模块的缓存：<code>git rm --cached xxx</code>；</li>
+</ul>
+<p>然后再执行 <code>git submodule</code> 就没有任何输出了，清除完毕；</p>
+<h3 id="子模块与父项目的联系"><a href="#子模块与父项目的联系" class="headerlink" title="子模块与父项目的联系"></a>子模块与父项目的联系</h3><p>父项目和子模块有着分开的 <code>git</code> 仓库，所以可以分别在父项目和子模块的目录下使用 <code>git</code> 命令，操作的也是<strong>各自</strong>的仓库，比如分别在父项目和子模块中执行 <code>git branch -a</code> 或者 <code>git remote -v</code> 的输出结果是不同的；</p>
+<p>虽然二者有个分开的仓库与提交记录，但是又是关联起来的（这正是 <code>submodule</code> 所做的工作），举个例子，在子模块目录 <code>xxx/</code> 下新增一个文件 <code>test.txt</code>，然后在子模块目录中执行 <code>git satus</code> 会输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        xxx/test.txt</span><br></pre></td></tr></table></figure></p>
+<p>此时在父项目下执行 <code>git status</code> 输出的是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">  (commit or discard the untracked or modified content in submodules)</span><br><span class="line">        modified:   xxx (untracked content)</span><br></pre></td></tr></table></figure></p>
+<p>即提示需要先在子模块下提交修改记录；</p>
+<p>然后子模块下提交记录，执行：</p>
+<pre><code>git add .
+git commit -m &quot;add file&quot;
+</code></pre><p>这时再分别运行 <code>git status</code>，子模块的输出是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Your branch is ahead of &apos;origin/master&apos; by 1 commit.</span><br><span class="line">  (use &quot;git push&quot; to publish your local commits)</span><br><span class="line"></span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure></p>
+<p>而父项目的输出是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">        modified:   xxx (new commits)</span><br></pre></td></tr></table></figure></p>
+<p>提示子模块中有了新的提交（<code>new commits</code>）；</p>
+<p>假如再把子模块下的这个 <code>test.txt</code> 文件删除，则子模块的状态是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">        deleted:    xxx/test.txt</span><br></pre></td></tr></table></figure></p>
+<p>但是父项目的状态依然是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">        modified:   xxx (new commits)</span><br></pre></td></tr></table></figure></p>
+<p>子模块撤销刚才的删除操作，将新增文件的记录 <code>git push</code> 到远程（这会推送到子模块<strong>自己</strong>的远程仓库），此时子模块的工作区状态是清空状态，但是父项目的依旧是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">        modified:   xxx (new commits)</span><br></pre></td></tr></table></figure></p>
+<p>所以，父项目与子模块的关联便是，父模块只是单纯的识别子模块的<strong>总体变化</strong>，而不会在意具体是新增、修改还是删除，甚至修改已经提交推送到子模块所属的远程仓库，只是将这些调整统一识别为 <code>modified</code> 状态，然后需要提交并推送到自己（父项目）所属的远程仓库；</p>
+<p>在父项目中使用 <code>git diff</code> 可以查看当前的变更，会输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/xxx b/xxx</span><br><span class="line">index 70c316e..a6e2962 160000</span><br><span class="line">--- a/xxx</span><br><span class="line">+++ b/xxx</span><br><span class="line">@@ -1 +1 @@</span><br><span class="line">-Subproject commit 70c316ecb7c41a5bdf8a37ff93bf866d3b903388</span><br><span class="line">+Subproject commit a6e29629904538e8f70694df607617084d2659ca</span><br></pre></td></tr></table></figure></p>
+<p>如果想要查看具体子模块的变动，可以执行：</p>
+<blockquote>
+<p><code>git diff --submodule</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Submodule xxx 70c316e..a6e2962:</span><br><span class="line">  &gt; add file</span><br></pre></td></tr></table></figure>
+<p>输出会列出当前子模块的所有变动的提交日志；也可以直接日志中关联的子模块提交记录，执行：</p>
+<blockquote>
+<p><code>git log -p --submodule</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">commit 909a721e3755affb7620316b44df8fbc1b3488f2 (HEAD -&gt; master)</span><br><span class="line">Author: ******</span><br><span class="line">Date:   ******</span><br><span class="line"></span><br><span class="line">    mod submodule</span><br><span class="line"></span><br><span class="line">Submodule xxx 70c316e..a6e2962:</span><br><span class="line">  &gt; add file</span><br></pre></td></tr></table></figure>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>父项目从含有子模块的分支切换到没有子模块的分支时，默认会<strong>保留</strong>子模块对应的目录，所以这使得切换过去时本地会保留关于子模块的修改记录，显然这不太合理，所以从包含子模块的分支切换到 <code>xxx</code> 时，需要这样执行：</p>
+<pre><code>git checkout xxx --recurse-submodules
+</code></pre><p>当父项目存在许多子模块时，有时需要对多个子模块执行相同的操作，这时就可以使用 <strong><code>foreach</code></strong> 功能，比如批量存储：</p>
+<pre><code>git submodule foreach &apos;git stash&apos;
+</code></pre><p>或者在每个子模块中新建切换分支：</p>
+<pre><code>git submodule foreach &apos;git checkout -b new&apos;
+</code></pre>
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+     <div>
+        
+          
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2022/12/21/你需要知道的git子模块/">你需要知道的git子模块</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Water 的个人博客">Water</a></p>
+  <p><span>发布时间:</span>2022年12月21日 - 13:12</p>
+  <p><span>最后更新:</span>2023年08月01日 - 06:08</p>
+  <p><span>原始链接:</span><a href="/2022/12/21/你需要知道的git子模块/" title="你需要知道的git子模块">https://water.buging.cn/2022/12/21/你需要知道的git子模块/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://water.buging.cn/2022/12/21/你需要知道的git子模块/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+        
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/weixinpay.jpg" alt="Water 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Water 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/12/13/你需要知道的git命令和用法/" rel="next" title="你需要知道的git命令和用法">
+                <i class="fa fa-chevron-left"></i> 你需要知道的git命令和用法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/12/29/mac上git同时关联gitlab和github/" rel="prev" title="mac上git同时关联gitlab和github">
+                mac上git同时关联gitlab和github <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank" rel="external nofollow noopener noreferrer">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="vcomments"></div>
+    </div>
+  
+
+  
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://cdn.jsdelivr.net/gh/wangyuan0108/image/1.jpeg" alt="Water">
+            
+              <p class="site-author-name" itemprop="name">Water</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">93</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wangyuan0108" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/web-kai-fa-zhe" target="_blank" title="知乎" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/2207475076971533/posts" target="_blank" title="掘金" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+
+
+            
+
+          </div>
+          <!--<div>
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=509313150&auto=1&height=66"></iframe>
+          </div>-->
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新增子模块"><span class="nav-number">2.1.</span> <span class="nav-text">新增子模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看子模块"><span class="nav-number">2.2.</span> <span class="nav-text">查看子模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉取子模块"><span class="nav-number">2.3.</span> <span class="nav-text">拉取子模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新子模块"><span class="nav-number">2.4.</span> <span class="nav-text">更新子模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#拉取更新"><span class="nav-number">2.4.1.</span> <span class="nav-text">拉取更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支切换"><span class="nav-number">2.4.2.</span> <span class="nav-text">分支切换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支合并"><span class="nav-number">2.4.3.</span> <span class="nav-text">分支合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意事项"><span class="nav-number">2.4.4.</span> <span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除子模块"><span class="nav-number">2.5.</span> <span class="nav-text">删除子模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子模块与父项目的联系"><span class="nav-number">2.6.</span> <span class="nav-text">子模块与父项目的联系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">2.7.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Water</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">博客全站共&#58;</span>
+    
+    <span title="博客全站共">143.8k字</span>
+  
+</div>
+<div>
+  <a href="http://www.beian.miit.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">
+    浙ICP备17051886号-1
+  </a>
+</div>
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7-rc3/dist/Valine.min.js"></script>
+  <script type="text/javascript">
+    new Valine({
+        av: AV,
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        app_id: '07n3074XAQEb58DvjBF5HnlV-gzGzoHsz',
+        app_key: '0HbRzaC25zC1hFausmSxplaV',
+        placeholder: '各位道友，请举手发言'
+    });
+  </script>
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("07n3074XAQEb58DvjBF5HnlV-gzGzoHsz", "0HbRzaC25zC1hFausmSxplaV");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/src/love.js"></script> -->

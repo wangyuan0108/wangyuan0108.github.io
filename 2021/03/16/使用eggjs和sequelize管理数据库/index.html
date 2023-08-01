@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Water">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="忆" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="简介为什么使用eggjs自不必言说，前端开发者想搞一下服务器接口啥的，最低学习成本的就是nodejs。加之koa是nodejs的封装库，使得nodejs更加好用。然而在eggjs的约定大于配置的前提下，对koa做了封装，使得上手成本更低，固然选择eggjs来作为写接口的框架。数据库使用sequelize的缘由自不必说了，让多人开发合作更加简单规范！！！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用eggjs和sequelize管理数据库">
+<meta property="og:url" content="https://water.buging.cn/2021/03/16/使用eggjs和sequelize管理数据库/index.html">
+<meta property="og:site_name" content="忆">
+<meta property="og:description" content="简介为什么使用eggjs自不必言说，前端开发者想搞一下服务器接口啥的，最低学习成本的就是nodejs。加之koa是nodejs的封装库，使得nodejs更加好用。然而在eggjs的约定大于配置的前提下，对koa做了封装，使得上手成本更低，固然选择eggjs来作为写接口的框架。数据库使用sequelize的缘由自不必说了，让多人开发合作更加简单规范！！！">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2023-08-01T06:26:37.602Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用eggjs和sequelize管理数据库">
+<meta name="twitter:description" content="简介为什么使用eggjs自不必言说，前端开发者想搞一下服务器接口啥的，最低学习成本的就是nodejs。加之koa是nodejs的封装库，使得nodejs更加好用。然而在eggjs的约定大于配置的前提下，对koa做了封装，使得上手成本更低，固然选择eggjs来作为写接口的框架。数据库使用sequelize的缘由自不必说了，让多人开发合作更加简单规范！！！">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://water.buging.cn/2021/03/16/使用eggjs和sequelize管理数据库/">
+
+
+
+
+
+  <title>使用eggjs和sequelize管理数据库 | 忆</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/wangyuan0108" class="github-corner" aria-label="View source on Github" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">忆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">平凡之路</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://water.buging.cn/2021/03/16/使用eggjs和sequelize管理数据库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Water">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/wangyuan0108/image/1.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="忆">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">使用eggjs和sequelize管理数据库</h2>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-16T10:38:56+00:00">
+                2021-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WEB前端/" itemprop="url" rel="index">
+                    <span itemprop="name">WEB前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2021/03/16/使用eggjs和sequelize管理数据库/" class="leancloud_visitors" data-flag-title="使用eggjs和sequelize管理数据库">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>为什么使用eggjs自不必言说，前端开发者想搞一下服务器接口啥的，最低学习成本的就是nodejs。加之koa是nodejs的封装库，使得nodejs更加好用。然而在eggjs的约定大于配置的前提下，对koa做了封装，使得上手成本更低，固然选择eggjs来作为写接口的框架。数据库使用sequelize的缘由自不必说了，让多人开发合作更加简单规范！！！<a id="more"></a></p>
+<h2 id="eggjs快速上手"><a href="#eggjs快速上手" class="headerlink" title="eggjs快速上手"></a>eggjs快速上手</h2><h4 id="生成项目"><a href="#生成项目" class="headerlink" title="生成项目"></a>生成项目</h4><p>快速生成基础项目，提高开发效率，这里推荐使用脚手架快速生成项目。具体命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir egg-example &amp;&amp; cd egg-example</span><br><span class="line">npm init egg --type=simple</span><br><span class="line">npm i</span><br><span class="line">npm run dev</span><br><span class="line">// 打开一下链接</span><br><span class="line">http://localhost:7001</span><br></pre></td></tr></table></figure>
+<h4 id="项目目录介绍"><a href="#项目目录介绍" class="headerlink" title="项目目录介绍"></a>项目目录介绍</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">egg-project</span><br><span class="line">├── package.json</span><br><span class="line">├── app.js (可选)</span><br><span class="line">├── agent.js (可选)</span><br><span class="line">├── app</span><br><span class="line">|   ├── router.js</span><br><span class="line">│   ├── controller</span><br><span class="line">│   |   └── home.js</span><br><span class="line">│   ├── service (可选)</span><br><span class="line">│   |   └── user.js</span><br><span class="line">│   ├── middleware (可选)</span><br><span class="line">│   |   └── response_time.js</span><br><span class="line">│   ├── schedule (可选)</span><br><span class="line">│   |   └── my_task.js</span><br><span class="line">│   ├── public (可选)</span><br><span class="line">│   |   └── reset.css</span><br><span class="line">│   ├── view (可选)</span><br><span class="line">│   |   └── home.tpl</span><br><span class="line">│   └── extend (可选)</span><br><span class="line">│       ├── helper.js (可选)</span><br><span class="line">│       ├── request.js (可选)</span><br><span class="line">│       ├── response.js (可选)</span><br><span class="line">│       ├── context.js (可选)</span><br><span class="line">│       ├── application.js (可选)</span><br><span class="line">│       └── agent.js (可选)</span><br><span class="line">├── config</span><br><span class="line">|   ├── plugin.js</span><br><span class="line">|   ├── config.default.js</span><br><span class="line">│   ├── config.prod.js</span><br><span class="line">|   ├── config.test.js (可选)</span><br><span class="line">|   ├── config.local.js (可选)</span><br><span class="line">|   └── config.unittest.js (可选)</span><br><span class="line">└── test</span><br><span class="line">    ├── middleware</span><br><span class="line">    |   └── response_time.test.js</span><br><span class="line">    └── controller</span><br><span class="line">        └── home.test.js</span><br></pre></td></tr></table></figure>
+<p>如上，由框架约定的目录：</p>
+<ul>
+<li><code>app/router.js</code> 用于配置 URL 路由规则，具体参见 <a href="https://eggjs.org/zh-cn/basics/router.html" rel="external nofollow noopener noreferrer" target="_blank">Router</a>。</li>
+<li><code>app/controller/**</code> 用于解析用户的输入，处理后返回相应的结果，具体参见 <a href="https://eggjs.org/zh-cn/basics/controller.html" rel="external nofollow noopener noreferrer" target="_blank">Controller</a>。</li>
+<li><code>app/service/**</code> 用于编写业务逻辑层，可选，建议使用，具体参见 <a href="https://eggjs.org/zh-cn/basics/service.html" rel="external nofollow noopener noreferrer" target="_blank">Service</a>。</li>
+<li><code>app/middleware/**</code> 用于编写中间件，可选，具体参见 <a href="https://eggjs.org/zh-cn/basics/middleware.html" rel="external nofollow noopener noreferrer" target="_blank">Middleware</a>。</li>
+<li><code>app/public/**</code> 用于放置静态资源，可选，具体参见内置插件 <a href="https://github.com/eggjs/egg-static" rel="external nofollow noopener noreferrer" target="_blank">egg-static</a>。</li>
+<li><code>app/extend/**</code> 用于框架的扩展，可选，具体参见<a href="https://eggjs.org/zh-cn/basics/extend.html" rel="external nofollow noopener noreferrer" target="_blank">框架扩展</a>。</li>
+<li><code>config/config.{env}.js</code> 用于编写配置文件，具体参见<a href="https://eggjs.org/zh-cn/basics/config.html" rel="external nofollow noopener noreferrer" target="_blank">配置</a>。</li>
+<li><code>config/plugin.js</code> 用于配置需要加载的插件，具体参见<a href="https://eggjs.org/zh-cn/basics/plugin.html" rel="external nofollow noopener noreferrer" target="_blank">插件</a>。</li>
+<li><code>test/**</code> 用于单元测试，具体参见<a href="https://eggjs.org/zh-cn/core/unittest.html" rel="external nofollow noopener noreferrer" target="_blank">单元测试</a>。</li>
+<li><code>app.js</code> 和 <code>agent.js</code> 用于自定义启动时的初始化工作，可选，具体参见<a href="https://eggjs.org/zh-cn/basics/app-start.html" rel="external nofollow noopener noreferrer" target="_blank">启动自定义</a>。关于<code>agent.js</code>的作用参见<a href="https://eggjs.org/zh-cn/core/cluster-and-ipc.html#agent-机制" rel="external nofollow noopener noreferrer" target="_blank">Agent机制</a>。</li>
+</ul>
+<p>由内置插件约定的目录：</p>
+<ul>
+<li><code>app/public/**</code> 用于放置静态资源，可选，具体参见内置插件 <a href="https://github.com/eggjs/egg-static" rel="external nofollow noopener noreferrer" target="_blank">egg-static</a>。</li>
+<li><code>app/schedule/**</code> 用于定时任务，可选，具体参见<a href="https://eggjs.org/zh-cn/basics/schedule.html" rel="external nofollow noopener noreferrer" target="_blank">定时任务</a>。</li>
+</ul>
+<p><strong>若需自定义自己的目录规范，参见 <a href="https://eggjs.org/zh-cn/advanced/loader.html" rel="external nofollow noopener noreferrer" target="_blank">Loader API</a></strong></p>
+<ul>
+<li><code>app/view/**</code> 用于放置模板文件，可选，由模板插件约定，具体参见<a href="https://eggjs.org/zh-cn/core/view.html" rel="external nofollow noopener noreferrer" target="_blank">模板渲染</a>。</li>
+<li><code>app/model/**</code> 用于放置领域模型，可选，由领域类相关插件约定，如 <a href="https://github.com/eggjs/egg-sequelize" rel="external nofollow noopener noreferrer" target="_blank">egg-sequelize</a>。</li>
+</ul>
+<p>由此一个基础项目已经创建完成，详细的eggjs如何使用可自行查看官方文档<a href="https://eggjs.org/zh-cn/" rel="external nofollow noopener noreferrer" target="_blank">https://eggjs.org/zh-cn/</a></p>
+<h2 id="eggjs使用sequelize"><a href="#eggjs使用sequelize" class="headerlink" title="eggjs使用sequelize"></a>eggjs使用sequelize</h2><ol>
+<li>安装并配置 <a href="https://github.com/eggjs/egg-sequelize" rel="external nofollow noopener noreferrer" target="_blank">egg-sequelize</a> 插件（它会辅助我们将定义好的 Model 对象加载到 app 和 ctx 上）和 <a href="https://github.com/sidorares/node-mysql2" rel="external nofollow noopener noreferrer" target="_blank">mysql2</a> 模块：</li>
+</ol>
+<ul>
+<li>安装</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save egg-sequelize mysql2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 <code>config/plugin.js</code> 中引入 egg-sequelize 插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">exports.sequelize = &#123;</span><br><span class="line">  enable: true,</span><br><span class="line">  package: &apos;egg-sequelize&apos;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 <code>config/config.default.js</code> 中编写 sequelize 配置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">config.sequelize = &#123;</span><br><span class="line">  dialect: &apos;mysql&apos;,</span><br><span class="line">  host: &apos;127.0.0.1&apos;,</span><br><span class="line">  port: 3306,</span><br><span class="line">  database: &apos;egg-sequelize-doc-default&apos;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我们可以在不同的环境配置中配置不同的数据源地址，用于区分不同环境使用的数据库，例如我们可以新建一个 <code>config/config.unittest.js</code> 配置文件，写入如下配置，将单测时连接的数据库指向 <code>egg-sequelize-doc-unittest</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">exports.sequelize = &#123;</span><br><span class="line">  dialect: &apos;mysql&apos;,</span><br><span class="line">  host: &apos;127.0.0.1&apos;,</span><br><span class="line">  port: 3306,</span><br><span class="line">  database: &apos;egg-sequelize-doc-unittest&apos;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>完成上面的配置之后，一个使用 sequelize 的项目就初始化完成了。<a href="https://github.com/eggjs/egg-sequelize" rel="external nofollow noopener noreferrer" target="_blank">egg-sequelize</a> 和 <a href="http://docs.sequelizejs.com/" rel="external nofollow noopener noreferrer" target="_blank">sequelize</a> 还支持更多的配置项，可以在他们的文档中找到。</p>
+<ol start="2">
+<li>sequelize 提供了 <a href="https://github.com/sequelize/cli" rel="external nofollow noopener noreferrer" target="_blank">sequelize-cli</a> 工具来管理，我们也可以在 egg 项目中引入 sequelize-cli。</li>
+</ol>
+<ul>
+<li>安装 sequelize-cli</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev sequelize-cli</span><br></pre></td></tr></table></figure>
+<p>在 egg 项目中，我们希望将所有数据库 Migrations 相关的内容都放在 <code>database</code> 目录下，所以我们在项目根目录下新建一个 <code>.sequelizerc</code> 配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line"></span><br><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  config: path.join(__dirname, &apos;database/config.json&apos;),</span><br><span class="line">  &apos;migrations-path&apos;: path.join(__dirname, &apos;database/migrations&apos;),</span><br><span class="line">  &apos;seeders-path&apos;: path.join(__dirname, &apos;database/seeders&apos;),</span><br><span class="line">  &apos;models-path&apos;: path.join(__dirname, &apos;app/model&apos;),</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>然后查看下sequelize-cli的所有命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">sequelize &lt;命令&gt;</span><br><span class="line"></span><br><span class="line">命令：</span><br><span class="line">  sequelize db:migrate                        Run pending migrations</span><br><span class="line">  sequelize db:migrate:schema:timestamps:add  Update migration table to have timestamps</span><br><span class="line">  sequelize db:migrate:status                 List the status of all migrations</span><br><span class="line">  sequelize db:migrate:undo                   Reverts a migration</span><br><span class="line">  sequelize db:migrate:undo:all               Revert all migrations ran</span><br><span class="line">  sequelize db:seed                           Run specified seeder</span><br><span class="line">  sequelize db:seed:undo                      Deletes data from the database</span><br><span class="line">  sequelize db:seed:all                       Run every seeder</span><br><span class="line">  sequelize db:seed:undo:all                  Deletes data from the database</span><br><span class="line">  sequelize db:create                         Create database specified by configuration</span><br><span class="line">  sequelize db:drop                           Drop database specified by configuration</span><br><span class="line">  sequelize init                              Initializes project</span><br><span class="line">  sequelize init:config                       Initializes configuration</span><br><span class="line">  sequelize init:migrations                   Initializes migrations</span><br><span class="line">  sequelize init:models                       Initializes models</span><br><span class="line">  sequelize init:seeders                      Initializes seeders</span><br><span class="line">  sequelize migration:generate                Generates a new migration file  [aliases: migration:create]                                         </span><br><span class="line">  sequelize model:generate                    Generates a model and its migration   [aliases: model:create]                                              </span><br><span class="line">  sequelize seed:generate                     Generates a new seed file       [aliases: seed:create]</span><br></pre></td></tr></table></figure>
+<p>接下来就简单介绍下使用方式</p>
+<h4 id="使用命令操作数据库"><a href="#使用命令操作数据库" class="headerlink" title="使用命令操作数据库"></a>使用命令操作数据库</h4><ol>
+<li>初始化数据库相关</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize init</span><br></pre></td></tr></table></figure>
+<p>这将创建以下文件夹:</p>
+<ul>
+<li>config, 包含配置文件，它告诉CLI如何连接数据库</li>
+<li>models,包含您的项目的所有模型</li>
+<li>migrations, 包含所有迁移文件</li>
+<li>seeders, 包含所有种子文件</li>
+</ul>
+<p>在建立模型之前，应先修改database/config.json，以告诉 CLI 如何连接到数据库。database/config.json内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;development&quot;: &#123;</span><br><span class="line">    &quot;username&quot;: &quot;root&quot;,</span><br><span class="line">    &quot;password&quot;: &quot;12345678&quot;,</span><br><span class="line">    &quot;database&quot;: &quot;egg_test&quot;,</span><br><span class="line">    &quot;host&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;dialect&quot;: &quot;mysql&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;test&quot;: &#123;</span><br><span class="line">    &quot;username&quot;: &quot;root&quot;,</span><br><span class="line">    &quot;password&quot;: &quot;23456789&quot;,</span><br><span class="line">    &quot;database&quot;: &quot;database_test&quot;,</span><br><span class="line">    &quot;host&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;dialect&quot;: &quot;mysql&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;production&quot;: &#123;</span><br><span class="line">    &quot;username&quot;: &quot;root&quot;,</span><br><span class="line">    &quot;password&quot;: &quot;12345679&quot;,</span><br><span class="line">    &quot;database&quot;: &quot;database_production&quot;,</span><br><span class="line">    &quot;host&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;dialect&quot;: &quot;mysql&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>使用如下命令创建数据库：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize db:create</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>使用如下命令删除数据库：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize db:drop</span><br></pre></td></tr></table></figure>
+<h3 id="创建模型"><a href="#创建模型" class="headerlink" title="创建模型"></a>创建模型</h3><p>我们将使用 model:generate 命令。 此命令需要两个选项：</p>
+<ul>
+<li>name, 模型的名称</li>
+<li>attributes, 模型的属性列表</li>
+</ul>
+<p>创建一个名叫 User 的模型：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">npx</span> <span class="selector-tag">sequelize</span> <span class="selector-tag">model</span><span class="selector-pseudo">:generate</span> <span class="selector-tag">--name</span> <span class="selector-tag">User</span> <span class="selector-tag">--attributes</span> <span class="selector-tag">firstName</span><span class="selector-pseudo">:string</span>,<span class="selector-tag">lastName</span><span class="selector-pseudo">:string</span>,<span class="selector-tag">email</span><span class="selector-pseudo">:string</span></span><br></pre></td></tr></table></figure>
+<p>这将创建一下文件:</p>
+<ul>
+<li>在 models 文件夹中创建了一个 user 模型文件</li>
+<li>在 migrations 文件夹中创建了一个名字像 XXXXXXXXXXXXXX-create-user.js 的迁移文件</li>
+</ul>
+<p>注意: _Sequelize 将只使用模型文件，它是表描述。另一边，迁移文件是该模型的更改，或更具体的是说 CLI 所使用的表。 处理迁移，如提交或日志，以进行数据库的某些更改。</p>
+<p>这里感觉这样用命令创建模型有点繁琐，主要是如果字段太多，命令行岂不是要写很多，我的理解是这样的不知道有其他好的方法不，初次使用这个。</p>
+<p>我是先创建migrations文件，然后在手动创建模型文件。具体如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize migration:generate --name=init-users</span><br></pre></td></tr></table></figure>
+<p>执行完后会在 <code>database/migrations</code> 目录下生成一个 migration 文件(<code>${timestamp}-init-users.js</code>)，我们修改它来处理初始化 <code>users</code> 表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  // 在执行数据库升级时调用的函数，创建 users 表</span><br><span class="line">  up: async (queryInterface, Sequelize) =&gt; &#123;</span><br><span class="line">    const &#123; INTEGER, DATE, STRING &#125; = Sequelize;</span><br><span class="line">    await queryInterface.createTable(&apos;users&apos;, &#123;</span><br><span class="line">      id: &#123; type: INTEGER, primaryKey: true, autoIncrement: true &#125;,</span><br><span class="line">      name: STRING(30),</span><br><span class="line">      age: INTEGER,</span><br><span class="line">      created_at: DATE,</span><br><span class="line">      updated_at: DATE,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  // 在执行数据库降级时调用的函数，删除 users 表</span><br><span class="line">  down: async queryInterface =&gt; &#123;</span><br><span class="line">    await queryInterface.dropTable(&apos;users&apos;);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>执行 migrate 进行数据库变更</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 升级数据库</span><br><span class="line">npx sequelize db:migrate</span><br><span class="line"># 如果有问题需要回滚，可以通过 `db:migrate:undo` 回退一个变更</span><br><span class="line"># npx sequelize db:migrate:undo</span><br><span class="line"># 可以通过 `db:migrate:undo:all` 回退到初始状态</span><br><span class="line"># npx sequelize db:migrate:undo:all</span><br></pre></td></tr></table></figure>
+<p>执行之后，我们的数据库初始化就完成了。</p>
+<p>现在终于可以开始编写代码实现业务逻辑了，首先我们来在 <code>app/model/</code> 目录下编写 user 这个 Model：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line"></span><br><span class="line">module.exports = app =&gt; &#123;</span><br><span class="line">  const &#123; STRING, INTEGER, DATE &#125; = app.Sequelize;</span><br><span class="line"></span><br><span class="line">  const User = app.model.define(&apos;user&apos;, &#123;</span><br><span class="line">    id: &#123; type: INTEGER, primaryKey: true, autoIncrement: true &#125;,</span><br><span class="line">    name: STRING(30),</span><br><span class="line">    age: INTEGER,</span><br><span class="line">    created_at: DATE,</span><br><span class="line">    updated_at: DATE,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  return User;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>然后就可以结合eggjs的模式来进行数据库的处理了。</p>
+<p>说下可以使用的cli命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize db:migrate:status // 看一下当前状态</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>撤销迁移      </p>
+<p>db:migrate:undo        - 撤销上一次的迁移操作      </p>
+<p>db:migrate:undo:all        - 撤销所有的迁移操作      </p>
+<p>db:migrate:undo –name 具体迁移脚本</p>
+</blockquote>
+<p>我们现在要添加一个字段 lastname，新建一个迁移文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize migration:create --name addLastname</span><br></pre></td></tr></table></figure>
+<p><strong>queryInterface</strong>文档： <a href="https://sequelize.org/master/class/lib/dialects/abstract/query-interface.js~QueryInterface.html" rel="external nofollow noopener noreferrer" target="_blank">https://sequelize.org/master/class/lib/dialects/abstract/query-interface.js~QueryInterface.html</a></p>
+<h3 id="种子文件"><a href="#种子文件" class="headerlink" title="种子文件"></a>种子文件</h3><p>种子文件      </p>
+<blockquote>
+<p>迁移文件是用来构建数据库以及表结构的，种子文件是用来构建数据的      </p>
+<p>seed:generate –name demo-user （自定义的名字）    </p>
+<p>种子文件脚本与迁移脚本类似，由up于down函数组成，传入的参数也是一致的</p>
+</blockquote>
+<p>先生成种子文件 name 后边接的是自定义的名字</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize seed:generate --name userseed</span><br></pre></td></tr></table></figure>
+<p>会在database/seeders下创建一个种子文件以userseed结尾，然后手动修改这个文件添加点测试数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  up: (queryInterface, Sequelize) =&gt; &#123;</span><br><span class="line">    return queryInterface.bulkInsert(&apos;users&apos;, [&#123;</span><br><span class="line">      id: 1,</span><br><span class="line">      name: &apos;man&apos;,</span><br><span class="line">      age: 18,</span><br><span class="line">    &#125;], &#123;&#125;);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  down: (queryInterface, Sequelize) =&gt; &#123;</span><br><span class="line">    return queryInterface.bulkDelete(&apos;users&apos;, null, &#123;&#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>执行种子</p>
+<blockquote>
+<p>db:seed 指定种子文件        运行指定种子文件      </p>
+<p>db:seed:all        运行所有种子文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize db:seed:all</span><br></pre></td></tr></table></figure>
+<p>然后查看数据库，添加上了一条数据</p>
+<h3 id="撤销种子执行"><a href="#撤销种子执行" class="headerlink" title="撤销种子执行"></a>撤销种子执行</h3><blockquote>
+<p>db:seed:undo –seed 指定种子文件        撤销指定种子文件      </p>
+<p>db:seed:undo:all        撤销所有种子文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize db:seed:undo:all</span><br></pre></td></tr></table></figure>
+<p>具体使用请查看官方文档</p>
+
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+     <div>
+        
+          
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2021/03/16/使用eggjs和sequelize管理数据库/">使用eggjs和sequelize管理数据库</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Water 的个人博客">Water</a></p>
+  <p><span>发布时间:</span>2021年03月16日 - 10:03</p>
+  <p><span>最后更新:</span>2023年08月01日 - 06:08</p>
+  <p><span>原始链接:</span><a href="/2021/03/16/使用eggjs和sequelize管理数据库/" title="使用eggjs和sequelize管理数据库">https://water.buging.cn/2021/03/16/使用eggjs和sequelize管理数据库/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://water.buging.cn/2021/03/16/使用eggjs和sequelize管理数据库/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+        
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/weixinpay.jpg" alt="Water 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Water 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/03/10/js中的aop/" rel="next" title="js中的aop">
+                <i class="fa fa-chevron-left"></i> js中的aop
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/04/08/你需要知道的36道js手写/" rel="prev" title="你需要知道的36道js手写">
+                你需要知道的36道js手写 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank" rel="external nofollow noopener noreferrer">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="vcomments"></div>
+    </div>
+  
+
+  
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://cdn.jsdelivr.net/gh/wangyuan0108/image/1.jpeg" alt="Water">
+            
+              <p class="site-author-name" itemprop="name">Water</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">93</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wangyuan0108" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/web-kai-fa-zhe" target="_blank" title="知乎" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/2207475076971533/posts" target="_blank" title="掘金" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+
+
+            
+
+          </div>
+          <!--<div>
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=509313150&auto=1&height=66"></iframe>
+          </div>-->
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eggjs快速上手"><span class="nav-number">2.</span> <span class="nav-text">eggjs快速上手</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成项目"><span class="nav-number">2.0.1.</span> <span class="nav-text">生成项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目目录介绍"><span class="nav-number">2.0.2.</span> <span class="nav-text">项目目录介绍</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#eggjs使用sequelize"><span class="nav-number">3.</span> <span class="nav-text">eggjs使用sequelize</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用命令操作数据库"><span class="nav-number">3.0.1.</span> <span class="nav-text">使用命令操作数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建模型"><span class="nav-number">3.1.</span> <span class="nav-text">创建模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#种子文件"><span class="nav-number">3.2.</span> <span class="nav-text">种子文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销种子执行"><span class="nav-number">3.3.</span> <span class="nav-text">撤销种子执行</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Water</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">博客全站共&#58;</span>
+    
+    <span title="博客全站共">143.8k字</span>
+  
+</div>
+<div>
+  <a href="http://www.beian.miit.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">
+    浙ICP备17051886号-1
+  </a>
+</div>
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7-rc3/dist/Valine.min.js"></script>
+  <script type="text/javascript">
+    new Valine({
+        av: AV,
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        app_id: '07n3074XAQEb58DvjBF5HnlV-gzGzoHsz',
+        app_key: '0HbRzaC25zC1hFausmSxplaV',
+        placeholder: '各位道友，请举手发言'
+    });
+  </script>
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("07n3074XAQEb58DvjBF5HnlV-gzGzoHsz", "0HbRzaC25zC1hFausmSxplaV");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/src/love.js"></script> -->

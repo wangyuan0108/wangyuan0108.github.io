@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Water">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="忆" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、前端代码规范工具1、前言代码规范和质量是编码中很重要的一部分，目前有很多工具可以帮助我们处理。 在使用这些工具的过程中发现，存在一下问题：  功能重复 不同工具，相同配置冲突 版本迭代导致配置变更 工具相互组合，使用困难">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端工程化">
+<meta property="og:url" content="https://water.buging.cn/2023/01/10/前端工程化/index.html">
+<meta property="og:site_name" content="忆">
+<meta property="og:description" content="一、前端代码规范工具1、前言代码规范和质量是编码中很重要的一部分，目前有很多工具可以帮助我们处理。 在使用这些工具的过程中发现，存在一下问题：  功能重复 不同工具，相同配置冲突 版本迭代导致配置变更 工具相互组合，使用困难">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-be84b384e89940536470c005f804ee80_r.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-60a66d1de84d7d2923ecc4275c06b780_r.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-13cca03bdb697a92ed4557173729418c_r.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-dfb5969183bbd13804b47e9c17009674_r.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-b73e3b7374bcdfed6bb053b3ee31af6c_r.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-57c1fb15f72a7a4bc14133587b3f88a7_r.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-1016e91d71033bc9d2aec41b6b9b143a_r.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-2ecdb0297c762bfa6f81b56ab5ddd92b_r.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-e32cb82dc6482ac7307dc6f1e1ec7894_r.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-0917abb993006cae52e11c90d05913b0_r.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-7670b8f0850038d1375abfbcb08f96c0_r.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-52982af26f0a01c2d68ff4a94689f2df_r.jpg">
+<meta property="og:image" content="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='264' height='310'></svg">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-141a6e22bc6fb8a1606cdff79a9ae18a_r.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-163ae034454e81601e2c9cd256c629a7_r.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-17027c2a3b56f5c9600ff4900c651ebb_r.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-81da88c8b29f34f429cc7f69af985739_r.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-5ff314138f71a3fb5454833514f70683_r.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-7068b73ac7133c9a9631f0b57dbb419a_r.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-2f55e05d895bd2b164fccc71e4216aa0_r.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-0b877391a97c36e7caf06e493f68dee8_r.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-289867bdddd3baff8daded17d1e9ee83_r.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-20392b8d0a03fa7ca678459878eec6eb_r.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-7a2798a19fb02131e0642387c80be2b6_r.jpg">
+<meta property="og:updated_time" content="2023-08-01T06:26:37.602Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端工程化">
+<meta name="twitter:description" content="一、前端代码规范工具1、前言代码规范和质量是编码中很重要的一部分，目前有很多工具可以帮助我们处理。 在使用这些工具的过程中发现，存在一下问题：  功能重复 不同工具，相同配置冲突 版本迭代导致配置变更 工具相互组合，使用困难">
+<meta name="twitter:image" content="https://pic1.zhimg.com/v2-be84b384e89940536470c005f804ee80_r.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://water.buging.cn/2023/01/10/前端工程化/">
+
+
+
+
+
+  <title>前端工程化 | 忆</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/wangyuan0108" class="github-corner" aria-label="View source on Github" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">忆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">平凡之路</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://water.buging.cn/2023/01/10/前端工程化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Water">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/wangyuan0108/image/1.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="忆">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">前端工程化</h2>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-01-10T12:52:42+00:00">
+                2023-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WEB前端/" itemprop="url" rel="index">
+                    <span itemprop="name">WEB前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2023/01/10/前端工程化/" class="leancloud_visitors" data-flag-title="前端工程化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  21
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、前端代码规范工具"><a href="#一、前端代码规范工具" class="headerlink" title="一、前端代码规范工具"></a>一、前端代码规范工具</h2><h2 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h2><p>代码规范和质量是编码中很重要的一部分，目前有很多工具可以帮助我们处理。</p>
+<p>在使用这些工具的过程中发现，存在一下问题：</p>
+<ul>
+<li>功能重复</li>
+<li>不同工具，相同配置冲突</li>
+<li>版本迭代导致配置变更</li>
+<li><p>工具相互组合，使用困难</p>
+<a id="more"></a>
+<p>这篇文章主要从工程化的角度出发，分享以下内容：</p>
+</li>
+<li><p>1、介绍各种工具的使用（Prettier、ESLint、lint-staged、commitlint、Hooks）</p>
+</li>
+<li>2、通过Git Hooks来自动化执行这些工具。</li>
+<li>3、配置CI在代码提交阶段格式化、检测代码、检测提交信息。</li>
+</ul>
+<p>学习完这篇文章你将了解：</p>
+<ul>
+<li>1、了解如何区分这些工具、不同的配置入口</li>
+<li>2、在项目中如何配置这些检测工具</li>
+<li>3、如果避免每次的全量检测代码</li>
+<li>4、如何规范提交代码和描述信息</li>
+<li>5、学习Git Hooks知识</li>
+<li>6、如何将这些工具通过Hooks自动化处理</li>
+<li>7、通过CI将这些流程自动化执行</li>
+</ul>
+<p><a href="https://link.zhihu.com/?target=https%3A//github.com/richLpf/auto-format-demo" rel="external nofollow noopener noreferrer" target="_blank">本文代码示例参考</a></p>
+<h2 id="2、工具分类介绍"><a href="#2、工具分类介绍" class="headerlink" title="2、工具分类介绍"></a>2、工具分类介绍</h2><p>检测代码的工具很多，主要分为三类：</p>
+<ul>
+<li>一类是代码格式化工具，专注代码结构美化，不处理任何有关语法的内容  </li>
+</ul>
+<ul>
+<li><code>[Prettier](https://link.zhihu.com/?target=https%3A//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/29e62e3c6c514314b06e0f37aca21b3b~tplv-k3u1fbpfcp-zoom-1.image)</code>：专注代码格式化</li>
+<li><code>[Stylelint](https://link.zhihu.com/?target=https%3A//stylelint.io/)</code>：专注CSS语法格式化</li>
+</ul>
+<ul>
+<li>一类是lint类，这些工具也支持处理代码格式，但重点是检测代码语法质量  </li>
+</ul>
+<ul>
+<li><code>[ESLint](https://link.zhihu.com/?target=https%3A//cn.eslint.org/)</code>: 可以配置代码格式规则，也可以检测代码语法质量</li>
+</ul>
+<ul>
+<li>一类是将不同的工具进行合成，成为一个包含子功能或者有定制功能的插件，可以避免Prettier和Lint二者在代码处理上的冲突。  </li>
+</ul>
+<ul>
+<li><code>[eslint-config-prettier](https://link.zhihu.com/?target=https%3A//github.com/prettier/eslint-config-prettier)</code>：ESLint检测和Prettier格式化</li>
+<li><code>[tslint-config-prettier](https://link.zhihu.com/?target=https%3A//github.com/alexjoverm/tslint-config-prettier)</code>：TS检测和代码格式化</li>
+<li><code>[lint-staged](https://link.zhihu.com/?target=https%3A//github.com/okonet/lint-staged%23readme)</code>：仅过滤Git暂存区上的文件，可以有效避免每次提交处理所有文件。</li>
+</ul>
+<p><strong>Git暂存区：执行命令git add后，要提交的代码存放的空间</strong></p>
+<p>这些工具有小而精的，也有大而全的，具体使用要根据具体场景</p>
+<ul>
+<li>写一个主题样式，肯定首选Stylelint，重点处理CSS；</li>
+<li>开发一个产品，不妨使用大而全。因为项目中有很多格式需要处理，如果都用小而精的处理，会引入很多荣誉的配置。</li>
+</ul>
+<p><strong>这些工具配置都比较相似，但尤其要注意版本的不同，导致的配置不同。</strong></p>
+<h2 id="3、本文环境"><a href="#3、本文环境" class="headerlink" title="3、本文环境"></a>3、本文环境</h2><p>下文依赖的工具和环境</p>
+<ul>
+<li>OS：mac m1</li>
+<li>Git版本：2.24.3</li>
+<li>npm版本：7.21.1</li>
+<li>Husky版本：7.0.4</li>
+<li>Nodejs版本：v16.9.0</li>
+</ul>
+<h2 id="二、自动化工具原理和配置"><a href="#二、自动化工具原理和配置" class="headerlink" title="二、自动化工具原理和配置"></a>二、自动化工具原理和配置</h2><h2 id="1、原理"><a href="#1、原理" class="headerlink" title="1、原理"></a>1、原理</h2><p><strong>Prettier、ESLint</strong></p>
+<p>两者的工作原理是将代码解析成<code>AST</code>，再通过我们写的配置，还原格式化后的代码，具体转化可以体验下<a href="https://link.zhihu.com/?target=https%3A//cn.eslint.org/parser/%25E3%2580%2582" rel="external nofollow noopener noreferrer" target="_blank">https://cn.eslint.org/parser/。</a></p>
+<p><strong>lint-staged、commitlint、husky</strong></p>
+<ul>
+<li><code>lint-staged</code>是获取git add后暂存区的代码。</li>
+<li><code>commitlint</code>是获取git commit的描述信息然后对格式进行规则校验。</li>
+<li><code>husky</code>是将git内置的勾子函数暴露出来，便于配置</li>
+</ul>
+<h2 id="2、配置对比"><a href="#2、配置对比" class="headerlink" title="2、配置对比"></a>2、配置对比</h2><blockquote>
+<p>下面这些自动化工具，可以不同的地方进行配置，版本也不同，看起来很复杂，其实并没有，除了注意大版本的不同，其他的配置方式都大同小异。这里我们整理下这些配置通用的部分，下面就不再分开写，只展示package.json这一种方式。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>工具名称</th>
+<th>package.json关键字</th>
+<th>常用配置文件</th>
+<th>忽略文件</th>
+<th>共享文件</th>
+<th>插件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意：</strong></p>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//github.com/richLpf/auto-format-demo/tree/main/config" rel="external nofollow noopener noreferrer" target="_blank">配置示例地址</a></li>
+<li>package.json中关键字内容和配置文件内容一致</li>
+<li>共享配置一般都是导出配置文件，上传npm，规范命名即可</li>
+<li>这些工具大都还提供了编辑器集成、CLI等</li>
+</ul>
+<h2 id="三、代码格式美化：Prettier"><a href="#三、代码格式美化：Prettier" class="headerlink" title="三、代码格式美化：Prettier"></a>三、代码格式美化：Prettier</h2><h2 id="1、初始化项目构建"><a href="#1、初始化项目构建" class="headerlink" title="1、初始化项目构建"></a>1、初始化项目构建</h2><p>新建项目，并在index.html和index.js写一些格式不规范的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkdir front-demo</span><br><span class="line">cd front-demo</span><br><span class="line">npm init</span><br><span class="line"></span><br><span class="line">touch index.html</span><br><span class="line">mkdir src</span><br><span class="line">touch src/index.js</span><br></pre></td></tr></table></figure>
+<p>目录结构如图：</p>
+<p><img src="https://pic1.zhimg.com/v2-be84b384e89940536470c005f804ee80_r.jpg" alt></p>
+<h2 id="2、插件使用"><a href="#2、插件使用" class="headerlink" title="2、插件使用"></a>2、插件使用</h2><p>安装Prettier插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add prettier -D</span><br></pre></td></tr></table></figure>
+<p>执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn prettier -w .</span><br></pre></td></tr></table></figure>
+<p>发现当前所有目录下的文件，都进行了格式化</p>
+<p><strong>这里使用yarn prettier是为了读取项目下的prettier指令，如果你安装全局命令或者配置了环境变量，可以不用yarn指令</strong></p>
+<p><code>prettier</code>格式有一套默认的格式化规则，一般情况下，选择默认就可以了</p>
+<blockquote>
+<p>当然也可以自行配置，下面有两种配置方法：  </p>
+</blockquote>
+<ul>
+<li>在package.json中添加关键词<code>prettier</code></li>
+<li>在项目根目录下新建<code>.prettierrc</code>文件，js、json、yaml等也可以。</li>
+<li>下面就不再写package.json中配置了，具体关键字可以查看上面的表格。我们统一通过配置文件进行配置，其他的工具也是一样的。</li>
+<li>规则解释见配置文件<a href="https://link.zhihu.com/?target=https%3A//github.com/richLpf/auto-format-demo/tree/main/config" rel="external nofollow noopener noreferrer" target="_blank">Github地址</a></li>
+</ul>
+<p>这里在根目录下新建文件<code>.prettierrc</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;singleQuote&quot;: true,</span><br><span class="line">  &quot;printWidth&quot;: 120,</span><br><span class="line">  &quot;arrowParens&quot;: &quot;avoid&quot;,</span><br><span class="line">  &quot;trailingComma&quot;: &quot;none&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时Prettier根据<code>.prettierrc</code>定义的规则，对整个项目做了格式化操作。 但一些场景下需要我们对个别文件进行处理，可以通过覆盖配置来实现</p>
+<h2 id="3、覆盖配置"><a href="#3、覆盖配置" class="headerlink" title="3、覆盖配置"></a>3、覆盖配置</h2><p>修改<code>.prettierrc</code>文件，添加<code>overrides</code>字段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;semi&quot;: false,</span><br><span class="line">  &quot;overrides&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;files&quot;: &quot;*.test.js&quot;,</span><br><span class="line">      &quot;options&quot;: &#123;</span><br><span class="line">        &quot;semi&quot;: true</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;files&quot;: [&quot;*.html&quot;, &quot;legacy/**/*.js&quot;],</span><br><span class="line">      &quot;options&quot;: &#123;</span><br><span class="line">        &quot;tabWidth&quot;: 4</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样针对<code>test.js</code>文件、<code>html</code>文件和<code>legacy/**/*.js</code>的格式就会按当前配置走。</p>
+<h2 id="4、共享配置"><a href="#4、共享配置" class="headerlink" title="4、共享配置"></a>4、共享配置</h2><p>项目的配置一般都不会变化，所以常常多个项目使用同一个配置，特别是针对大点的项目。</p>
+<p>下面我们实践下创建一份Prettier配置到npm仓库</p>
+<p>1、<a href="https://link.zhihu.com/?target=https%3A//www.npmjs.com/" rel="external nofollow noopener noreferrer" target="_blank">注册npm账号</a></p>
+<p>2、创建一个包、包的命名规则：<code>@prettier/plugin-</code> or <code>prettier-plugin-</code> or <code>@&lt;scope&gt;/prettier-plugin-</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ./config/prettier/prettier-plugin-frontdemo</span><br><span class="line">npm init</span><br><span class="line">mkdir .prettierrc</span><br><span class="line">yarn add -D prettier</span><br><span class="line">echo &quot;/node_modules&quot; &gt; .gitignore</span><br></pre></td></tr></table></figure>
+<p>3、发布创建好的包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 如果第一次发布需要创建</span><br><span class="line">npm adduser</span><br><span class="line"></span><br><span class="line"># 如果不是第一次发布，只需要登陆</span><br><span class="line">npm login</span><br><span class="line"></span><br><span class="line"># 发布</span><br><span class="line">npm publish</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic1.zhimg.com/v2-60a66d1de84d7d2923ecc4275c06b780_r.jpg" alt></p>
+<p>4、登陆npm官网，即可看到上传的包<code>prettier-plugin-frontdemo</code></p>
+<p><img src="https://pic1.zhimg.com/v2-13cca03bdb697a92ed4557173729418c_r.jpg" alt></p>
+<p>5、使用包，在<code>package.json</code>中，添加远程仓库地址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,</span><br><span class="line">    &quot;prettier&quot;: &quot;prettier -w src/*.js&quot;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;name&quot;: &quot;front-demo&quot;,</span><br><span class="line">  &quot;prettier&quot;: &quot;prettier-plugin-frontdemo&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6、执行<code>yarn prettier</code></p>
+<h2 id="5、忽略文件"><a href="#5、忽略文件" class="headerlink" title="5、忽略文件"></a>5、忽略文件</h2><p>如果想要忽略某个文件的格式化，可以新建文件<code>.prettierignore</code>，添加要忽略的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/dist</span><br><span class="line">*.html</span><br></pre></td></tr></table></figure>
+<h2 id="四、代码质量检测：ESLint"><a href="#四、代码质量检测：ESLint" class="headerlink" title="四、代码质量检测：ESLint"></a>四、代码质量检测：ESLint</h2><h2 id="1、安装ESLint插件"><a href="#1、安装ESLint插件" class="headerlink" title="1、安装ESLint插件"></a>1、安装ESLint插件</h2><p><code>yarn add eslint -D</code></p>
+<h2 id="2、新建配置文件"><a href="#2、新建配置文件" class="headerlink" title="2、新建配置文件"></a>2、新建配置文件</h2><p><code>yarn add eslint --init</code></p>
+<p>上述命令行会弹出选择提示，根据需要选择eslint规则，最后会在根目录下生成<code>.eslintrc.js</code>文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    &quot;env&quot;: &#123;</span><br><span class="line">        &quot;browser&quot;: true,</span><br><span class="line">        &quot;es2021&quot;: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;extends&quot;: [</span><br><span class="line">        &quot;eslint:recommended&quot;,</span><br><span class="line">        &quot;plugin:react/recommended&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;parserOptions&quot;: &#123;</span><br><span class="line">        &quot;ecmaFeatures&quot;: &#123;</span><br><span class="line">            &quot;jsx&quot;: true</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;ecmaVersion&quot;: &quot;latest&quot;,</span><br><span class="line">        &quot;sourceType&quot;: &quot;module&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;plugins&quot;: [</span><br><span class="line">        &quot;react&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;rules&quot;: &#123;</span><br><span class="line">        &quot;quotes&quot;: [&quot;error&quot;, &quot;double&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>env: 包含了执行环境配置，浏览器环境、node环境或支持es5、es6.</li>
+<li>extends: 使用的扩展配置，这里主要是引入一些集成好的检测规则</li>
+<li>parseOptioins: 解析器配置</li>
+<li>plugins: 引入的eslint插件</li>
+<li>rules: 用来定义具体规则，检查缩进，函数是否有返回值等。</li>
+</ul>
+<p>第一个参数，如果只有一个参数，直接使用字符串或数字就可以了</p>
+<ul>
+<li><code>&quot;off&quot;</code> 或 <code>0</code> - 关闭规则</li>
+<li><code>&quot;warn&quot;</code> 或 <code>1</code> - 开启规则，使用警告级别的错误：<code>warn</code> (不会导致程序退出，即可以正常提交代码)</li>
+<li><code>&quot;error&quot;</code> 或 <code>2</code> - 开启规则，使用错误级别的错误：<code>error</code> (当被触发的时候，程序会退出，存在error告警不能提交代码)</li>
+</ul>
+<p>第二个参数：你想要的配置参数</p>
+<ul>
+<li><code>&quot;quotes&quot;: [&quot;error&quot;, &quot;double&quot;]</code>，如果存在单引号的就报错，终止提交。</li>
+<li><code>&quot;quotes&quot;: [&quot;warn&quot;, &quot;double&quot;]</code>，如果存在单引号就告警，但可以正常提交。</li>
+</ul>
+<p>ESLint的<a href="https://link.zhihu.com/?target=https%3A//cn.eslint.org/docs/rules/" rel="external nofollow noopener noreferrer" target="_blank">配置规则</a></p>
+<p>执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn eslint src/*.js</span><br></pre></td></tr></table></figure>
+<p>ESLint对代码进行了检测</p>
+<p><img src="https://pic1.zhimg.com/v2-dfb5969183bbd13804b47e9c17009674_r.jpg" alt></p>
+<p><strong>注意，如果项目根目录配置了<code>.eslintrc</code>, 那么package.json中配置了eslintConfig将不会生效</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    &quot;env&quot;: &#123;</span><br><span class="line">        &quot;browser&quot;: true,</span><br><span class="line">        &quot;es2021&quot;: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;extends&quot;: [</span><br><span class="line">        &quot;eslint:recommended&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;parserOptions&quot;: &#123;</span><br><span class="line">        &quot;ecmaFeatures&quot;: &#123;</span><br><span class="line">            &quot;jsx&quot;: true</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;ecmaVersion&quot;: &quot;latest&quot;,</span><br><span class="line">        &quot;sourceType&quot;: &quot;module&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3、覆盖ESLint配置"><a href="#3、覆盖ESLint配置" class="headerlink" title="3、覆盖ESLint配置"></a>3、覆盖ESLint配置</h2><p>我们看到不管是共享的配置还是使用官方推荐的配置，如果我们想要在这个基础上修改某个规则怎么办，使用overrides来覆盖，可以指定使用的范围。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;...&#125;,</span><br><span class="line">  &quot;overrides&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;files&quot;: [&quot;./src/*.js&quot;],</span><br><span class="line">      &quot;rules&quot;: &#123;</span><br><span class="line">          &quot;no-console&quot;: &quot;error&quot;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以看到no-console告警出来了。</p>
+<p><img src="https://pic1.zhimg.com/v2-b73e3b7374bcdfed6bb053b3ee31af6c_r.jpg" alt></p>
+<p><strong>其实ESLint还提供了创建规则，自定义解析器，编写插件的能力，下面我们主要实践下编写插件</strong></p>
+<h2 id="4、共享配置-1"><a href="#4、共享配置-1" class="headerlink" title="4、共享配置"></a>4、共享配置</h2><blockquote>
+<p>和Prettier一样，如果每个项目都配置一个太麻烦了，可以整体使用一套</p>
+</blockquote>
+<p>新建一个项目导出这个js文件，然后上传到npm，直接通过extends字段引用就可以了。发布流程和prettier是一样的，命名还要用eslint-config-开头。<a href="https://link.zhihu.com/?target=https%3A//cn.eslint.org/docs/developer-guide/shareable-configs" rel="external nofollow noopener noreferrer" target="_blank">官网</a></p>
+<p><img src="https://pic4.zhimg.com/v2-57c1fb15f72a7a4bc14133587b3f88a7_r.jpg" alt></p>
+<p>安装<code>yarn add -D eslint-config-frontdemo</code></p>
+<p>修改<code>package.json</code>（修改.eslintrc.js文件也是一样的，这里用了package.json的配置，所以根目录下的.eslintrc.js要删除掉）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;eslint&quot;: &quot;eslint . --fix&quot;</span><br><span class="line">&#125;,</span><br><span class="line">&quot;eslintConfig&quot;: &#123;</span><br><span class="line">    &quot;env&quot;: &#123;</span><br><span class="line">      &quot;browser&quot;: true,</span><br><span class="line">      &quot;node&quot;: true,</span><br><span class="line">      &quot;es2021&quot;: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;extends&quot;: &quot;frontdemo&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行<code>yarn eslint</code>，成功</p>
+<p><img src="https://pic3.zhimg.com/v2-1016e91d71033bc9d2aec41b6b9b143a_r.jpg" alt></p>
+<h2 id="五、Git暂存区代码过滤：lint-staged"><a href="#五、Git暂存区代码过滤：lint-staged" class="headerlink" title="五、Git暂存区代码过滤：lint-staged"></a>五、Git暂存区代码过滤：lint-staged</h2><p>在实际使用过程，会遇到这样的问题：</p>
+<ul>
+<li>每次都要全局处理代码，浪费时间</li>
+<li>每个人对所有代码格式化，规则不同，导致大量代码冲突</li>
+</ul>
+<blockquote>
+<p>lint-staged，仅过滤Git暂存区的代码</p>
+</blockquote>
+<p>1、安装lint-staged</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add lint-staged -D</span><br></pre></td></tr></table></figure>
+<p>2、<code>package.json</code>配置lint-staged</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;lint-staged&quot;: &#123;</span><br><span class="line">      &quot;*.js&quot;: &quot;prettier -w .&quot;,</span><br><span class="line">      &quot;*.js&quot;: &quot;eslint . --fix&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 修改业务代码</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;test lint-staged&quot;</span><br></pre></td></tr></table></figure>
+<p>此时发现，这些命令仅对暂存区<code>*.js</code>的内容进行了格式化。</p>
+<h2 id="六、Git提交规范自动化"><a href="#六、Git提交规范自动化" class="headerlink" title="六、Git提交规范自动化"></a>六、Git提交规范自动化</h2><h2 id="1、规范说明"><a href="#1、规范说明" class="headerlink" title="1、规范说明"></a>1、规范说明</h2><blockquote>
+<p>如图所示，我们看到优秀的开源项目，对提交代码的描述信息都是很规范的。想要和这些项目一样清晰，我们可以借助插件commitlint</p>
+</blockquote>
+<p><img src="https://pic4.zhimg.com/v2-2ecdb0297c762bfa6f81b56ab5ddd92b_r.jpg" alt></p>
+<p>在此之前我们要了解常用的Git提交规范</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Subject 一句话概述commit主题(必须)</span><br><span class="line">&lt;Body&gt; 详细描述 What 和 Why (可选)</span><br><span class="line">&lt;Footer&gt; 不兼容或关闭 issue 等说明(可选)</span><br><span class="line"></span><br><span class="line">主题(Subject)是 commit 的简短描述，不超过50个字符</span><br><span class="line">- 用一句话说明本次所作的提交, 如果一句话说不清楚，那有可能这个提交得拆分成多次</span><br><span class="line">- 主要采用 Verb + Object + Adverb 的形式描述，常见动词及示例如下</span><br><span class="line">1. feat: 添加代码和逻辑, 如 feat: add xxx field/method/class</span><br><span class="line">2. fix: 修复bug，如 fix: #123, fix xxx error</span><br><span class="line">3. docs: 文档更新，如 docs: change documents</span><br><span class="line">4. style: 样式修改，如 style: add class or change style</span><br><span class="line">5. refactor: 代码重构, 如refactor: rename, move, extract, inline等</span><br><span class="line">6. perf: 代码性能优化，perf: improves performance</span><br><span class="line">7. test: 代码单元测试，test: test menu component</span><br><span class="line">8. build: 项目构建，build: build project</span><br><span class="line">9. ci: 修改CI文件 ci: change gitlab-ci.yml</span><br><span class="line">10. chore: 构建过程或辅助工具的变动 chore: change webpack</span><br><span class="line"></span><br><span class="line">正文(Body)详细描述本次 commit 做了什么、为什么这样做(不是怎么做的)</span><br><span class="line">- 每行不要超过70字符</span><br><span class="line">1. 这个改动解决了什么问题？</span><br><span class="line">2. 这个改动为什么是必要的？</span><br><span class="line">3. 会影响到哪些其他的代码？</span><br><span class="line">  bug fix - 组件 bug 修复；</span><br><span class="line">  breaking change - 不兼容的改动；</span><br><span class="line">  new feature - 新功能</span><br><span class="line"></span><br><span class="line">尾注(Footer) 用于关闭 Issue 或存在不兼容时添加相关说明等</span><br><span class="line">1. breaking change: 与上一个版本不兼容的相关描述、理由及迁移办法</span><br><span class="line">2. close #issue: 关闭相关问题（附链接）</span><br><span class="line">3. revert: 撤销以前的commit</span><br></pre></td></tr></table></figure>
+<p>比如我们修改了一个列表Bug：<code>git commit -m &quot;bug: change id columns&quot;</code>，这样我们后面查询起来就很简单了。</p>
+<h2 id="2、提交信息规范配置：commitlint"><a href="#2、提交信息规范配置：commitlint" class="headerlink" title="2、提交信息规范配置：commitlint"></a>2、提交信息规范配置：commitlint</h2><p>安装commitlint-cli和commitlint常用配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd font-demo</span><br><span class="line"></span><br><span class="line">yarn add @commitlint/cli @commitlint/config-conventional -D</span><br><span class="line"></span><br><span class="line">touch .commitlint.config.js</span><br></pre></td></tr></table></figure>
+<p>.commitlint.config.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&quot;commitlint&quot;: &#123;</span><br><span class="line">    extends: [</span><br><span class="line">      &apos;@commitlint/config-conventional&apos;</span><br><span class="line">    ],</span><br><span class="line">    rules: &#123;</span><br><span class="line">      &apos;type-enum&apos;: [2, &apos;always&apos;, [</span><br><span class="line">        &apos;feat&apos;, &apos;fix&apos;, &apos;perf&apos;, &apos;refactor&apos;, &apos;build&apos;, &apos;style&apos;, &apos;docs&apos;, &apos;chore&apos;</span><br><span class="line">      ]],</span><br><span class="line">      &apos;type-case&apos;: [0]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>@commitlint/config-conventional</code>默认使用这个提交规范</p>
+<p>执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;this is a new feature&quot; | commitlint</span><br><span class="line">echo &quot;feat: this is a new feature&quot; | commitlint</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic1.zhimg.com/v2-e32cb82dc6482ac7307dc6f1e1ec7894_r.jpg" alt></p>
+<p>commitlint用来检测Git提交信息是否规范。</p>
+<h2 id="3、通过插件来规范提交信息"><a href="#3、通过插件来规范提交信息" class="headerlink" title="3、通过插件来规范提交信息"></a>3、通过插件来规范提交信息</h2><p><strong>虽然我们按照格式提交没有问题，但是很多时候，可能记不住这些命令，我们可以弹出提示信息进行交互式提交</strong></p>
+<p>安装依赖<code>@commitlint/cz-commitlint</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add -D @commitlint/cz-commitlint commitizen @commitlint/cli @commitlint/config-conventional</span><br></pre></td></tr></table></figure>
+<p>在package.json中配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;commit&quot;: &quot;git add . &amp;&amp; git-cz&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;config&quot;: &#123;</span><br><span class="line">    &quot;commitizen&quot;: &#123;</span><br><span class="line">      &quot;path&quot;: &quot;@commitlint/cz-commitlint&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在项目根目录下新建文件<code>[commitlint.config.js](https://link.zhihu.com/?target=https%3A//github.com/richLpf/auto-format-demo/blob/main/commitlint.config.js)</code></p>
+<p>修改业务代码，并执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn commit</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic1.zhimg.com/v2-0917abb993006cae52e11c90d05913b0_r.jpg" alt></p>
+<p>就可以通过选择来提交代码了。</p>
+<h2 id="4、一键执行自动化工具"><a href="#4、一键执行自动化工具" class="headerlink" title="4、一键执行自动化工具"></a>4、一键执行自动化工具</h2><p>以上<code>prettier</code>、<code>esliint</code>、<code>lint-staged</code>、<code>commitlint</code>都配置在package.json中，通过命令<code>yarn commit</code>按顺序执行这些工具。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;prettier&quot;: &quot;prettier -w .&quot;,</span><br><span class="line">    &quot;commit&quot;: &quot;git add . &amp;&amp; lint-staged &amp;&amp; git-cz&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;prettier&quot;: &quot;@isayme/prettier-config&quot;,</span><br><span class="line">  &quot;config&quot;: &#123;</span><br><span class="line">    &quot;commitizen&quot;: &#123;</span><br><span class="line">      &quot;path&quot;: &quot;@commitlint/cz-commitlint&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;eslintConfig&quot;: &#123;</span><br><span class="line">    &quot;env&quot;: &#123;</span><br><span class="line">      &quot;browser&quot;: true,</span><br><span class="line">      &quot;node&quot;: true,</span><br><span class="line">      &quot;es2021&quot;: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;extends&quot;: &quot;eslint:recommended&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;lint-staged&quot;: &#123;</span><br><span class="line">    &quot;*.js&quot;: [</span><br><span class="line">      &quot;eslint . --fix&quot;,</span><br><span class="line">      &quot;prettier -w .&quot;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>配置完成后，修改业务代码，执行<code>yarn commit</code>，发现对Git暂存区的文件依次进行了<code>ESLint检测</code>、<code>prettier</code>、<code>commitlint录入</code>，这就完成了简单的自动化工作流。</p>
+<p>然而这种方法把git的命令覆盖了，而且可能很多人不想要每次都通过提示提交信息，那么下面我们接着看，如何通过Hooks处理自动化工作流。</p>
+<h2 id="七、Git-Hooks"><a href="#七、Git-Hooks" class="headerlink" title="七、Git Hooks"></a>七、Git Hooks</h2><h2 id="1、Git-Hooks介绍"><a href="#1、Git-Hooks介绍" class="headerlink" title="1、Git Hooks介绍"></a>1、Git Hooks介绍</h2><p>要自动化上面的流程，就要用到Git的钩子函数Hooks。</p>
+<p>Git Hooks通过一个个钩子，允许Git在每个节点执行一些shell脚本，如果哪个阶段有问题，就会抛出错误，拒绝提交代码。</p>
+<p>常见的Git 钩子：</p>
+<p><strong>客户端钩子</strong>：</p>
+<ul>
+<li><code>pre-commit</code>，输入git commit调出提交信息编辑器之前，主要用来代码格式，代码检测、单元测试等。</li>
+<li><code>prepare-commit-msg</code> git commit编辑器启动提交信息之前，默认信息被创建之后，主要编辑提交信息</li>
+<li><code>commit-msg</code> git commit 信息提交，用来检查提交信息的格式。</li>
+<li><code>post-commit</code> 在提交完成后，可以用来发送通知，提醒其他同事等。</li>
+</ul>
+<p><strong>服务器端钩子</strong>：</p>
+<ul>
+<li><code>pre-receive</code>：客户端推送代码到服务器时，只会触发一次</li>
+<li><code>update</code>：客户端推送代码到服务器，如果多个分支，分别触发一次</li>
+<li><code>post-receive</code>：推送完成后。</li>
+</ul>
+<p>整个钩子触发的时间点可以理解为：在网站上打开一个弹框输入信息，提交信息，关闭弹框的过程</p>
+<ul>
+<li>1、点击新建按钮，弹框弹出前（pre-commit）</li>
+<li>2、弹框获取初始模版信息后（prepare-commit-msg）</li>
+<li>3、编辑信息以后，点击提交时（commit-msg），这时可以对提交的信息进行检测</li>
+<li>4、点击保存信息完成（post-commit）</li>
+</ul>
+<h2 id="2、Git-Hooks实践"><a href="#2、Git-Hooks实践" class="headerlink" title="2、Git Hooks实践"></a>2、Git Hooks实践</h2><p>安装Git(默认本地安装了Git)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd front-demo</span><br><span class="line">git init</span><br><span class="line">ls -al</span><br><span class="line">cd .git</span><br><span class="line">cd hooks</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic1.zhimg.com/v2-7670b8f0850038d1375abfbcb08f96c0_r.jpg" alt></p>
+<p>Git Hooks每个钩子都有示例文件，这些是git预置的hooks脚本示例，因为加了sample后缀，所以并不会被执行。</p>
+<p>我们在当前目录下新建<code>pre-commit</code>脚本，文件内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line">echo &quot;this is a test file&quot;</span><br></pre></td></tr></table></figure>
+<p>回到项目根目录下，修改项目内任意文件，提交代码，发现成功提交，但是有告警。</p>
+<p><img src="https://pic4.zhimg.com/v2-52982af26f0a01c2d68ff4a94689f2df_r.jpg" alt></p>
+<p>因为<code>pre-commit</code>没有执行权限，我们给文件执行权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x pre-commit</span><br></pre></td></tr></table></figure>
+<p>然后再次提交代码，发现git commit后，打印出了<code>this is a test file</code>，我们写在<code>.git/hooks/pre-commit</code>中的代码，这就说明Git Hooks触发了。</p>
+<h2 id="3、Husky实践"><a href="#3、Husky实践" class="headerlink" title="3、Husky实践"></a>3、Husky实践</h2><p>Hooks需要更改.git下的配置，非常不方便，所以有了Husky，将Hooks暴露在项目中。</p>
+<blockquote>
+<p>安装Git Hooks，husky v4版本可以在package.json中配置，v5版本后，husky就独立在项目根目录下配置，这里使用的是<code>7.0.4</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 安装husky</span><br><span class="line">yarn add husky -D</span><br><span class="line"></span><br><span class="line"># 激活husky的使用</span><br><span class="line">yarn husky install</span><br></pre></td></tr></table></figure>
+<p>4.x.x版本在package.json中配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;husky&quot;: &#123;</span><br><span class="line">   &quot;hooks&quot;: &#123;</span><br><span class="line">      &quot;pre-commit&quot;: &quot;lint-staged&quot;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>7.x.x版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 添加一个钩子脚本，检测Git提交信息规范</span><br><span class="line">yarn husky add .husky/commit-msg &apos;yarn commitlint --edit $1&apos;</span><br></pre></td></tr></table></figure>
+<p>我们看到在项目根目录下，生成了.husky文件夹，下面有Hooks相关的脚本。</p>
+<p><img src="data:image/svg+xml;utf8,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;264&#39; height=&#39;310&#39;&gt;&lt;/svg" alt></p>
+<p><strong>这里不光可以使用shell脚本，用node、python脚本都可以。</strong></p>
+<p>提交代码，发现如果没有按标准格式，就会被拦截。</p>
+<p><img src="https://pic3.zhimg.com/v2-141a6e22bc6fb8a1606cdff79a9ae18a_r.jpg" alt></p>
+<h2 id="4、通过Husky自动化规范"><a href="#4、通过Husky自动化规范" class="headerlink" title="4、通过Husky自动化规范"></a>4、通过Husky自动化规范</h2><p><code>pre-commit</code>钩子：prettier和eslint检测代码格式和代码质量</p>
+<p><code>commit-msg</code>钩子：执行commitlint，检测提交信息是否符合格式</p>
+<p>首先安装这两个钩子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn husky add .husky/pre-commit &apos;yarn lint-staged --allow-empty&apos;</span><br><span class="line">yarn husky add .husky/commit-msg &apos;yarn commitlint --edit $1&apos;</span><br></pre></td></tr></table></figure>
+<p>这里lint-staged 添加允许空提交是为了避免报错<a href="https://link.zhihu.com/?target=https%3A//github.com/okonet/lint-staged/issues/588" rel="external nofollow noopener noreferrer" target="_blank">lint-staged issues</a></p>
+<p><img src="https://pic4.zhimg.com/v2-163ae034454e81601e2c9cd256c629a7_r.jpg" alt></p>
+<p>然后改动代码src/index.js</p>
+<p><img src="https://pic4.zhimg.com/v2-17027c2a3b56f5c9600ff4900c651ebb_r.jpg" alt></p>
+<p>执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;test&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic2.zhimg.com/v2-81da88c8b29f34f429cc7f69af985739_r.jpg" alt></p>
+<p>发现检测出了不符合eslint规范的编码。</p>
+<p><img src="https://pic4.zhimg.com/v2-5ff314138f71a3fb5454833514f70683_r.jpg" alt></p>
+<p>修复eslint错误，再次提交，发现报错提交信息不规范，但代码已经格式化过了。</p>
+<p><img src="https://pic3.zhimg.com/v2-7068b73ac7133c9a9631f0b57dbb419a_r.jpg" alt></p>
+<p>修改提交信息，Ok大功告成，成功提交。</p>
+<p><img src="https://pic1.zhimg.com/v2-2f55e05d895bd2b164fccc71e4216aa0_r.jpg" alt></p>
+<h2 id="八、通过CI自动化检测代码"><a href="#八、通过CI自动化检测代码" class="headerlink" title="八、通过CI自动化检测代码"></a>八、通过CI自动化检测代码</h2><p>之前介绍的是，本地提交代码的自动化检测。</p>
+<p>那么并不是每个开发都会去注意这一块，针对提交上线的代码，除了服务器端钩子来检测，还可以通过CI/CD来检测。这块的工具也很多，常用的有：Gitlab/CI、Github/Action。</p>
+<p>这里我们选择Github/Action</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd front-demo</span><br><span class="line">mkdir -p .github/workflows</span><br><span class="line">touch github-action.yml</span><br></pre></td></tr></table></figure>
+<p><code>github-action.yml</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">name: GitHub Actions Demo</span><br><span class="line">on: [push]</span><br><span class="line">jobs:</span><br><span class="line">  eslint:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    steps:</span><br><span class="line">      - uses: actions/checkout@v2</span><br><span class="line">      - uses: actions/setup-node@v2</span><br><span class="line">      - run: yarn install</span><br><span class="line">      - run: yarn eslint . --fix</span><br><span class="line">      </span><br><span class="line">  prettier:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    steps:</span><br><span class="line">      - uses: actions/checkout@v2</span><br><span class="line">      - uses: actions/setup-node@v2</span><br><span class="line">      - run: echo &quot;check current commit is prettier&quot;</span><br><span class="line">      - run: yarn install</span><br><span class="line">      - run: yarn prettier:check</span><br></pre></td></tr></table></figure>
+<p>每次推送都执行下面两个任务</p>
+<ul>
+<li>执行eslint校验</li>
+<li>执行prettier检查</li>
+</ul>
+<p>修改front-demo项目下的<code>package.json</code>，运行命令检查是否Prettier格式化</p>
+<p><img src="https://pic1.zhimg.com/v2-0b877391a97c36e7caf06e493f68dee8_r.jpg" alt></p>
+<p>直接提交代码，推送Github，打开<a href="https://link.zhihu.com/?target=https%3A//github.com/richLpf/auto-format-demo/actions/runs/1979731289" rel="external nofollow noopener noreferrer" target="_blank">Action页面</a></p>
+<p><img src="https://pic4.zhimg.com/v2-289867bdddd3baff8daded17d1e9ee83_r.jpg" alt></p>
+<p>两个任务执行成功</p>
+<p>接着注释掉本地钩子执行的 eslint和prettier，修改代码提交到远程仓库（故意打乱）</p>
+<p><img src="https://pic4.zhimg.com/v2-20392b8d0a03fa7ca678459878eec6eb_r.jpg" alt></p>
+<p>打开Action页面，发现任务都失败了，并且提示除了错误信息。</p>
+<p><img src="https://pic3.zhimg.com/v2-7a2798a19fb02131e0642387c80be2b6_r.jpg" alt></p>
+<p>如果任务执行成功，就可以继续执行构建，部署，打包文件检测等。</p>
+<p>当然也可以在这个阶段，增加单元测试，代码分析等操作。</p>
+<h2 id="九、参考文章"><a href="#九、参考文章" class="headerlink" title="九、参考文章"></a>九、参考文章</h2><ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//www.prettier.cn/docs/index.html" rel="external nofollow noopener noreferrer" target="_blank">Prettier</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//cn.eslint.org/docs/user-guide/getting-started" rel="external nofollow noopener noreferrer" target="_blank">ESLint</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//www.npmjs.com/package/lint-staged" rel="external nofollow noopener noreferrer" target="_blank">lint-staged</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//commitlint.js.org/%23/" rel="external nofollow noopener noreferrer" target="_blank">commitlint</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//typicode.github.io/husky/%23/%3Fid%3Dusage" rel="external nofollow noopener noreferrer" target="_blank">Husky</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//docs.github.com/cn/actions/quickstart" rel="external nofollow noopener noreferrer" target="_blank">Github/Action</a></li>
+</ul>
+<p>欢迎加入讨论，如果觉得还不错，给个赞吧</p>
+<p>本文转自 <a href="https://zhuanlan.zhihu.com/p/487898449" rel="external nofollow noopener noreferrer" target="_blank">https://zhuanlan.zhihu.com/p/487898449</a>，如有侵权，请联系删除。</p>
+
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+     <div>
+        
+          
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2023/01/10/前端工程化/">前端工程化</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Water 的个人博客">Water</a></p>
+  <p><span>发布时间:</span>2023年01月10日 - 12:01</p>
+  <p><span>最后更新:</span>2023年08月01日 - 06:08</p>
+  <p><span>原始链接:</span><a href="/2023/01/10/前端工程化/" title="前端工程化">https://water.buging.cn/2023/01/10/前端工程化/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://water.buging.cn/2023/01/10/前端工程化/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+        
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/weixinpay.jpg" alt="Water 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Water 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/12/30/git中版本回退的各种方式/" rel="next" title="git中版本回退的各种方式">
+                <i class="fa fa-chevron-left"></i> git中版本回退的各种方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/02/02/mac常用的命令/" rel="prev" title="mac常用的命令">
+                mac常用的命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank" rel="external nofollow noopener noreferrer">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="vcomments"></div>
+    </div>
+  
+
+  
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://cdn.jsdelivr.net/gh/wangyuan0108/image/1.jpeg" alt="Water">
+            
+              <p class="site-author-name" itemprop="name">Water</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">93</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wangyuan0108" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/web-kai-fa-zhe" target="_blank" title="知乎" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/2207475076971533/posts" target="_blank" title="掘金" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+
+
+            
+
+          </div>
+          <!--<div>
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=509313150&auto=1&height=66"></iframe>
+          </div>-->
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、前端代码规范工具"><span class="nav-number">1.</span> <span class="nav-text">一、前端代码规范工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、前言"><span class="nav-number">2.</span> <span class="nav-text">1、前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、工具分类介绍"><span class="nav-number">3.</span> <span class="nav-text">2、工具分类介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、本文环境"><span class="nav-number">4.</span> <span class="nav-text">3、本文环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、自动化工具原理和配置"><span class="nav-number">5.</span> <span class="nav-text">二、自动化工具原理和配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、原理"><span class="nav-number">6.</span> <span class="nav-text">1、原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、配置对比"><span class="nav-number">7.</span> <span class="nav-text">2、配置对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、代码格式美化：Prettier"><span class="nav-number">8.</span> <span class="nav-text">三、代码格式美化：Prettier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、初始化项目构建"><span class="nav-number">9.</span> <span class="nav-text">1、初始化项目构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、插件使用"><span class="nav-number">10.</span> <span class="nav-text">2、插件使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、覆盖配置"><span class="nav-number">11.</span> <span class="nav-text">3、覆盖配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、共享配置"><span class="nav-number">12.</span> <span class="nav-text">4、共享配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、忽略文件"><span class="nav-number">13.</span> <span class="nav-text">5、忽略文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、代码质量检测：ESLint"><span class="nav-number">14.</span> <span class="nav-text">四、代码质量检测：ESLint</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、安装ESLint插件"><span class="nav-number">15.</span> <span class="nav-text">1、安装ESLint插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、新建配置文件"><span class="nav-number">16.</span> <span class="nav-text">2、新建配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、覆盖ESLint配置"><span class="nav-number">17.</span> <span class="nav-text">3、覆盖ESLint配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、共享配置-1"><span class="nav-number">18.</span> <span class="nav-text">4、共享配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、Git暂存区代码过滤：lint-staged"><span class="nav-number">19.</span> <span class="nav-text">五、Git暂存区代码过滤：lint-staged</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、Git提交规范自动化"><span class="nav-number">20.</span> <span class="nav-text">六、Git提交规范自动化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、规范说明"><span class="nav-number">21.</span> <span class="nav-text">1、规范说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、提交信息规范配置：commitlint"><span class="nav-number">22.</span> <span class="nav-text">2、提交信息规范配置：commitlint</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、通过插件来规范提交信息"><span class="nav-number">23.</span> <span class="nav-text">3、通过插件来规范提交信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、一键执行自动化工具"><span class="nav-number">24.</span> <span class="nav-text">4、一键执行自动化工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、Git-Hooks"><span class="nav-number">25.</span> <span class="nav-text">七、Git Hooks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Git-Hooks介绍"><span class="nav-number">26.</span> <span class="nav-text">1、Git Hooks介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Git-Hooks实践"><span class="nav-number">27.</span> <span class="nav-text">2、Git Hooks实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、Husky实践"><span class="nav-number">28.</span> <span class="nav-text">3、Husky实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、通过Husky自动化规范"><span class="nav-number">29.</span> <span class="nav-text">4、通过Husky自动化规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、通过CI自动化检测代码"><span class="nav-number">30.</span> <span class="nav-text">八、通过CI自动化检测代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#九、参考文章"><span class="nav-number">31.</span> <span class="nav-text">九、参考文章</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Water</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">博客全站共&#58;</span>
+    
+    <span title="博客全站共">143.8k字</span>
+  
+</div>
+<div>
+  <a href="http://www.beian.miit.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">
+    浙ICP备17051886号-1
+  </a>
+</div>
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7-rc3/dist/Valine.min.js"></script>
+  <script type="text/javascript">
+    new Valine({
+        av: AV,
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        app_id: '07n3074XAQEb58DvjBF5HnlV-gzGzoHsz',
+        app_key: '0HbRzaC25zC1hFausmSxplaV',
+        placeholder: '各位道友，请举手发言'
+    });
+  </script>
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("07n3074XAQEb58DvjBF5HnlV-gzGzoHsz", "0HbRzaC25zC1hFausmSxplaV");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/src/love.js"></script> -->

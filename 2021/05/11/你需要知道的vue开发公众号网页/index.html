@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vue,微信,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="忆" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="简介因为项目需要，近期做了一个公众号网页开发。在此期间也踩了一些坑，解决这些坑之后，准备对这个项目进行复盘。记录下项目从开发到上线所解决的问题，并对使用vue进行公众号开发的步骤进行一个总结。方便以后有问题进行查阅。希望对你有所帮助">
+<meta name="keywords" content="vue,微信">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你需要知道的vue开发公众号网页">
+<meta property="og:url" content="https://water.buging.cn/2021/05/11/你需要知道的vue开发公众号网页/index.html">
+<meta property="og:site_name" content="忆">
+<meta property="og:description" content="简介因为项目需要，近期做了一个公众号网页开发。在此期间也踩了一些坑，解决这些坑之后，准备对这个项目进行复盘。记录下项目从开发到上线所解决的问题，并对使用vue进行公众号开发的步骤进行一个总结。方便以后有问题进行查阅。希望对你有所帮助">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2023-08-01T06:26:37.602Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="你需要知道的vue开发公众号网页">
+<meta name="twitter:description" content="简介因为项目需要，近期做了一个公众号网页开发。在此期间也踩了一些坑，解决这些坑之后，准备对这个项目进行复盘。记录下项目从开发到上线所解决的问题，并对使用vue进行公众号开发的步骤进行一个总结。方便以后有问题进行查阅。希望对你有所帮助">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://water.buging.cn/2021/05/11/你需要知道的vue开发公众号网页/">
+
+
+
+
+
+  <title>你需要知道的vue开发公众号网页 | 忆</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/wangyuan0108" class="github-corner" aria-label="View source on Github" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">忆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">平凡之路</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://water.buging.cn/2021/05/11/你需要知道的vue开发公众号网页/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Water">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/wangyuan0108/image/1.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="忆">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">你需要知道的vue开发公众号网页</h2>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-11T17:27:53+00:00">
+                2021-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WEB前端/" itemprop="url" rel="index">
+                    <span itemprop="name">WEB前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2021/05/11/你需要知道的vue开发公众号网页/" class="leancloud_visitors" data-flag-title="你需要知道的vue开发公众号网页">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>因为项目需要，近期做了一个公众号网页开发。在此期间也踩了一些坑，解决这些坑之后，准备对这个项目进行复盘。记录下项目从开发到上线所解决的问题，并对使用vue进行公众号开发的步骤进行一个总结。方便以后有问题进行查阅。希望对你有所帮助<a id="more"></a></p>
+<h2 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h2><p>主要就是一个h5页面，涉及的功能不是很难，主要很久没有开发公众号，对整个开发步骤有些生疏。其中包括对微信sdk的调用方式、用户的微信授权和sdk的接入等。主要围绕开发步骤进行梳理。</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>因为是一个h5页面，整体而言项目不大，然后在项目技术选型的时候确定使用vue框架进行开发。使用vue开发h5，个人整体感觉还是效率比较高的。在ui库方面选择的是vant库，组件整体而言还是不错的，支持自定义主题方便样式自定义比较适合h5的开发。</p>
+<h2 id="通过vue-cli创建项目"><a href="#通过vue-cli创建项目" class="headerlink" title="通过vue-cli创建项目"></a>通过vue-cli创建项目</h2><p>安装脚手架工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br><span class="line"># OR</span><br><span class="line">yarn global add @vue/cli</span><br></pre></td></tr></table></figure></p>
+<p>创建一个项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create water_project</span><br></pre></td></tr></table></figure></p>
+<p>然后就创建了项目目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── README.md</span><br><span class="line">├── babel.config.js</span><br><span class="line">├── jsconfig.json</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── public</span><br><span class="line">│   ├── favicon.ico</span><br><span class="line">│   └── index.html</span><br><span class="line">├── src</span><br><span class="line">│   ├── App.vue</span><br><span class="line">│   ├── api</span><br><span class="line">│   ├── assets</span><br><span class="line">│   ├── components</span><br><span class="line">│   ├── global.less</span><br><span class="line">│   ├── main.js</span><br><span class="line">│   ├── mock</span><br><span class="line">│   ├── router</span><br><span class="line">│   ├── store</span><br><span class="line">│   ├── utils</span><br><span class="line">│   └── views</span><br><span class="line">└── vue.config.js</span><br></pre></td></tr></table></figure></p>
+<h2 id="关于移动的适配"><a href="#关于移动的适配" class="headerlink" title="关于移动的适配"></a>关于移动的适配</h2><p>因为是移动端网页，所以需要做适配。网上有很多适配方案这里就不展开说了，主要说下本项目使用的方案是<code>amfe-flexible</code>结合<code>rem</code>来做的，是淘宝的一种解决方案。关于设计稿的单位<code>px</code>转换为<code>rem</code>使用的是<code>postcss</code>的<code>postcss-pxtorem</code>方案。其实用<code>webpack</code>的<code>loader</code>来做也是可以的，具体方案自行百度。</p>
+<ol>
+<li>安装<code>amfe-flexible</code>包</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i amfe-flexible -S</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>安装<code>postcss-pxtorem</code>插件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i postcss-pxtorem -D</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>在main.js中引入<code>amfe-flexible</code></li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"amfe-flexible"</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>在vue.config.js中配置postcss插件</li>
+</ol>
+<p>项目中如果没有vue.config.js文件就手动创建一个，这个是vue cli的配置文件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">css: &#123;</span><br><span class="line">    loaderOptions: &#123;</span><br><span class="line">      postcss: &#123;</span><br><span class="line">        plugins: [</span><br><span class="line">          autoprefixer(),</span><br><span class="line">          pxtorem(&#123;</span><br><span class="line">            rootValue: <span class="number">37.5</span>,</span><br><span class="line">            propList: [<span class="string">"*"</span>],</span><br><span class="line">          &#125;),</span><br><span class="line">        ],</span><br><span class="line">      &#125;,</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<p>到此样式适配已经完成，至于rootValue为什么是37.5.主要是为了vant的适配，所以设计稿以375px为参考。如果没有使用第三方ui库可以设计稿以750为参考，此时rootValue为75。</p>
+<h2 id="使用-normalize-css"><a href="#使用-normalize-css" class="headerlink" title="使用 normalize.css"></a>使用 normalize.css</h2><p>使用normalize.css来消除浏览器之间的基础样式差异</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i normalize.css -S</span><br></pre></td></tr></table></figure>
+<p>在<code>main.js</code>中引入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"normalize.css"</span></span><br></pre></td></tr></table></figure>
+<h2 id="接入vant库"><a href="#接入vant库" class="headerlink" title="接入vant库"></a>接入vant库</h2><p>vant是有赞出品的一个ui库，站在巨人的肩膀上效率当然是要快很多。这种第三方库只能作为基础，在有设计稿的情况下要对样式进行定制。简单的样式vant都支持主题定制化还是比较方便的，如果有一些样式没有提供自定义主题，就只能写样式进行覆盖了。</p>
+<ul>
+<li>下载安装vant</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i vant -S</span><br></pre></td></tr></table></figure>
+<ul>
+<li>引入组件有3种方式，官网也有介绍，<a href="https://vant-contrib.gitee.io/vant/#/zh-CN/quickstart" rel="external nofollow noopener noreferrer" target="_blank">详情可以查看官网</a>，简单说下使用方式：</li>
+</ul>
+<h3 id="方式一-自动按需引入组件-推荐"><a href="#方式一-自动按需引入组件-推荐" class="headerlink" title="方式一. 自动按需引入组件 (推荐)"></a>方式一. 自动按需引入组件 (推荐)</h3><p><a href="https://github.com/ant-design/babel-plugin-import" rel="external nofollow noopener noreferrer" target="_blank">babel-plugin-import</a> 是一款 babel 插件，它会在编译过程中将 import 的写法自动转换为按需引入的方式。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装插件</span></span><br><span class="line">npm i babel-plugin-import -D</span><br><span class="line">// 在.babelrc 中添加配置</span><br><span class="line">// 注意：webpack 1 无需设置 libraryDirectory</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"plugins"</span>: [</span><br><span class="line">    [<span class="string">"import"</span>, &#123;</span><br><span class="line">      <span class="string">"libraryName"</span>: <span class="string">"vant"</span>,</span><br><span class="line">      <span class="string">"libraryDirectory"</span>: <span class="string">"es"</span>,</span><br><span class="line">      <span class="string">"style"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 对于使用 babel7 的用户，可以在 babel.config.js 中配置</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    [<span class="string">'import'</span>, &#123;</span><br><span class="line">      libraryName: <span class="string">'vant'</span>,</span><br><span class="line">      libraryDirectory: <span class="string">'es'</span>,</span><br><span class="line">      style: <span class="literal">true</span></span><br><span class="line">    &#125;, <span class="string">'vant'</span>]</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接着你可以在代码中直接引入 Vant 组件</span></span><br><span class="line"><span class="comment">// 插件会自动将代码转化为方式二中的按需引入形式</span></span><br><span class="line"><span class="keyword">import</span> &#123; Button &#125; <span class="keyword">from</span> <span class="string">'vant'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="方式二-手动按需引入组件"><a href="#方式二-手动按需引入组件" class="headerlink" title="方式二. 手动按需引入组件"></a>方式二. 手动按需引入组件</h3><p>在不使用插件的情况下，可以手动引入需要的组件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Button <span class="keyword">from</span> <span class="string">'vant/lib/button'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'vant/lib/button/style'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="方式三-导入所有组件"><a href="#方式三-导入所有组件" class="headerlink" title="方式三. 导入所有组件"></a>方式三. 导入所有组件</h3><p>Vant 支持一次性导入所有组件，引入所有组件会增加代码包体积，因此不推荐这种做法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> Vant <span class="keyword">from</span> <span class="string">'vant'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'vant/lib/index.css'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Vant);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Tips: 配置按需引入后，将不允许直接导入所有组件。</p>
+</blockquote>
+<h2 id="定制vant主题"><a href="#定制vant主题" class="headerlink" title="定制vant主题"></a>定制vant主题</h2><h3 id="步骤一-引入样式源文件"><a href="#步骤一-引入样式源文件" class="headerlink" title="步骤一 引入样式源文件"></a>步骤一 引入样式源文件</h3><p>定制主题时，需要引入组件对应的 Less 样式文件，支持按需引入和手动引入两种方式。</p>
+<h4 id="按需引入样式（推荐）"><a href="#按需引入样式（推荐）" class="headerlink" title="按需引入样式（推荐）"></a>按需引入样式（推荐）</h4><p>在 babel.config.js 中配置按需引入样式源文件，注意 babel6 不支持按需引入样式，请手动引入样式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    [</span><br><span class="line">      <span class="string">'import'</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        libraryName: <span class="string">'vant'</span>,</span><br><span class="line">        libraryDirectory: <span class="string">'es'</span>,</span><br><span class="line">        <span class="comment">// 指定样式路径</span></span><br><span class="line">        style: <span class="function">(<span class="params">name</span>) =&gt;</span> <span class="string">`<span class="subst">$&#123;name&#125;</span>/style/less`</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">'vant'</span>,</span><br><span class="line">    ],</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="手动引入样式"><a href="#手动引入样式" class="headerlink" title="手动引入样式"></a>手动引入样式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入全部样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'vant/lib/index.less'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入单个组件样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'vant/lib/button/style/less'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="步骤二-修改样式变量"><a href="#步骤二-修改样式变量" class="headerlink" title="步骤二 修改样式变量"></a>步骤二 修改样式变量</h3><p>使用 Less 提供的 <a href="http://lesscss.org/usage/#using-less-in-the-browser-modify-variables" rel="external nofollow noopener noreferrer" target="_blank">modifyVars</a> 即可对变量进行修改，下面是参考的 webpack 配置。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  rules: [</span><br><span class="line">    &#123;</span><br><span class="line">      test: <span class="regexp">/\.less$/</span>,</span><br><span class="line">      use: [</span><br><span class="line">        <span class="comment">// ...其他 loader 配置</span></span><br><span class="line">        &#123;</span><br><span class="line">          loader: <span class="string">'less-loader'</span>,</span><br><span class="line">          options: &#123;</span><br><span class="line">            <span class="comment">// 若 less-loader 版本小于 6.0，请移除 lessOptions 这一级，直接配置选项。</span></span><br><span class="line">            lessOptions: &#123;</span><br><span class="line">              modifyVars: &#123;</span><br><span class="line">                <span class="comment">// 直接覆盖变量</span></span><br><span class="line">                <span class="string">'text-color'</span>: <span class="string">'#111'</span>,</span><br><span class="line">                <span class="string">'border-color'</span>: <span class="string">'#eee'</span>,</span><br><span class="line">                <span class="comment">// 或者可以通过 less 文件覆盖（文件路径为绝对路径）</span></span><br><span class="line">                hack: <span class="string">`true; @import "your-less-file-path.less";`</span>,</span><br><span class="line">              &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>如果 vue-cli 搭建的项目，可以在 <code>vue.config.js</code> 中进行配置。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vue.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  css: &#123;</span><br><span class="line">    loaderOptions: &#123;</span><br><span class="line">      less: &#123;</span><br><span class="line">        <span class="comment">// 若 less-loader 版本小于 6.0，请移除 lessOptions 这一级，直接配置选项。</span></span><br><span class="line">        lessOptions: &#123;</span><br><span class="line">          modifyVars: &#123;</span><br><span class="line">            <span class="comment">// 直接覆盖变量</span></span><br><span class="line">            <span class="string">'text-color'</span>: <span class="string">'#111'</span>,</span><br><span class="line">            <span class="string">'border-color'</span>: <span class="string">'#eee'</span>,</span><br><span class="line">            <span class="comment">// 或者可以通过 less 文件覆盖（文件路径为绝对路径）</span></span><br><span class="line">            hack: <span class="string">`true; @import "your-less-file-path.less";`</span>,</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="引入微信jssdk"><a href="#引入微信jssdk" class="headerlink" title="引入微信jssdk"></a>引入微信jssdk</h2><p>引入jsssdk有两种方式，一种是用js链接直接引入，写在index.html中。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://res2.wx.qq.com/open/js/jweixin-1.6.0.js "</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后在使用的地方就调用window.wx.xxx就能使用sdk提供的方法了。</p>
+<p>第二种就是使用npm包的方式</p>
+<ul>
+<li>安装weixin-js-sdk</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i weixin-js-sdk -S</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在main.js中使用</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wx <span class="keyword">from</span> <span class="string">"weixin-js-sdk"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂在vue的原型上方便使用</span></span><br><span class="line">Vue.prototype.$wx = wx;</span><br></pre></td></tr></table></figure>
+<p>这样引入之后就可以用this.$wx.xx来使用相应的方法了比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$wx.config(&#123;</span><br><span class="line">         debug: <span class="literal">false</span>, <span class="comment">// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。</span></span><br><span class="line">         appId: res.data.appId, <span class="comment">// 必填，公众号的唯一标识</span></span><br><span class="line">         timestamp: <span class="built_in">String</span>(res.data.timestamp), <span class="comment">// 必填，生成签名的时间戳</span></span><br><span class="line">         nonceStr: <span class="built_in">String</span>(res.data.nonceStr), <span class="comment">// 必填，生成签名的随机串</span></span><br><span class="line">         signature: res.data.signature, <span class="comment">// 必填，签名，见附录1</span></span><br><span class="line">         jsApiList: [</span><br><span class="line">           <span class="string">"getNetworkType"</span>,</span><br><span class="line">           <span class="string">"getLocation"</span>,</span><br><span class="line">         ], <span class="comment">// 必填，需要使用的JS接口列表，所有JS接口列表见附录2</span></span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="注册验证sdk才可以使用api"><a href="#注册验证sdk才可以使用api" class="headerlink" title="注册验证sdk才可以使用api"></a>注册验证sdk才可以使用api</h3><p>其实注册的重要逻辑都在后端，提供一个获取配置信息的接口，前端直接调用sdk的config方法进行注册就好了。这里把sdk的注册逻辑写在app.vue文件中</p>
+<ul>
+<li>封装一个注册sdk的方法</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> getWxJssdkConf() &#123;</span><br><span class="line">      <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="keyword">this</span>.$api.getSdkConfig(&#123;</span><br><span class="line">        url: <span class="built_in">window</span>.location.href.split(<span class="string">"#"</span>)[<span class="number">0</span>],</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">if</span> (res.success) &#123;</span><br><span class="line">        <span class="keyword">this</span>.$wx.config(&#123;</span><br><span class="line">          debug: <span class="literal">false</span>, <span class="comment">// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。</span></span><br><span class="line">          appId: res.data.appId, <span class="comment">// 必填，公众号的唯一标识</span></span><br><span class="line">          timestamp: <span class="built_in">String</span>(res.data.timestamp), <span class="comment">// 必填，生成签名的时间戳</span></span><br><span class="line">          nonceStr: <span class="built_in">String</span>(res.data.nonceStr), <span class="comment">// 必填，生成签名的随机串</span></span><br><span class="line">          signature: res.data.signature, <span class="comment">// 必填，签名，见附录1</span></span><br><span class="line">          jsApiList: [</span><br><span class="line">            <span class="string">"getNetworkType"</span>,</span><br><span class="line">            <span class="string">"getLocation"</span>,</span><br><span class="line">          ], <span class="comment">// 必填，需要使用的JS接口列表，所有JS接口列表见附录2</span></span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">this</span>.$wx.ready(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">this</span>.$wx.checkJsApi(&#123;</span><br><span class="line">            jsApiList: [<span class="string">"getNetworkType"</span>, <span class="string">"getLocation"</span>], <span class="comment">// 需要检测的JS接口列表，所有JS接口列表见附录2,</span></span><br><span class="line">            success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">              <span class="built_in">console</span>.log(<span class="string">"checkJsApi"</span>, res);</span><br><span class="line">            &#125;,</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">this</span>.$wx.error(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">"wx.error"</span>, res);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">created() &#123;</span><br><span class="line">    <span class="keyword">this</span>.getWxJssdkConf();</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<p>其中<code>this.$api.getSdkConfig</code>为调用后台的接口，这里是给api也挂载到了vue的原型上，方便使用不用每个页面都去引入api</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.$api = api</span><br></pre></td></tr></table></figure>
+<p>在app.vue中注册成功后，就可以使用sdk的api了。</p>
+<h2 id="微信的授权"><a href="#微信的授权" class="headerlink" title="微信的授权"></a>微信的授权</h2><p>如果要获取用户的信息，就必须让用户进行授权。在授权的时候使用的是微信提供的接口，<a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html" rel="external nofollow noopener noreferrer" target="_blank">详细请看这里</a>，如果是只获取用户的openid只用静默授权就可以了，不用用户主动授权。具体请看文档，这里只需要openid就使用静默授权如下：</p>
+<ul>
+<li>在需要授权的主入口使用，比如这里是主页Home，要先调用微信的接口获取code，在用code去后端换取openid</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span>: 获取授权code</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="type">&#123;*&#125;</span></span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return <span class="type">&#123;*&#125;</span></span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    getCode() &#123;</span><br><span class="line">      <span class="comment">// 从 window.location.href 中截取 code 并且赋值</span></span><br><span class="line">      <span class="comment">// window.location.href.split('#')[0]</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">window</span>.location.href.indexOf(<span class="string">"state"</span>) !== <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.code = qs.parse(</span><br><span class="line">          <span class="built_in">window</span>.location.href.split(<span class="string">"#"</span>)[<span class="number">0</span>].split(<span class="string">"?"</span>)[<span class="number">1</span>]</span><br><span class="line">        ).code;</span><br><span class="line">      &#125; </span><br><span class="line">      </span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.code) &#123;</span><br><span class="line">          <span class="comment">// 存在 code 直接调用接口</span></span><br><span class="line">          <span class="keyword">this</span>.handGetUserInfo(<span class="keyword">this</span>.code);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">this</span>.handLogin();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span>: 获取用户授权登陆</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="type">&#123;*&#125;</span></span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return <span class="type">&#123;*&#125;</span></span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    handLogin() &#123;</span><br><span class="line">      <span class="comment">// 重定向地址重定到当前页面，在路径获取 code</span></span><br><span class="line">      <span class="keyword">const</span> hrefUrl = <span class="built_in">window</span>.location.href;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.code === <span class="string">""</span>) &#123;</span><br><span class="line">        <span class="built_in">window</span>.location.replace(<span class="string">`</span></span><br><span class="line"><span class="string">						https://open.weixin.qq.com/connect/oauth2/authorize</span></span><br><span class="line"><span class="string">						?appid=XXXXXXXX</span></span><br><span class="line"><span class="string">						&amp;redirect_uri=<span class="subst">$&#123;<span class="built_in">encodeURIComponent</span>(hrefUrl)&#125;</span></span></span><br><span class="line"><span class="string">						&amp;response_type=code</span></span><br><span class="line"><span class="string">						&amp;scope=snsapi_base</span></span><br><span class="line"><span class="string">						&amp;state=h5#wechat_redirect</span></span><br><span class="line"><span class="string">					`</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span>: 获取用户信息</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="type">&#123;*&#125;</span> <span class="variable">code</span></span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return <span class="type">&#123;*&#125;</span></span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    handGetUserInfo(code) &#123;</span><br><span class="line">      <span class="comment">// 调用后台接口</span></span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+<p>这里就是授权的主要逻辑，没啥意外就基本走通了。</p>
+<h2 id="断网进行提示"><a href="#断网进行提示" class="headerlink" title="断网进行提示"></a>断网进行提示</h2><p>如果用户的网络断了，就跳转到断网提示页。主要使用的是html提供的方法进行判断，判断逻辑写在app.vue文件中，因为每个页面都会提示，就直接在主入口进行处理。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mounted() &#123;</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">"online"</span>, <span class="keyword">this</span>.updateOnlineStatus);</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">"offline"</span>, <span class="keyword">this</span>.updateOnlineStatus);</span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line"> methods: &#123;</span><br><span class="line"> 		updateOnlineStatus(e) &#123;</span><br><span class="line">      <span class="keyword">const</span> &#123; type &#125; = e;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"type=============="</span>, type);</span><br><span class="line">      <span class="keyword">this</span>.onLine = type === <span class="string">"online"</span>;</span><br><span class="line">    &#125;,</span><br><span class="line"> &#125;</span><br><span class="line"> beforeDestroy() &#123;</span><br><span class="line">    <span class="built_in">window</span>.removeEventListener(<span class="string">"online"</span>, <span class="keyword">this</span>.updateOnlineStatus);</span><br><span class="line">    <span class="built_in">window</span>.removeEventListener(<span class="string">"offline"</span>, <span class="keyword">this</span>.updateOnlineStatus);</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<p>主要就是这个方法来检查用户网络连接情况</p>
+<h2 id="判断是不是微信打开的网页"><a href="#判断是不是微信打开的网页" class="headerlink" title="判断是不是微信打开的网页"></a>判断是不是微信打开的网页</h2><p>这里主要使用的是vue-router的导航守卫来做的，在跳转之前对浏览器进行判断，如果不是微信内置浏览器就直接跳转到异常提示页</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> ua = navigator.userAgent.toLowerCase();</span><br><span class="line">  <span class="keyword">if</span> (</span><br><span class="line">    to.path !== <span class="string">"/notwx"</span> &amp;&amp;</span><br><span class="line">    !(ua.match(<span class="regexp">/MicroMessenger/i</span>) == <span class="string">"micromessenger"</span>)</span><br><span class="line">  ) &#123;</span><br><span class="line">    next(<span class="string">"/notwx"</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    next();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>有时跳转页面，页面的滚动高度会保留在上个页面的滚动高度，这里也是在导航守卫中解决的，主动给滚动到顶部</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">router.afterEach(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>到此整个开发流程简单记录完毕，也是对自己开发的一个梳理，也方便以后查阅。希望对看到文章的你有所帮助，个人见解，如有问题欢迎指正，觉得有帮助，欢迎点个赞，谢谢。</p>
+
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+     <div>
+        
+          
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2021/05/11/你需要知道的vue开发公众号网页/">你需要知道的vue开发公众号网页</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Water 的个人博客">Water</a></p>
+  <p><span>发布时间:</span>2021年05月11日 - 17:05</p>
+  <p><span>最后更新:</span>2023年08月01日 - 06:08</p>
+  <p><span>原始链接:</span><a href="/2021/05/11/你需要知道的vue开发公众号网页/" title="你需要知道的vue开发公众号网页">https://water.buging.cn/2021/05/11/你需要知道的vue开发公众号网页/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://water.buging.cn/2021/05/11/你需要知道的vue开发公众号网页/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+        
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/weixinpay.jpg" alt="Water 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Water 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"><i class="fa fa-tag"></i> vue</a>
+          
+            <a href="/tags/微信/" rel="tag"><i class="fa fa-tag"></i> 微信</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/08/你需要知道的36道js手写/" rel="next" title="你需要知道的36道js手写">
+                <i class="fa fa-chevron-left"></i> 你需要知道的36道js手写
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/07/05/使用umijs开发移动端h5/" rel="prev" title="使用umijs开发移动端h5">
+                使用umijs开发移动端h5 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank" rel="external nofollow noopener noreferrer">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="vcomments"></div>
+    </div>
+  
+
+  
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://cdn.jsdelivr.net/gh/wangyuan0108/image/1.jpeg" alt="Water">
+            
+              <p class="site-author-name" itemprop="name">Water</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">93</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wangyuan0108" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/web-kai-fa-zhe" target="_blank" title="知乎" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/2207475076971533/posts" target="_blank" title="掘金" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+
+
+            
+
+          </div>
+          <!--<div>
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=509313150&auto=1&height=66"></iframe>
+          </div>-->
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目背景"><span class="nav-number">2.</span> <span class="nav-text">项目背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number">3.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过vue-cli创建项目"><span class="nav-number">4.</span> <span class="nav-text">通过vue-cli创建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于移动的适配"><span class="nav-number">5.</span> <span class="nav-text">关于移动的适配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-normalize-css"><span class="nav-number">6.</span> <span class="nav-text">使用 normalize.css</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接入vant库"><span class="nav-number">7.</span> <span class="nav-text">接入vant库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方式一-自动按需引入组件-推荐"><span class="nav-number">7.1.</span> <span class="nav-text">方式一. 自动按需引入组件 (推荐)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方式二-手动按需引入组件"><span class="nav-number">7.2.</span> <span class="nav-text">方式二. 手动按需引入组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方式三-导入所有组件"><span class="nav-number">7.3.</span> <span class="nav-text">方式三. 导入所有组件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定制vant主题"><span class="nav-number">8.</span> <span class="nav-text">定制vant主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤一-引入样式源文件"><span class="nav-number">8.1.</span> <span class="nav-text">步骤一 引入样式源文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#按需引入样式（推荐）"><span class="nav-number">8.1.1.</span> <span class="nav-text">按需引入样式（推荐）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手动引入样式"><span class="nav-number">8.1.2.</span> <span class="nav-text">手动引入样式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤二-修改样式变量"><span class="nav-number">8.2.</span> <span class="nav-text">步骤二 修改样式变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引入微信jssdk"><span class="nav-number">9.</span> <span class="nav-text">引入微信jssdk</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册验证sdk才可以使用api"><span class="nav-number">9.1.</span> <span class="nav-text">注册验证sdk才可以使用api</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微信的授权"><span class="nav-number">10.</span> <span class="nav-text">微信的授权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#断网进行提示"><span class="nav-number">11.</span> <span class="nav-text">断网进行提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断是不是微信打开的网页"><span class="nav-number">12.</span> <span class="nav-text">判断是不是微信打开的网页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">13.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Water</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">博客全站共&#58;</span>
+    
+    <span title="博客全站共">143.8k字</span>
+  
+</div>
+<div>
+  <a href="http://www.beian.miit.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">
+    浙ICP备17051886号-1
+  </a>
+</div>
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7-rc3/dist/Valine.min.js"></script>
+  <script type="text/javascript">
+    new Valine({
+        av: AV,
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        app_id: '07n3074XAQEb58DvjBF5HnlV-gzGzoHsz',
+        app_key: '0HbRzaC25zC1hFausmSxplaV',
+        placeholder: '各位道友，请举手发言'
+    });
+  </script>
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("07n3074XAQEb58DvjBF5HnlV-gzGzoHsz", "0HbRzaC25zC1hFausmSxplaV");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/src/love.js"></script> -->

@@ -1,0 +1,2727 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Water">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="忆" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="下面是一个开源项目收集整理的一些很有用、很酷的 Node.js 包。强烈推荐给大家。喜欢的话，别忘了去 Github 上 star 哦。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="好用的node包汇总">
+<meta property="og:url" content="https://water.buging.cn/2023/08/01/好用的node包汇总/index.html">
+<meta property="og:site_name" content="忆">
+<meta property="og:description" content="下面是一个开源项目收集整理的一些很有用、很酷的 Node.js 包。强烈推荐给大家。喜欢的话，别忘了去 Github 上 star 哦。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2023-08-01T06:26:37.602Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="好用的node包汇总">
+<meta name="twitter:description" content="下面是一个开源项目收集整理的一些很有用、很酷的 Node.js 包。强烈推荐给大家。喜欢的话，别忘了去 Github 上 star 哦。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://water.buging.cn/2023/08/01/好用的node包汇总/">
+
+
+
+
+
+  <title>好用的node包汇总 | 忆</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/wangyuan0108" class="github-corner" aria-label="View source on Github" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">忆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">平凡之路</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://water.buging.cn/2023/08/01/好用的node包汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Water">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/wangyuan0108/image/1.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="忆">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">好用的node包汇总</h2>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-08-01T14:23:16+00:00">
+                2023-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WEB前端/" itemprop="url" rel="index">
+                    <span itemprop="name">WEB前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2023/08/01/好用的node包汇总/" class="leancloud_visitors" data-flag-title="好用的node包汇总">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  13.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  51
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>下面是一个<a href="https://github.com/huaize2020/awesome-nodejs" rel="external nofollow noopener noreferrer" target="_blank">开源项目</a>收集整理的一些很有用、很酷的 Node.js 包。强烈推荐给大家。喜欢的话，别忘了去 <a href="https://github.com/huaize2020/awesome-nodejs" rel="external nofollow noopener noreferrer" target="_blank">Github</a> 上 star 哦。<a id="more"></a></p>
+<h2 id="Web框架"><a href="#Web框架" class="headerlink" title="Web框架"></a>Web框架</h2><ul>
+<li><a href="https://github.com/expressjs/express" rel="external nofollow noopener noreferrer" target="_blank">Express</a> - Web应用程序框架，为构建单页和多页以及混合Web应用程序提供了一组强大的功能。</li>
+<li><a href="https://github.com/zeit/next.js" rel="external nofollow noopener noreferrer" target="_blank">Next.js</a> - React服务端渲染框架。</li>
+<li><a href="https://github.com/blitz-js/blitz" rel="external nofollow noopener noreferrer" target="_blank">blitz</a> - 全栈 React 框架——建立在 Next.js 之上。</li>
+<li><a href="https://github.com/meteor/meteor" rel="external nofollow noopener noreferrer" target="_blank">Meteor</a> - 超简单，无处不在的数据库，在线数据，纯Javascript Web框架。 <em>（你也许会喜欢 <a href="https://github.com/Urigo/awesome-meteor" rel="external nofollow noopener noreferrer" target="_blank">awesome-meteor</a>)</em></li>
+<li><a href="https://github.com/nuxt/nuxt.js" rel="external nofollow noopener noreferrer" target="_blank">Nuxt.js</a> - Vue服务端渲染框架。</li>
+<li><a href="https://github.com/nestjs/nest" rel="external nofollow noopener noreferrer" target="_blank">Nest</a> -受Angular启发的框架，用于构建高效且可扩展的服务器端应用程序。<em>(你也许会喜欢 <a href="https://github.com/juliandavidmr/awesome-nestjs" rel="external nofollow noopener noreferrer" target="_blank">awesome-nestjs</a>)</em></li>
+<li><a href="https://github.com/cellbang/malagu" rel="external nofollow noopener noreferrer" target="_blank">Malagu</a> - Malagu 是基于 TypeScript 的 Serverless First、可扩展和组件化的应用框架。</li>
+<li><a href="https://github.com/koajs/koa" rel="external nofollow noopener noreferrer" target="_blank">Koa</a> - 由Express背后的团队设计的框架，旨在为Web应用程序和API提供更小，更富表现力和更强大的基础。</li>
+<li><a href="https://github.com/balderdashy/sails" rel="external nofollow noopener noreferrer" target="_blank">sails</a> - Node.js实时MVC框架。</li>
+<li><a href="https://github.com/fastify/fastify" rel="external nofollow noopener noreferrer" target="_blank">Fastify</a> - 快速和低开销的Web框架。</li>
+<li><a href="https://github.com/hapijs/hapi" rel="external nofollow noopener noreferrer" target="_blank">Hapi</a> - 用于创建应用和服务的框架。</li>
+<li><a href="https://github.com/eggjs/egg" rel="external nofollow noopener noreferrer" target="_blank">Egg</a> - 为企业级框架和应用而生。</li>
+<li><a href="https://github.com/feathersjs/feathers" rel="external nofollow noopener noreferrer" target="_blank">Feathers</a> - 基于Express精神构建的微服务框架。</li>
+<li><a href="https://github.com/strongloop/loopback" rel="external nofollow noopener noreferrer" target="_blank">LoopBack</a> - 用于创建REST API并轻松连接到后端数据源的强大框架。</li>
+<li><a href="https://github.com/restify/node-restify" rel="external nofollow noopener noreferrer" target="_blank">Restify</a> - 使你能够构建正确的REST Web服务。</li>
+<li><a href="https://github.com/thinkjs/thinkjs" rel="external nofollow noopener noreferrer" target="_blank">ThinkJS</a> - 支持ES2015 +的框架，WebSockets，REST API。</li>
+<li><a href="https://github.com/midwayjs/midway" rel="external nofollow noopener noreferrer" target="_blank">Midway</a> - 一个面向未来的云端一体 Node.js 框架。</li>
+<li><a href="https://github.com/totaljs/framework" rel="external nofollow noopener noreferrer" target="_blank">total.js</a> - 使用纯JavaScript编写的Node.js框架，类似PHP’s Laravel或Python’s Django或ASP.NET MVC</li>
+<li><a href="http://adonisjs.com/" rel="external nofollow noopener noreferrer" target="_blank">AdonisJs</a> - 基于依赖注入和IoC容器的坚实基础构建的Node.js的真正MVC框架。</li>
+<li><a href="https://github.com/zeit/micro" rel="external nofollow noopener noreferrer" target="_blank">Micro</a> - 具有异步方法的简约微服务框架。</li>
+<li><a href="https://moleculer.services/" rel="external nofollow noopener noreferrer" target="_blank">Moleculer</a> - 快速而强大的微服务框架。</li>
+<li><a href="https://github.com/19majkel94/type-graphql" rel="external nofollow noopener noreferrer" target="_blank">TypeGraphQL</a> - 使用类和装饰器使用TypeScript创建GraphQL API的现代框架。</li>
+<li><a href="https://github.com/senecajs/seneca" rel="external nofollow noopener noreferrer" target="_blank">seneca</a> - 编写微服务的工具包。</li>
+<li><a href="https://github.com/alibaba/beidou" rel="external nofollow noopener noreferrer" target="_blank">beidou</a> - NodeJS &amp; React 同构框架，基于Egg.js开发。</li>
+<li><a href="https://github.com/marblejs/marble" rel="external nofollow noopener noreferrer" target="_blank">Marble.js</a> - 基于TypeScript和RxJS，用于构建服务端应用的函数响应式框架。</li>
+<li><a href="https://github.com/actionhero/actionhero" rel="external nofollow noopener noreferrer" target="_blank">ActionHero</a> - 用于为TCP套接字，WebSocket和HTTP客户端制作可重用和可扩展的API的框架。</li>
+<li><a href="https://github.com/ladjs/lad" rel="external nofollow noopener noreferrer" target="_blank">lad</a> - 最好的Node.js框架，由前Express和Koa团队成员创建。</li>
+<li><a href="https://github.com/talentlessguy/tinyhttp" rel="external nofollow noopener noreferrer" target="_blank">Tinyhttp</a> - 类Express更现代更快的Web框架。</li>
+<li><a href="https://github.com/darukjs/daruk" rel="external nofollow noopener noreferrer" target="_blank">daruk</a> - 基于 typescript 的 Node.js web 框架。</li>
+<li><a href="https://github.com/hemerajs/hemera" rel="external nofollow noopener noreferrer" target="_blank">Hemera</a> - 使用以下工具编写可靠且容错的微服务 <a href="https://nats.io/" rel="external nofollow noopener noreferrer" target="_blank">NATS</a>。</li>
+<li><a href="https://github.com/BackendStack21/restana" rel="external nofollow noopener noreferrer" target="_blank">restana</a> - 用于构建REST微服务的超快速和简约的框架。</li>
+<li><a href="https://github.com/sfast/zeronode" rel="external nofollow noopener noreferrer" target="_blank">Zeronode</a> - 最小的构建块，可实现可靠且容错的微服务。</li>
+</ul>
+<h2 id="Serverless"><a href="#Serverless" class="headerlink" title="Serverless"></a>Serverless</h2><ul>
+<li><a href="https://github.com/serverless/serverless" rel="external nofollow noopener noreferrer" target="_blank">serverless</a> - 无服务器框架 – 使用 AWS Lambda、Azure Functions、Google CloudFunctions 等无服务器架构构建 Web、移动和 IoT 应用程序。</li>
+<li><a href="https://github.com/cellbang/malagu" rel="external nofollow noopener noreferrer" target="_blank">Malagu</a> - Malagu 是基于 TypeScript 的 Serverless First、可扩展和组件化的应用框架。云厂商不锁定，目前支持 阿里云函数计算、腾讯云云函数、AWS Lambda、Verce 等等。</li>
+<li><a href="https://github.com/midwayjs/midway" rel="external nofollow noopener noreferrer" target="_blank">Midway</a> - 一个面向未来的云端一体 Node.js 框架。</li>
+</ul>
+<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><ul>
+<li><p><strong>通用</strong></p>
+</li>
+<li><p><a href="https://github.com/dmnd/dedent" rel="external nofollow noopener noreferrer" target="_blank">dedent</a> - ES6模板字符串函数，用于去除多行字符串的缩进。</p>
+</li>
+<li><a href="https://github.com/sindresorhus/camelcase" rel="external nofollow noopener noreferrer" target="_blank">camelcase</a> - 将破折号/点号/下划线/空格分隔的字符串转换为驼峰式, 案例：foo-bar→fooBar。</li>
+<li><a href="https://github.com/sindresorhus/string-width" rel="external nofollow noopener noreferrer" target="_blank">string-width</a> - 获取字符串的可视宽度-显示字符串所需的列数。</li>
+<li><a href="https://github.com/sindresorhus/decamelize" rel="external nofollow noopener noreferrer" target="_blank">decamelize</a> - 将驼峰式字符串转化成小写带分隔符带字符串, 案例：unicornRainbow → unicorn_rainbow</li>
+<li><a href="https://github.com/sindresorhus/detect-indent" rel="external nofollow noopener noreferrer" target="_blank">detect-indent</a> - 检查代码缩进。</li>
+<li><a href="https://github.com/sindresorhus/string-length" rel="external nofollow noopener noreferrer" target="_blank">string-length</a> - 获取字符串的真实长度 - 通过正确计算星号并忽略ansi转义码。</li>
+<li><a href="https://github.com/sindresorhus/strip-indent" rel="external nofollow noopener noreferrer" target="_blank">strip-indent</a> - 将字符串每一行中前置的空格删除。</li>
+<li><a href="https://github.com/sindresorhus/strip-bom" rel="external nofollow noopener noreferrer" target="_blank">strip-bom</a> - 从字符串中删除UTF-8字节顺序标记（BOM）。</li>
+<li><a href="https://github.com/sindresorhus/indent-string" rel="external nofollow noopener noreferrer" target="_blank">indent-string</a> - 将字符串每一行缩进。</li>
+<li><a href="https://github.com/sindresorhus/redent" rel="external nofollow noopener noreferrer" target="_blank">redent</a> - 去除多余的缩进并缩进字符串。</li>
+<li><a href="https://github.com/sindresorhus/normalize-newline" rel="external nofollow noopener noreferrer" target="_blank">normalize-newline</a> - Normalize the newline characters in a string to <code>\n</code>.</li>
+<li><a href="https://github.com/jamiebuilds/min-indent" rel="external nofollow noopener noreferrer" target="_blank">min-indent</a> - 取每一行最少前置空格数。</li>
+<li><a href="https://github.com/sindresorhus/trim-right" rel="external nofollow noopener noreferrer" target="_blank">trim-right</a> - 与 String#trim() 类似，但仅删除右侧的空格。</li>
+<li><a href="https://github.com/sindresorhus/splice-string" rel="external nofollow noopener noreferrer" target="_blank">splice-string</a> - 移除或替换字符串的一部分。类似<code>Array#splice</code>.</li>
+</ul>
+<ul>
+<li><strong>国际化</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/i18next/i18next" rel="external nofollow noopener noreferrer" target="_blank">i18next</a> - 国际化框架。</li>
+<li><a href="https://github.com/mashpie/i18n-node" rel="external nofollow noopener noreferrer" target="_blank">i18n-node</a> - 具有动态JSON存储的简单翻译模块。</li>
+<li><a href="https://github.com/nodeca/babelfish" rel="external nofollow noopener noreferrer" target="_blank">babelfish</a> - 适用于JavaScript的人性化i18n（node.js +浏览器）。</li>
+</ul>
+<ul>
+<li><strong>唯一ID</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/ai/nanoid" rel="external nofollow noopener noreferrer" target="_blank">nanoid</a> - 小巧、安全、URL友好、唯一的字符串ID生成器。</li>
+<li><a href="https://github.com/uuidjs/uuid" rel="external nofollow noopener noreferrer" target="_blank">uuid</a> - 在JavaScript中生成符合RFC规范的UUID。</li>
+<li><a href="https://github.com/dylang/shortid" rel="external nofollow noopener noreferrer" target="_blank">shortid</a> - 短ID生成器。 网址友好。 不可预测的。 集群兼容。</li>
+<li><a href="https://github.com/ulid/javascript" rel="external nofollow noopener noreferrer" target="_blank">ulid</a> - 通用唯一词典分类排序标识符。</li>
+<li><a href="https://github.com/pnegri/uuid-js" rel="external nofollow noopener noreferrer" target="_blank">uuid-js</a> - 用于生成和解析 UUID、TimeUUID 并根据日期生成 TimeUUID 以供范围选择。</li>
+<li><a href="https://github.com/rse/pure-uuid" rel="external nofollow noopener noreferrer" target="_blank">pure-uuid</a> - 基于纯JavaScript全局唯一ID(UUID)。</li>
+</ul>
+<ul>
+<li><strong>编码/解码</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/mathiasbynens/he" rel="external nofollow noopener noreferrer" target="_blank">he</a> - HTML实体编码器/解码器。</li>
+<li><a href="https://github.com/ashtuchkin/iconv-lite" rel="external nofollow noopener noreferrer" target="_blank">iconv-lite</a> - 转换字符编码。</li>
+<li><a href="https://github.com/aadsm/jschardet" rel="external nofollow noopener noreferrer" target="_blank">jschardet</a> - JavaScript编码自动识别 (Python版chardet的实现)。</li>
+</ul>
+<ul>
+<li><strong>差异对比</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/kpdecker/jsdiff" rel="external nofollow noopener noreferrer" target="_blank">jsdiff</a> - 一种JavaScript文本差异实现。</li>
+<li><a href="https://github.com/cosmicanant/recursive-diff" rel="external nofollow noopener noreferrer" target="_blank">recursive-diff</a> - 查找两个JavaScript对象的差异，支持数组、数字、日期和其他原始数据类型。</li>
+</ul>
+<ul>
+<li><strong>其他</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/kurolabs/stegcloak" rel="external nofollow noopener noreferrer" target="_blank">StegCloak</a> - 基于纯JavaScript开发的隐写功能模块，StegCloak可以对文本中的机密信息进行压缩和加密，然后再使用特殊的Unicode不可见字符来隐藏它。</li>
+<li><a href="https://github.com/nodeca/unhomoglyph" rel="external nofollow noopener noreferrer" target="_blank">unhomoglyph</a> - 规范视觉上相似的unicode字符。</li>
+</ul>
+<h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><ul>
+<li><a href="https://github.com/adamwdraper/Numeral-js" rel="external nofollow noopener noreferrer" target="_blank">Numeral.js</a> - 格式化和操作数字。</li>
+<li><a href="https://github.com/MikeMcl/bignumber.js" rel="external nofollow noopener noreferrer" target="_blank">bignumber.js</a> - 用于任意精度十进制和非十进制算术的 JavaScript 库。</li>
+<li><a href="https://github.com/MikeMcl/decimal.js" rel="external nofollow noopener noreferrer" target="_blank">decimal.js</a> - JavaScript的任意精度的十进制类型。</li>
+<li><a href="https://github.com/MikeMcl/big.js" rel="external nofollow noopener noreferrer" target="_blank">big.js</a> - 一个小型，快速的JavaScript库，用于任意精度的十进制算术运算。</li>
+<li><a href="https://github.com/sindresorhus/round-to" rel="external nofollow noopener noreferrer" target="_blank">round-to</a> - 将数字四舍五入到指定的小数位数：<code>1.234</code>→1.2`。</li>
+<li><a href="https://github.com/sindresorhus/unique-random" rel="external nofollow noopener noreferrer" target="_blank">unique-random</a> - 生成连续唯一的随机数。</li>
+<li><a href="https://github.com/sindresorhus/random-int" rel="external nofollow noopener noreferrer" target="_blank">random-int</a> - 生成随机整数。</li>
+<li><a href="https://github.com/sindresorhus/random-float" rel="external nofollow noopener noreferrer" target="_blank">random-float</a> - 生成随机浮点数。</li>
+</ul>
+<h2 id="数学运算"><a href="#数学运算" class="headerlink" title="数学运算"></a>数学运算</h2><ul>
+<li><a href="https://github.com/josdejong/mathjs" rel="external nofollow noopener noreferrer" target="_blank">mathjs</a> - 广泛的数学运算库。</li>
+<li><a href="https://github.com/scijs/ndarray" rel="external nofollow noopener noreferrer" target="_blank">ndarray</a> - 多维数组。</li>
+<li><a href="https://github.com/fibo/algebra" rel="external nofollow noopener noreferrer" target="_blank">algebra</a> - 代数结构。</li>
+<li><a href="https://github.com/nodeca/multimath" rel="external nofollow noopener noreferrer" target="_blank">multimath</a> - 在WebAssembly和JS中进行快速图像数学运算。</li>
+</ul>
+<h2 id="日期和时间"><a href="#日期和时间" class="headerlink" title="日期和时间"></a>日期和时间</h2><ul>
+<li><a href="https://github.com/moment/moment" rel="external nofollow noopener noreferrer" target="_blank">moment</a> - 解析、校验、操作和显示日期。</li>
+<li><a href="https://github.com/iamkun/dayjs" rel="external nofollow noopener noreferrer" target="_blank">dayjs</a> - 仅2KB，不可变的日期时间库。使用与Moment.js同样的API，Moment.js的替代库。</li>
+<li><a href="https://github.com/date-fns/date-fns" rel="external nofollow noopener noreferrer" target="_blank">date-fns</a> - 现代JavaScript日期工具库。</li>
+<li><a href="https://github.com/moment/luxon" rel="external nofollow noopener noreferrer" target="_blank">luxon</a> - 用于处理日期和时间的库。</li>
+<li><a href="https://github.com/hustcc/timeago.js" rel="external nofollow noopener noreferrer" target="_blank">timeago.js</a> - timeago.js是一个很小的（2.0 kb）库，用于使用 *** time ago 语句格式化日期。</li>
+<li><a href="https://github.com/vercel/ms" rel="external nofollow noopener noreferrer" target="_blank">ms</a> - 毫秒转换工具。</li>
+<li><a href="https://github.com/felixge/node-dateformat" rel="external nofollow noopener noreferrer" target="_blank">dateformat</a> - 日期格式化。</li>
+<li><a href="https://github.com/sindresorhus/pretty-ms" rel="external nofollow noopener noreferrer" target="_blank">pretty-ms</a> - 将毫秒转换为人类可读的字符串，如: <code>1337000000</code> → <code>15d 11h 23m 20s</code>。</li>
+<li><a href="https://github.com/samsonjs/strftime" rel="external nofollow noopener noreferrer" target="_blank">strftime</a> - JavaScript版时间格式化Strftime。</li>
+<li><a href="https://github.com/wadey/node-microtime" rel="external nofollow noopener noreferrer" target="_blank">node-microtime</a> - 以微秒为单位获取当前时间。</li>
+<li><a href="https://github.com/JerrySievert/date-utils" rel="external nofollow noopener noreferrer" target="_blank">date-utils</a> - 用于Node.js和浏览器的日期垫片（Polyfills）。</li>
+<li><a href="https://github.com/robrich/pretty-hrtime" rel="external nofollow noopener noreferrer" target="_blank">pretty-hrtime</a> - 将process.hrtime()的结果转换为人可读性的字符串。</li>
+<li><a href="https://github.com/node-modules/humanize-ms" rel="external nofollow noopener noreferrer" target="_blank">humanize-ms</a> - 将人类可读的时间转换为毫秒。</li>
+</ul>
+<h2 id="正则-通配符匹配"><a href="#正则-通配符匹配" class="headerlink" title="正则/通配符匹配"></a>正则/通配符匹配</h2><ul>
+<li><a href="https://github.com/pillarjs/path-to-regexp" rel="external nofollow noopener noreferrer" target="_blank">path-to-regexp</a> - 将路径字符串（如<code>/user/:name</code>）转化为正则。</li>
+<li><a href="https://github.com/isaacs/minimatch" rel="external nofollow noopener noreferrer" target="_blank">minimatch</a> - 最小匹配工具。</li>
+<li><a href="https://github.com/micromatch/micromatch" rel="external nofollow noopener noreferrer" target="_blank">micromatch</a> - 高度优化的通配符和全局匹配库。更快，直接替换到 minimatch 和 multimatch。由webpack、babel core、yarn、jest、browser-sync、documentation.js、stylelint、nyc、ava以及许多其他资源使用！</li>
+<li><a href="https://github.com/fent/randexp.js" rel="external nofollow noopener noreferrer" target="_blank">randexp.js</a> - 根据给定的正则表达式，生成随机字符串。</li>
+<li><a href="https://github.com/substack/safe-regex" rel="external nofollow noopener noreferrer" target="_blank">safe-regex</a> - 检测可能是灾难性的、指数时间的正则表达式。</li>
+<li><a href="https://github.com/sindresorhus/matcher" rel="external nofollow noopener noreferrer" target="_blank">matcher</a> - 简单通配符匹配。</li>
+<li><a href="https://github.com/sindresorhus/escape-string-regexp" rel="external nofollow noopener noreferrer" target="_blank">escape-string-regexp</a> - 转义特殊正则字符。</li>
+<li><a href="https://github.com/sindresorhus/multimatch" rel="external nofollow noopener noreferrer" target="_blank">multimatch</a> - 扩展 minimatch.match() 以支持多种模式。</li>
+<li><a href="https://github.com/sindresorhus/execall" rel="external nofollow noopener noreferrer" target="_blank">execall</a> - 在字符串中查找多个RegExp匹配项。</li>
+</ul>
+<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><ul>
+<li><a href="https://github.com/medialize/URI.js" rel="external nofollow noopener noreferrer" target="_blank">URI.js</a> - URL转换库。</li>
+<li><a href="https://github.com/ljharb/qs" rel="external nofollow noopener noreferrer" target="_blank">qs</a> - 请求字符串解析器。</li>
+<li><a href="https://github.com/sindresorhus/query-string" rel="external nofollow noopener noreferrer" target="_blank">query-string</a> - 解析和字符串化URL查询字符串。</li>
+<li><a href="https://github.com/unshiftio/url-parse" rel="external nofollow noopener noreferrer" target="_blank">url-parse</a> - 轻量URL解析器，可跨Node.js和浏览器环境无缝运行。</li>
+<li><a href="https://github.com/sindresorhus/normalize-url" rel="external nofollow noopener noreferrer" target="_blank">normalize-url</a> - 规范化URL.</li>
+<li><a href="https://github.com/snd/url-pattern" rel="external nofollow noopener noreferrer" target="_blank">url-pattern</a> - 比正则表达式更易匹配URL和其他字符串，将字符串转化成数据 或 将数据转换成字符串。</li>
+<li><a href="https://github.com/GoogleChromeLabs/native-url" rel="external nofollow noopener noreferrer" target="_blank">native-url</a> - 使用内建URL API实现的NodeJS URL模块。</li>
+<li><a href="https://github.com/jfromaniello/url-join" rel="external nofollow noopener noreferrer" target="_blank">url-join</a> - 将所有参数连接在一起，并将结果url规范化。</li>
+<li><a href="https://github.com/sindresorhus/humanize-url" rel="external nofollow noopener noreferrer" target="_blank">humanize-url</a> - 使URL更可读: <a href="http://sindresorhus.com" rel="external nofollow noopener noreferrer" target="_blank">http://sindresorhus.com</a> → sindresorhus.com。</li>
+<li><a href="https://github.com/pillarjs/parseurl" rel="external nofollow noopener noreferrer" target="_blank">parseurl</a> - 使用记忆化方式解析URL.</li>
+<li><a href="https://github.com/sindresorhus/file-url" rel="external nofollow noopener noreferrer" target="_blank">file-url</a> - 将文件路径转化为文件URL: <code>unicorn.jpg</code> → <code>file:///Users/sindresorhus/unicorn.jpg</code></li>
+<li><a href="https://github.com/pillarjs/encodeurl" rel="external nofollow noopener noreferrer" target="_blank">encodeurl</a> - 将URL编码为”百分比”形式，不编码已编码部分。</li>
+</ul>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><ul>
+<li><a href="https://github.com/json5/json5" rel="external nofollow noopener noreferrer" target="_blank">json5</a> - JSON5是对JSON的扩展，其目的是能够更加容易的阅读和编写。</li>
+<li><a href="https://github.com/benjamine/jsondiffpatch" rel="external nofollow noopener noreferrer" target="_blank">jsondiffpatch</a> - 对比JSON对象，并生成差异和Patch信息。</li>
+<li><a href="https://github.com/json-schema-faker/json-schema-faker" rel="external nofollow noopener noreferrer" target="_blank">json-schema-faker</a> - JSON-Schema + 假数据生成器。</li>
+<li><a href="https://github.com/fastify/fast-json-stringify" rel="external nofollow noopener noreferrer" target="_blank">fast-json-stringify</a> - 比JSON.stringify()快2倍。</li>
+<li><a href="https://github.com/jprichardson/node-jsonfile" rel="external nofollow noopener noreferrer" target="_blank">jsonfile</a> - 轻松读写JSON文件。</li>
+<li><a href="https://github.com/jsonata-js/jsonata" rel="external nofollow noopener noreferrer" target="_blank">jsonata</a> - JSONata 查询和转换语言 - <a href="http://jsonata.org" rel="external nofollow noopener noreferrer" target="_blank">http://jsonata.org</a></li>
+<li><a href="https://github.com/substack/json-stable-stringify" rel="external nofollow noopener noreferrer" target="_blank">json-stable-stringify</a> - 具有自定义排序功能的确定性JSON.stringify(), 可以从字符串化结果中获取确定性哈希值。</li>
+<li><a href="https://github.com/sindresorhus/strip-json-comments" rel="external nofollow noopener noreferrer" target="_blank">strip-json-comments</a> - 去除JSON文件中的注释。让你可以在JSON中使用注释。</li>
+<li><a href="https://github.com/moll/json-stringify-safe" rel="external nofollow noopener noreferrer" target="_blank">json-stringify-safe</a> - 类似于JSON.stringify，但不会引发循环引用。</li>
+<li><a href="https://github.com/sindresorhus/load-json-file" rel="external nofollow noopener noreferrer" target="_blank">load-json-file</a> - 读取并解析JSON文件。</li>
+<li><a href="https://github.com/sindresorhus/write-json-file" rel="external nofollow noopener noreferrer" target="_blank">write-json-file</a> - 序列化并写入JSON文件。</li>
+<li><a href="https://github.com/epoberezkin/fast-json-stable-stringify" rel="external nofollow noopener noreferrer" target="_blank">fast-json-stable-stringify</a> - 确定性JSON.stringify() - 比 @substack 的 json-stable-stringify 更快的版本，不带jsonify。</li>
+<li><a href="https://github.com/aligay/jsonuri" rel="external nofollow noopener noreferrer" target="_blank">jsonuri</a> - 使用”URI样式“的方法来操作数据。</li>
+</ul>
+<h2 id="图像处理"><a href="#图像处理" class="headerlink" title="图像处理"></a>图像处理</h2><ul>
+<li><a href="https://github.com/lovell/sharp" rel="external nofollow noopener noreferrer" target="_blank">sharp</a> - 调整JPEG，PNG，WebP和TIFF格式图像大小的最快模块。</li>
+<li><a href="https://github.com/oliver-moran/jimp" rel="external nofollow noopener noreferrer" target="_blank">jimp</a> - 纯JavaScript中的图像处理。</li>
+<li><a href="https://github.com/aheckmann/gm" rel="external nofollow noopener noreferrer" target="_blank">gm</a> - GraphicsMagick 和 ImageMagick 封装。</li>
+<li><a href="https://github.com/soldair/node-qrcode" rel="external nofollow noopener noreferrer" target="_blank">qrcode</a> - 二维码和条形码生成器。</li>
+<li><a href="https://github.com/mapbox/pixelmatch" rel="external nofollow noopener noreferrer" target="_blank">pixelmatch</a> - 最小、最简单、最快的 JavaScript 像素级图像比较库。</li>
+<li><a href="https://github.com/rsmbl/Resemble.js" rel="external nofollow noopener noreferrer" target="_blank">Resemble.js</a> - 图像分析和比较。</li>
+<li><a href="https://github.com/nodeca/pica" rel="external nofollow noopener noreferrer" target="_blank">pica</a> - 使用纯JS中的高质量和快速调整大小（lanczos3）。 当不允许像素化时替代canvas drawImage()。</li>
+<li><a href="https://github.com/cozmo/jsQR" rel="external nofollow noopener noreferrer" target="_blank">jsQR</a> - 一个纯javascript的二维码读取库。 该库接收原始图像，并将定位、提取和解析其中发现的任何二维码。</li>
+<li><a href="https://github.com/EyalAr/lwip" rel="external nofollow noopener noreferrer" target="_blank">lwip</a> - 不需要ImageMagick的轻量级图像处理器.</li>
+<li><a href="https://github.com/nodeca/probe-image-size" rel="external nofollow noopener noreferrer" target="_blank">probe-image-size</a> - 无需完全下载即可获取大多数图像格式的大小.</li>
+<li><a href="https://github.com/deanm/omggif" rel="external nofollow noopener noreferrer" target="_blank">omggif</a> - GIF 89a编码解码器。</li>
+<li><a href="https://github.com/jpeg-js/jpeg-js" rel="external nofollow noopener noreferrer" target="_blank">jpeg-js</a> - 使用纯JavaScript的JPEG编码和解码器。</li>
+<li><a href="https://github.com/lukeapage/pngjs" rel="external nofollow noopener noreferrer" target="_blank">pngjs</a> - 简单的PNG编码解码器。</li>
+<li><a href="https://github.com/scijs/get-pixels" rel="external nofollow noopener noreferrer" target="_blank">get-pixels</a> - 将图像读入ndarray。</li>
+<li><a href="https://github.com/sindresorhus/image-type" rel="external nofollow noopener noreferrer" target="_blank">image-type</a> - 检测Buffer / Uint8Array的图像类型.</li>
+<li><a href="https://github.com/nowelium/node-bitmap" rel="external nofollow noopener noreferrer" target="_blank">node-bitmap</a> - 纯JavaScript Bitmap库。</li>
+</ul>
+<h2 id="视频处理"><a href="#视频处理" class="headerlink" title="视频处理"></a>视频处理</h2><ul>
+<li><a href="https://github.com/fluent-ffmpeg/node-fluent-ffmpeg" rel="external nofollow noopener noreferrer" target="_blank">fluent-ffmpeg</a> - FFMPEG的流畅API (<a href="http://www.ffmpeg.org" rel="external nofollow noopener noreferrer" target="_blank">http://www.ffmpeg.org</a>)</li>
+<li><a href="https://github.com/tnfe/FFCreator" rel="external nofollow noopener noreferrer" target="_blank">FFCreator</a> - 一个基于node.js的高速短视频加工库。</li>
+<li><a href="https://github.com/damianociarla/node-ffmpeg" rel="external nofollow noopener noreferrer" target="_blank">node-ffmpeg</a> - Nodejs版Ffmpeg模块。</li>
+</ul>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><ul>
+<li><a href="https://github.com/aui/font-spider" rel="external nofollow noopener noreferrer" target="_blank">font-spider</a> - 字蛛是一个智能 WebFont 压缩工具，它能自动分析出页面使用的 WebFont 并进行按需压缩。</li>
+</ul>
+<h2 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h2><ul>
+<li><a href="https://github.com/gka/chroma.js" rel="external nofollow noopener noreferrer" target="_blank">chroma</a> - JavaScript库，用于各种颜色处理。</li>
+<li><a href="https://github.com/davidmerfield/randomColor" rel="external nofollow noopener noreferrer" target="_blank">randomColor</a> - 一个小型脚本，用于优雅的生成颜色。</li>
+<li><a href="https://github.com/briangonzalez/rgbaster.js" rel="external nofollow noopener noreferrer" target="_blank">rgbaster</a> - 一个简单的库，用于从图像中提取主色。</li>
+<li><a href="https://github.com/bgrins/TinyColor" rel="external nofollow noopener noreferrer" target="_blank">TinyColor</a> - 快速、小型的颜色操作和转换库。</li>
+<li><a href="https://github.com/One-com/one-color" rel="external nofollow noopener noreferrer" target="_blank">onecolor</a> - 面向对象的JavaScript颜色解析器/计算工具包，支持RGB，HSV，HSL，CMYK和alpha通道。 颜色空间之间的转换是隐式进行的，并且所有方法都返回新对象，而不是对现有实例进行突变。 可在浏览器和Node.js中使用。</li>
+</ul>
+<h2 id="加解密"><a href="#加解密" class="headerlink" title="加解密"></a>加解密</h2><ul>
+<li><a href="https://github.com/brix/crypto-js" rel="external nofollow noopener noreferrer" target="_blank">crypto-js</a> - JavaScript加密标准库。</li>
+<li><a href="https://github.com/kelektiv/node.bcrypt.js" rel="external nofollow noopener noreferrer" target="_blank">bcrypt</a> - Node.js版Bcrypt。</li>
+<li><a href="https://github.com/travist/jsencrypt" rel="external nofollow noopener noreferrer" target="_blank">jsencrypt</a> - 用于执行OpenSSL RSA加密、解密和密钥生成的Javascript库。</li>
+<li><a href="https://github.com/dcodeIO/bcrypt.js" rel="external nofollow noopener noreferrer" target="_blank">bcrypt.js</a> - 经过优化bcrypt库，使用纯JavaScript且零依赖。</li>
+<li><a href="https://github.com/kjur/jsrsasign" rel="external nofollow noopener noreferrer" target="_blank">jsrsasign</a> - “jsrsasign”（RSA Sign JavaScript库）是一个开源的免费加密库，支持纯JavaScript中的RSA/RSAPSS/ECDSA/DSA签名/验证、ASN.1、PKCS#1/5/8私钥/公钥、X.509证书、CRL、OCSP、CMS SignedData、TimeStamp、CAdES JSON Web签名/令牌。</li>
+<li><a href="https://github.com/rzcoder/node-rsa" rel="external nofollow noopener noreferrer" target="_blank">node-rsa</a> - Node.js RSA库。</li>
+<li><a href="https://github.com/ricmoo/aes-js" rel="external nofollow noopener noreferrer" target="_blank">aes-js</a> - AES的纯JavaScript实现。</li>
+<li><a href="https://github.com/pvorb/node-md5" rel="external nofollow noopener noreferrer" target="_blank">node-md5</a> - 一个JavaScript函数，用于使用MD5对消息进行哈希处理。</li>
+<li><a href="https://github.com/sindresorhus/crypto-hash" rel="external nofollow noopener noreferrer" target="_blank">crypto-hash</a> - 微型哈希模块，在Node.js和浏览器中使用原生crypto API。</li>
+<li><a href="https://github.com/indutny/hash.js" rel="external nofollow noopener noreferrer" target="_blank">hash.js</a> - 使用纯JavaScript的哈希实现。</li>
+<li><a href="https://github.com/JuneAndGreen/sm-crypto" rel="external nofollow noopener noreferrer" target="_blank">sm-crypto</a> - sm2, sm3, sm4的JavaScript实现。</li>
+<li><a href="https://github.com/crypto-browserify/sha.js" rel="external nofollow noopener noreferrer" target="_blank">sha.js</a> - 使用纯JavaScript中的流式SHA哈希。</li>
+<li><a href="https://github.com/MauriceButler/cryptr" rel="external nofollow noopener noreferrer" target="_blank">cryptr</a> - 非常基础的加密和解密Node.js模块。</li>
+<li><a href="https://github.com/crypto-browserify/pbkdf2" rel="external nofollow noopener noreferrer" target="_blank">pbkdf2</a> - 在Node中具有任何受支持的哈希算法PBKDF2。</li>
+<li><a href="https://github.com/joyent/node-bcrypt-pbkdf" rel="external nofollow noopener noreferrer" target="_blank">bcrypt-pbkdf</a> - POpenBSD <code>bcrypt_pbkdf</code> Javascript实现。</li>
+</ul>
+<h2 id="流"><a href="#流" class="headerlink" title="流"></a>流</h2><ul>
+<li><a href="https://github.com/dominictarr/event-stream" rel="external nofollow noopener noreferrer" target="_blank">event-stream</a> - EventStream就像函数式编程遇到IO。</li>
+<li><a href="https://github.com/rvagg/through2" rel="external nofollow noopener noreferrer" target="_blank">through2</a> - 基于Node stream2 的封装进行转换以避免显式的子类化噪声。</li>
+<li><a href="https://github.com/dominictarr/JSONStream" rel="external nofollow noopener noreferrer" target="_blank">JSONStream</a> - 流JSON.parse和stringify。</li>
+<li><a href="https://github.com/maxogden/mississippi" rel="external nofollow noopener noreferrer" target="_blank">mississippi</a> - 有用的流实用程序模块的集合，用于更好编写的使用流的代码。</li>
+<li><a href="https://github.com/nodejs/readable-stream" rel="external nofollow noopener noreferrer" target="_blank">readable-stream</a> - 可读流。</li>
+<li><a href="https://github.com/mafintosh/pump" rel="external nofollow noopener noreferrer" target="_blank">pump</a> - 将流连接在一起，如果其中一个关闭，则关闭所有流。</li>
+<li><a href="https://github.com/maxogden/concat-stream" rel="external nofollow noopener noreferrer" target="_blank">concat-stream</a> - 可写流，它将字符串或数据连接起来并执行回调。</li>
+<li><a href="https://github.com/uhop/stream-json" rel="external nofollow noopener noreferrer" target="_blank">stream-json</a> - stream-json是用于创建自定义标准兼容JSON处理器的nod​​e.js流组件的集合，该组件所需的内存占用最少。它可以解析远远超出可用内存的JSON文件。甚至单个原始数据项（键，字符串和数字）也可以分段流式传输。还包括流式SAX启发式的基于事件的API。</li>
+<li><a href="https://github.com/dominictarr/split" rel="external nofollow noopener noreferrer" target="_blank">split</a> - 分解流并重新组装它，以便每一行都是一块。匹配器可以是字符串，也可以是正则表达式。</li>
+<li><a href="https://github.com/mafintosh/tar-stream" rel="external nofollow noopener noreferrer" target="_blank">tar-stream</a> - tar-stream是一个流式tar解析器和生成器。</li>
+<li><a href="https://github.com/jahewson/node-byline" rel="external nofollow noopener noreferrer" target="_blank">node-byline</a> - 逐行流阅读器。</li>
+<li><a href="https://github.com/maxogden/ndjson" rel="external nofollow noopener noreferrer" target="_blank">ndjson</a> - 流逐行分隔的json解析器 + 序列化器。</li>
+<li><a href="https://github.com/substack/oppressor" rel="external nofollow noopener noreferrer" target="_blank">oppressor</a> - 流HTTP压缩响应协商程序。</li>
+<li><a href="https://github.com/feross/multistream" rel="external nofollow noopener noreferrer" target="_blank">multistream</a> - 一种流，一个接一个地发出多个其他流（streams2）。</li>
+<li><a href="https://github.com/sindresorhus/get-stream" rel="external nofollow noopener noreferrer" target="_blank">get-stream</a> - 以字符串，缓冲区或数组的形式获取流。</li>
+<li><a href="https://github.com/samcday/node-stream-buffer" rel="external nofollow noopener noreferrer" target="_blank">node-stream-buffer</a> - 使用缓存的可读和可写流。</li>
+<li><a href="https://github.com/mcollina/split2" rel="external nofollow noopener noreferrer" target="_blank">split2</a> - 拆分stream3样式。</li>
+<li><a href="https://github.com/npm/fstream" rel="external nofollow noopener noreferrer" target="_blank">fstream</a> - 高级的Node.js文件操作流。</li>
+<li><a href="https://github.com/mafintosh/pumpify" rel="external nofollow noopener noreferrer" target="_blank">pumpify</a> - 使用泵和全双工，将一系列流合并为单个双工流。</li>
+<li><a href="https://github.com/freeall/progress-stream" rel="external nofollow noopener noreferrer" target="_blank">progress-stream</a> - 读取流的进度。</li>
+<li><a href="https://github.com/grncdr/merge-stream" rel="external nofollow noopener noreferrer" target="_blank">merge-stream</a> - 将多个流合并为一个交错流。</li>
+<li><a href="https://github.com/mafintosh/duplexify" rel="external nofollow noopener noreferrer" target="_blank">duplexify</a> - 将可写和可读流转换为具有异步初始化和stream1/streams2输入支持的stream2双工流。</li>
+<li><a href="https://github.com/sindresorhus/into-stream" rel="external nofollow noopener noreferrer" target="_blank">into-stream</a> - 将缓存/字符串/数组/对象转换为流。</li>
+<li><a href="https://github.com/teambition/merge2" rel="external nofollow noopener noreferrer" target="_blank">merge2</a> - 按顺序或并行的方式将多个流合并为一个流。</li>
+<li><a href="https://github.com/mafintosh/end-of-stream" rel="external nofollow noopener noreferrer" target="_blank">end-of-stream</a> - 当可读/可写/双工流已完成或失败时，调用回调。</li>
+<li><a href="https://github.com/bendrucker/stream-to-promise" rel="external nofollow noopener noreferrer" target="_blank">stream-to-promise</a> - 将流（可读或可写流）转换为Promise。</li>
+<li><a href="https://github.com/gagle/node-streamifier" rel="external nofollow noopener noreferrer" target="_blank">node-streamifier</a> - 将 Buffer/String 转换为可读流。</li>
+<li><a href="https://github.com/dominictarr/stream-spec" rel="external nofollow noopener noreferrer" target="_blank">stream-spec</a> - Stream的可执行规范（让测试流变得更容易）。</li>
+<li><a href="https://github.com/hughsk/from2" rel="external nofollow noopener noreferrer" target="_blank">from2</a> - ReadableStream的便捷封装，其灵感来自through2。</li>
+<li><a href="https://github.com/dominictarr/map-stream" rel="external nofollow noopener noreferrer" target="_blank">dmap-stream</a> - 基于Event-stream事件流重构。</li>
+<li><a href="https://github.com/substack/emit-stream" rel="external nofollow noopener noreferrer" target="_blank">emit-stream</a> - 将event-emiiters转换为流 和 将流转换为event-emiiters。</li>
+<li><a href="https://github.com/dominictarr/stream-combiner" rel="external nofollow noopener noreferrer" target="_blank">stream-combiner</a> - 将管道变成单个流。合并返回的流，写入第一个流并从最后一个流读取的流。</li>
+<li><a href="https://github.com/raynos/duplexer" rel="external nofollow noopener noreferrer" target="_blank">duplexer</a> - 创建一个双工流。</li>
+<li><a href="https://github.com/spion/promise-streams" rel="external nofollow noopener noreferrer" target="_blank">promise-streams</a> - Node.js流的集合，可以很好地与Promises (through, map, reduce等）一起使用。</li>
+<li><a href="https://github.com/maxogden/binary-split" rel="external nofollow noopener noreferrer" target="_blank">binary-split</a> - 快速的换行符（或任何分隔符）分隔符流。</li>
+<li><a href="https://github.com/substack/stream-combiner2" rel="external nofollow noopener noreferrer" target="_blank">stream-combiner2</a> - stream3的stream-combiner。</li>
+<li><a href="https://github.com/almost/through2-concurrent" rel="external nofollow noopener noreferrer" target="_blank">through2-concurrent</a> - 简单的Node.JS流（streams2）转换，可并行执行转换功能（可设置的最大并发数）。</li>
+<li><a href="https://github.com/mcollina/cloneable-readable" rel="external nofollow noopener noreferrer" target="_blank">cloneable-readable</a> - 安全地克隆可读流。</li>
+<li><a href="https://github.com/stream-utils/destroy" rel="external nofollow noopener noreferrer" target="_blank">destroy</a> - 如果可能，销毁流。</li>
+<li><a href="https://github.com/mafintosh/peek-stream" rel="external nofollow noopener noreferrer" target="_blank">peek-stream</a> - 转换流，可让您在决定如何解析前先窥视第一行。</li>
+<li><a href="https://github.com/substack/resumer" rel="external nofollow noopener noreferrer" target="_blank">resumer</a> - 通过流开始暂停，并在下一个tick恢复。</li>
+<li><a href="https://github.com/mafintosh/stream-each" rel="external nofollow noopener noreferrer" target="_blank">stream-each</a> - 迭代流中的所有数据。</li>
+<li><a href="https://github.com/mafintosh/flush-write-stream" rel="external nofollow noopener noreferrer" target="_blank">flush-write-stream</a> - 一种写入流构造函数，支持流完成之前调用的flush函数。</li>
+<li><a href="https://github.com/mafintosh/multi-write-stream" rel="external nofollow noopener noreferrer" target="_blank">multi-write-stream</a> - 创建一个可写流，其可写入多个其他可写流。</li>
+<li><a href="https://github.com/sindresorhus/first-chunk-stream" rel="external nofollow noopener noreferrer" target="_blank">first-chunk-stream</a> - 缓冲并转换流的前n个字节。</li>
+<li><a href="https://github.com/mafintosh/multi-read-stream" rel="external nofollow noopener noreferrer" target="_blank">multi-read-stream</a> - 可读流，它同时从多个可读流中读取。</li>
+<li><a href="https://github.com/parshap/node-stream-reduce" rel="external nofollow noopener noreferrer" target="_blank">node-stream-reduce</a> - 将流数据减少为单个值。</li>
+<li><a href="https://github.com/mafintosh/stream-shift" rel="external nofollow noopener noreferrer" target="_blank">stream-shift</a> - 返回流可读队列中的下一个缓冲区/对象。</li>
+<li><a href="https://github.com/floatdrop/stream-assert" rel="external nofollow noopener noreferrer" target="_blank">stream-assert</a> - 流的断言库。</li>
+<li><a href="https://github.com/schnittstabil/stream-from-promise" rel="external nofollow noopener noreferrer" target="_blank">stream-from-promise</a> - 根据Promise创建流。</li>
+<li><a href="https://github.com/lewisdiamond/stromjs" rel="external nofollow noopener noreferrer" target="_blank">stromjs</a> - 无依赖的流实用程序。流的Lodash。</li>
+<li><a href="https://github.com/suarasaur/exec-stream" rel="external nofollow noopener noreferrer" target="_blank">exec-stream</a> - 将流传入到子进程。</li>
+<li><a href="https://github.com/kikobeats/stream-callback" rel="external nofollow noopener noreferrer" target="_blank">stream-callback</a> – 将流转换为一个回调函数。</li>
+</ul>
+<h2 id="检测-判断"><a href="#检测-判断" class="headerlink" title="检测/判断"></a>检测/判断</h2><ul>
+<li><a href="https://github.com/arasatasaygin/is.js" rel="external nofollow noopener noreferrer" target="_blank">is.js</a> - 微型检查库。</li>
+<li><a href="https://github.com/then/is-promise" rel="external nofollow noopener noreferrer" target="_blank">is-promise</a> - 测试对象是否看起来像一个 Promises-a+ promise。</li>
+<li><a href="https://github.com/watson/is-ci" rel="external nofollow noopener noreferrer" target="_blank">is-ci</a> - 判断当前环境是否为CI服务器。</li>
+<li><a href="https://github.com/enricomarino/is" rel="external nofollow noopener noreferrer" target="_blank">is</a> - JavaScript类型测试库。</li>
+<li><a href="https://github.com/node-modules/is-type-of" rel="external nofollow noopener noreferrer" target="_blank">is-type-of</a> - Node.js完整类型判断。</li>
+<li><a href="https://github.com/sindresorhus/is-stream" rel="external nofollow noopener noreferrer" target="_blank">is-stream</a> - 判断对象是否为流对象。</li>
+<li><a href="https://github.com/wayfind/is-utf8" rel="external nofollow noopener noreferrer" target="_blank">is-utf8</a> - 判断Buffer对象是否UTF8编码。</li>
+<li><a href="https://github.com/isaacs/core-util-is" rel="external nofollow noopener noreferrer" target="_blank">core-util-is</a> - Node.js核心工具 util.is* 函数。</li>
+<li><a href="https://github.com/sindresorhus/is-ip" rel="external nofollow noopener noreferrer" target="_blank">is-ip</a> - 检查字符串是否为IP地址。</li>
+<li><a href="https://github.com/rvagg/isstream" rel="external nofollow noopener noreferrer" target="_blank">isstream</a> - 判断对象是否为流对象。</li>
+<li><a href="https://github.com/miguelmota/is-class" rel="external nofollow noopener noreferrer" target="_blank">is-class</a> - 判断函数是否为 ES6类(class) 类型。</li>
+<li><a href="https://github.com/isaacs/isexe" rel="external nofollow noopener noreferrer" target="_blank">isexe</a> - 检查文件是否可执行文件。</li>
+<li><a href="https://github.com/juliangruber/is-type" rel="external nofollow noopener noreferrer" target="_blank">is-type</a> - Node.js核心类型判断。</li>
+<li><a href="https://github.com/imanhodjaev/is-md5" rel="external nofollow noopener noreferrer" target="_blank">is-md5</a> - JavaScript实用程序，用于检查字符串是否为md5加密。</li>
+<li><a href="https://github.com/inspect-js/is-core-module" rel="external nofollow noopener noreferrer" target="_blank">is-core-module</a> - 判断一个说明符 是否为 Node.js 核心模块。</li>
+</ul>
+<h2 id="数据校验"><a href="#数据校验" class="headerlink" title="数据校验"></a>数据校验</h2><ul>
+<li><a href="https://github.com/validatorjs/validator.js" rel="external nofollow noopener noreferrer" target="_blank">validator.js</a> - 字符串校验库。</li>
+<li><a href="https://github.com/hapijs/joi" rel="external nofollow noopener noreferrer" target="_blank">joi</a> - 基于JavaScript对象的对象模式描述语言和验证器。</li>
+<li><a href="https://github.com/yiminghe/async-validator" rel="external nofollow noopener noreferrer" target="_blank">async-validator</a> - 异步校验。</li>
+<li><a href="https://github.com/typestack/class-validator" rel="external nofollow noopener noreferrer" target="_blank">class-validator</a> - 基于装饰器属性校验的类校验器。</li>
+<li><a href="https://github.com/epoberezkin/ajv" rel="external nofollow noopener noreferrer" target="_blank">ajv</a> - 最快的JSON Schema验证器。支持JSON Schema draft-04/06/07/2019-09/2020-12 and JSON类型定义(RFC8927)。</li>
+<li><a href="https://github.com/ianstormtaylor/superstruct" rel="external nofollow noopener noreferrer" target="_blank">Superstruct</a> - 用简单和可组合的方式在JavaScript和TypeScript中校验数据。</li>
+<li><a href="https://github.com/imbrn/v8n" rel="external nofollow noopener noreferrer" target="_blank">v8n</a> - 流畅的JavaScript校验库。</li>
+<li><a href="https://github.com/oussamahamdaoui/forgJs" rel="external nofollow noopener noreferrer" target="_blank">forgJs</a> - 轻量的JavaScript对象校验器。</li>
+<li><a href="https://github.com/tdegrunt/jsonschema" rel="external nofollow noopener noreferrer" target="_blank">jsonschema</a> - JSON Schema校验器.</li>
+<li><a href="https://github.com/mikeerickson/validatorjs" rel="external nofollow noopener noreferrer" target="_blank">validatorjs</a> - 受Laravel的校验器启发，在浏览器和Node.JS上的数据校验库。</li>
+<li><a href="https://github.com/mafintosh/is-my-json-valid" rel="external nofollow noopener noreferrer" target="_blank">is-my-json-valid</a> - 极快的JSON Schema校验工具。</li>
+<li><a href="https://github.com/nettofarah/property-validator" rel="external nofollow noopener noreferrer" target="_blank">property-validator</a> - 用于JavaScript、Node和Express的易用的属性校验工具。</li>
+<li><a href="https://github.com/Atinux/schema-inspector" rel="external nofollow noopener noreferrer" target="_blank">schema-inspector</a> - 用于净化和验证JS对象的强大工具。</li>
+</ul>
+<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><ul>
+<li><a href="https://github.com/lodash/lodash" rel="external nofollow noopener noreferrer" target="_blank">lodash</a> - 可提供一致性、自定义、性能和其他功能的实用程序库，比Underscore.js更好更快。</li>
+<li><a href="https://github.com/facebook/immutable-js" rel="external nofollow noopener noreferrer" target="_blank">immutable</a> - 不可变的数据集合。</li>
+<li><a href="https://github.com/reactivex/rxjs" rel="external nofollow noopener noreferrer" target="_blank">RxJS</a> - 用于转换、组合和查询各种数据的函数式响应式库。</li>
+<li><a href="https://github.com/ramda/ramda" rel="external nofollow noopener noreferrer" target="_blank">Ramda</a> - 实用程序库着重于通过自动计算和相反的参数顺序实现的灵活功能组合，避免数据变化。</li>
+<li><a href="https://github.com/immerjs/immer" rel="external nofollow noopener noreferrer" target="_blank">immer</a> - 函数式响应式编程。</li>
+<li><a href="https://github.com/baconjs/bacon.js" rel="external nofollow noopener noreferrer" target="_blank">Bacon.js</a> - 函数式响应式编程。</li>
+<li><a href="https://github.com/dtao/lazy.js" rel="external nofollow noopener noreferrer" target="_blank">Lazy.js</a> - 类似于lodash/underline的工具库，但具有惰性计算，在许多情况下可以转换为卓越的性能.</li>
+<li><a href="https://github.com/origamitower/folktale" rel="external nofollow noopener noreferrer" target="_blank">Folktale</a> - 一套用于JavaScript中的通用函数编程的库，它允许您编写优雅的、模块化的应用程序，并且bug更少及更强的重用性。</li>
+<li><a href="https://github.com/kefirjs/kefir" rel="external nofollow noopener noreferrer" target="_blank">Kefir.js</a> - 响应式库，专注于高性能和低内存使用。</li>
+<li><a href="https://github.com/mout/mout" rel="external nofollow noopener noreferrer" target="_blank">Mout</a> - 该库与其他现有解决方案之间最大的区别是，您可以选择只加载需要的模块/函数，而不需要额外开销。.</li>
+</ul>
+<h2 id="控制反转-依赖注入"><a href="#控制反转-依赖注入" class="headerlink" title="控制反转/依赖注入"></a>控制反转/依赖注入</h2><ul>
+<li><a href="https://github.com/inversify/InversifyJS" rel="external nofollow noopener noreferrer" target="_blank">InversifyJS</a> - 功能强大且轻便的控制反转容器。</li>
+<li><a href="https://github.com/mgechev/injection-js" rel="external nofollow noopener noreferrer" target="_blank">injection-js</a> - 5.1K中的JavaScript和TypeScript的依赖注入库。它提取自Angular的ReflectiveInjector，这意味着它设计合理，功能完整、快速、可靠且经过良好测试。</li>
+<li><a href="https://github.com/zhang740/power-di" rel="external nofollow noopener noreferrer" target="_blank">power-di</a> - 轻量的依赖注入库。</li>
+</ul>
+<h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h2><ul>
+<li><a href="https://github.com/shelljs/shelljs" rel="external nofollow noopener noreferrer" target="_blank">shelljs</a> - 跨平台Unix shell命令。</li>
+<li><a href="https://github.com/sindresorhus/execa" rel="external nofollow noopener noreferrer" target="_blank">execa</a> - 跨平台实现子进程执行 <code>child_process.{execFile,exec}</code>。</li>
+<li><a href="https://github.com/coreybutler/node-windows" rel="external nofollow noopener noreferrer" target="_blank">node-windows</a> - Node.js上支持的Windows脚本。如(daemons, eventlog, UAC等)。</li>
+<li><a href="https://github.com/shelljs/shx" rel="external nofollow noopener noreferrer" target="_blank">shx</a> - Node的可移植Shell命令。</li>
+<li><a href="https://github.com/sindresorhus/clipboardy" rel="external nofollow noopener noreferrer" target="_blank">clipboardy</a> - 跨平台的复制/粘贴。</li>
+<li><a href="https://github.com/IndigoUnited/node-cross-spawn" rel="external nofollow noopener noreferrer" target="_blank">cross-spawn</a> - 跨平台实现 <code>child_process.spawn()</code>。</li>
+<li><a href="https://github.com/darkguy2008/parallelshell" rel="external nofollow noopener noreferrer" target="_blank">parallelshell</a> - 并行运行多个 shell 命令。</li>
+<li><a href="https://github.com/sindresorhus/clipboard-cli" rel="external nofollow noopener noreferrer" target="_blank">clipboard-cli</a> - 跨平台的复制/粘贴。</li>
+<li><a href="https://github.com/ehmicky/gulp-execa" rel="external nofollow noopener noreferrer" target="_blank">gulp-execa</a> - 在Gulp中跨平台命令执行。</li>
+<li><a href="https://github.com/node-modules/runscript" rel="external nofollow noopener noreferrer" target="_blank">runscript</a> - 更容易的运行脚本命令。</li>
+<li><a href="https://github.com/zentrick/cross-spawn-promise" rel="external nofollow noopener noreferrer" target="_blank">cross-spawn-promise</a> - Promise化的cross-spawn。</li>
+<li><a href="https://github.com/tiaanduplessis/shell-exec" rel="external nofollow noopener noreferrer" target="_blank">shell-exec</a> - 通过系统Shell执行命令。</li>
+</ul>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li><a href="https://github.com/motdotla/dotenv" rel="external nofollow noopener noreferrer" target="_blank">dotenv</a> - 从 .env文件 加载用于nodejs项目的环境变量。</li>
+<li><a href="https://github.com/kentcdodds/cross-env" rel="external nofollow noopener noreferrer" target="_blank">cross-env</a> - 跨平台设置环境变量。</li>
+<li><a href="https://github.com/tabrindle/envinfo" rel="external nofollow noopener noreferrer" target="_blank">envinfo</a> - 生成关于您的开发环境的报告，用于调试和问题报告。</li>
+<li><a href="https://github.com/npm/node-which" rel="external nofollow noopener noreferrer" target="_blank">which</a> - 跨平台实现的Unix <code>which</code>.</li>
+<li><a href="https://github.com/sindresorhus/user-home" rel="external nofollow noopener noreferrer" target="_blank">user-home</a> - 跨平台获取用户home目录路径。</li>
+<li><a href="https://github.com/sindresorhus/username" rel="external nofollow noopener noreferrer" target="_blank">username</a> - 获取当前用户名。</li>
+<li><a href="https://github.com/npm/osenv" rel="external nofollow noopener noreferrer" target="_blank">osenv</a> - 跨平台环境变量。</li>
+<li><a href="https://github.com/sindresorhus/is-elevated" rel="external nofollow noopener noreferrer" target="_blank">is-elevated</a> - 检查进程是否以提升的权限运行。</li>
+</ul>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><ul>
+<li><a href="https://github.com/jonathanong/ee-first" rel="external nofollow noopener noreferrer" target="_blank">ee-first</a> - 获取一组EventEmitter和Event对中的第一个事件，然后对其进行清理。</li>
+</ul>
+<h2 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h2><ul>
+<li><p><strong>框架/解决方案</strong></p>
+</li>
+<li><p><a href="https://github.com/tj/commander.js" rel="external nofollow noopener noreferrer" target="_blank">Commander.js</a> - Node.JS命令行界面完整解决方案。</p>
+</li>
+<li><a href="https://github.com/yargs/yargs" rel="external nofollow noopener noreferrer" target="_blank">yargs</a> - 通用可交互命令行工具集合。</li>
+<li><a href="https://github.com/oclif/oclif" rel="external nofollow noopener noreferrer" target="_blank">oclif</a> - 基于Heroku开源Node.js CLI框架。</li>
+<li><a href="https://github.com/sindresorhus/meow" rel="external nofollow noopener noreferrer" target="_blank">meow</a> - CLI应用助手。</li>
+<li><a href="https://github.com/cacjs/cac" rel="external nofollow noopener noreferrer" target="_blank">cac</a> - 用于构建命令行应用的强大框架。</li>
+<li><a href="https://github.com/drew-y/cliffy" rel="external nofollow noopener noreferrer" target="_blank">Cliffy</a> - 可交互命令行框架。</li>
+<li><a href="https://github.com/node-modules/common-bin" rel="external nofollow noopener noreferrer" target="_blank">common-bin</a> - 基于yargs的命令行工具抽象，提供更方便的使用，支持async/generator。</li>
+</ul>
+<ul>
+<li><p><strong>命令行参数解析</strong></p>
+</li>
+<li><p><a href="https://github.com/substack/minimist" rel="external nofollow noopener noreferrer" target="_blank">minimist</a> - 命令行参数解析引擎。</p>
+</li>
+<li><a href="https://github.com/vercel/arg" rel="external nofollow noopener noreferrer" target="_blank">arg</a> - 简单的参数解析。</li>
+<li><a href="https://github.com/npm/nopt" rel="external nofollow noopener noreferrer" target="_blank">nopt</a> - Node/npm参数解析。</li>
+<li><a href="https://github.com/nodeca/argparse" rel="external nofollow noopener noreferrer" target="_blank">argparse</a> - Node.js CLI参数解析。</li>
+<li><a href="https://github.com/yargs/yargs-parser" rel="external nofollow noopener noreferrer" target="_blank">yargs-parser</a> - yargs在使用，优雅参数解析库.</li>
+</ul>
+<ul>
+<li><p><strong>Prompt提示</strong></p>
+</li>
+<li><p><a href="https://github.com/SBoudrias/Inquirer.js" rel="external nofollow noopener noreferrer" target="_blank">Inquirer.js</a> - 通用可交互命令行工具集合。</p>
+</li>
+<li><a href="https://github.com/terkelg/prompts" rel="external nofollow noopener noreferrer" target="_blank">prompts</a> - 轻量、美观、用户友好的交互式命令行提示。</li>
+<li><a href="https://github.com/enquirer/enquirer" rel="external nofollow noopener noreferrer" target="_blank">Enquirer</a> - 用户友好、直观且易于创建的时尚CLI提示。</li>
+<li><a href="https://github.com/moxystudio/node-promptly" rel="external nofollow noopener noreferrer" target="_blank">node-promptly</a> - 简单命令行提示实用程序。</li>
+</ul>
+<ul>
+<li><p><strong>进度条</strong></p>
+</li>
+<li><p><a href="https://github.com/visionmedia/node-progress" rel="external nofollow noopener noreferrer" target="_blank">progress</a> - Node.js的灵活ascii进度条。</p>
+</li>
+<li><a href="https://github.com/bvaughn/progress-estimator" rel="external nofollow noopener noreferrer" target="_blank">progress-estimator</a> - 打印进度条并估计完成Promise所需的时间。</li>
+<li><a href="https://github.com/AndiDittrich/Node.CLI-Progress" rel="external nofollow noopener noreferrer" target="_blank">cli-progress</a> - 在命令行/终端应用中轻松的使用进度条。</li>
+</ul>
+<ul>
+<li><p><strong>样式</strong></p>
+</li>
+<li><p><a href="https://github.com/chalk/chalk" rel="external nofollow noopener noreferrer" target="_blank">chalk</a> - 命令行字符串样式美化工具。</p>
+</li>
+<li><a href="https://github.com/sindresorhus/ora" rel="external nofollow noopener noreferrer" target="_blank">ora</a> - 优雅的命令行loading效果。</li>
+<li><a href="https://github.com/Marak/colors.js" rel="external nofollow noopener noreferrer" target="_blank">colors.js</a> - 获取Node.js控制台的颜色。</li>
+<li><a href="https://github.com/SamVerschueren/listr" rel="external nofollow noopener noreferrer" target="_blank">listr</a> - 命令行任务列表。</li>
+<li><a href="https://github.com/patorjk/figlet.js" rel="external nofollow noopener noreferrer" target="_blank">figlet.js</a> - 用 JavaScript 编写的 FIG，旨在完全实现 FIGfont 规范。</li>
+<li><a href="https://github.com/lukeed/kleur" rel="external nofollow noopener noreferrer" target="_blank">kleur</a> - 最快的Node.js库，使用ANSI颜色格式化命令行文本。</li>
+<li><a href="https://github.com/jorgebucaran/colorette" rel="external nofollow noopener noreferrer" target="_blank">colorette</a> - 在终端中轻松设置文本的颜色和样式。</li>
+<li><a href="https://github.com/gtanner/qrcode-terminal" rel="external nofollow noopener noreferrer" target="_blank">qrcode-terminal</a> - 命令行中显示二维码。</li>
+<li><a href="https://github.com/sindresorhus/boxen" rel="external nofollow noopener noreferrer" target="_blank">boxen</a> - 控制台中创建盒子。</li>
+<li><a href="https://github.com/sindresorhus/terminal-image" rel="external nofollow noopener noreferrer" target="_blank">terminal-image</a> - 在终端中展示图片。</li>
+<li><a href="https://github.com/sindresorhus/log-symbols" rel="external nofollow noopener noreferrer" target="_blank">log-symbols</a> - 为不同日志级别添加色彩图标。</li>
+<li><a href="https://github.com/bokub/gradient-string" rel="external nofollow noopener noreferrer" target="_blank">gradient-string</a> - 终端输出中漂亮的颜色渐变。</li>
+<li><a href="https://github.com/sindresorhus/figures" rel="external nofollow noopener noreferrer" target="_blank">figures</a> - Windows兜底的Unicode符号。</li>
+<li><a href="https://github.com/sindresorhus/terminal-link" rel="external nofollow noopener noreferrer" target="_blank">terminal-link</a> - 在终端中创建可点击的链接。</li>
+<li><a href="https://github.com/standard/snazzy" rel="external nofollow noopener noreferrer" target="_blank">snazzy</a> - 将 JavaScript 标准样式格式化为时尚（即时髦）输出。</li>
+<li><a href="https://github.com/timoxley/columnify" rel="external nofollow noopener noreferrer" target="_blank">columnify</a> - 创建适合控制台输出的基于文本的列。 支持单元格。</li>
+<li><a href="https://github.com/cli-table/cli-table3" rel="external nofollow noopener noreferrer" target="_blank">cli-table3</a> - 命令行的漂亮unicode表。</li>
+<li><a href="https://github.com/eldargab/easy-table" rel="external nofollow noopener noreferrer" target="_blank">easy-table</a> - 漂亮的文本表格。</li>
+<li><a href="https://github.com/notatestuser/treeify" rel="external nofollow noopener noreferrer" target="_blank">treeify</a> - 将javascript对象漂亮地打印为树。</li>
+<li><a href="https://github.com/marvinhagemeister/kolorist" rel="external nofollow noopener noreferrer" target="_blank">kolorist</a> - 使用输入和输出色彩化的小工具。</li>
+<li><a href="https://github.com/aantthony/console-png" rel="external nofollow noopener noreferrer" target="_blank">console-png</a> - 在命令行输出中打印PNG图片。</li>
+</ul>
+<ul>
+<li><p><strong>编辑器</strong></p>
+</li>
+<li><p><a href="https://github.com/slap-editor/slap" rel="external nofollow noopener noreferrer" target="_blank">slap</a> - 基于命令行终端的类Sublime文本编辑器。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>其他</strong></p>
+</li>
+<li><p><a href="https://github.com/commitizen/cz-cli" rel="external nofollow noopener noreferrer" target="_blank">commitizen</a> - Commitizen命令行实用程序。</p>
+</li>
+<li><a href="https://github.com/yeoman/update-notifier" rel="external nofollow noopener noreferrer" target="_blank">update-notifier</a> - 为你的CLI应用提供的更新提示。</li>
+<li><a href="https://github.com/lukeed/console-clear" rel="external nofollow noopener noreferrer" target="_blank">console-clear</a> - 跨平台清空控制台。</li>
+</ul>
+<h2 id="Node-js管理工具"><a href="#Node-js管理工具" class="headerlink" title="Node.js管理工具"></a>Node.js管理工具</h2><ul>
+<li><a href="https://github.com/nvm-sh/nvm" rel="external nofollow noopener noreferrer" target="_blank">nvm</a> - Node.js版本管理工具。</li>
+<li><a href="https://github.com/coreybutler/nvm-windows" rel="external nofollow noopener noreferrer" target="_blank">nvm for Windows</a> - Node.js版本管理工具Windows版。</li>
+<li><a href="https://github.com/tj/n" rel="external nofollow noopener noreferrer" target="_blank">n</a> - Node.js版本管理工具。</li>
+<li><a href="https://github.com/Schniz/fnm" rel="external nofollow noopener noreferrer" target="_blank">fnm</a> - 快速、轻量的Node.js版本管理工具，由Rust构建。</li>
+<li><a href="https://github.com/isaacs/nave" rel="external nofollow noopener noreferrer" target="_blank">nave</a> - Node.js虚拟环境。</li>
+<li><a href="https://github.com/nodenv/nodenv" rel="external nofollow noopener noreferrer" target="_blank">nodenv</a> - 版本管理工具（类似Ruby的 rbenv ），它支持自动切换。</li>
+<li><a href="https://github.com/ekalinin/nodeenv" rel="external nofollow noopener noreferrer" target="_blank">nodeenv</a> - 与Python的 virtualenv 兼容的Node.js虚拟环境。</li>
+</ul>
+<h2 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h2><ul>
+<li><p><strong>NPM管理工具</strong></p>
+</li>
+<li><p><a href="https://github.com/pnpm/pnpm" rel="external nofollow noopener noreferrer" target="_blank">pnpm</a> - 快速、节省磁盘空间高效的包管理器。</p>
+</li>
+<li><a href="https://github.com/npm/cli" rel="external nofollow noopener noreferrer" target="_blank">npm</a> - JavaScript包管理工具。</li>
+<li><a href="https://github.com/yarnpkg/berry" rel="external nofollow noopener noreferrer" target="_blank">yarn</a> - 现代包管理工具，拆分成多个不同的包。</li>
+<li><a href="https://github.com/Pana/nrm" rel="external nofollow noopener noreferrer" target="_blank">nrm</a> - 快速切换npm注册服务商，如npm、cnpm、nj、taobao。</li>
+<li><a href="https://github.com/cnpm/cnpm" rel="external nofollow noopener noreferrer" target="_blank">cnpm</a> - NPM中国区镜像客户端。</li>
+</ul>
+<ul>
+<li><p><strong>package.json</strong></p>
+</li>
+<li><p><a href="https://github.com/sindresorhus/read-pkg-up" rel="external nofollow noopener noreferrer" target="_blank">read-pkg-up</a> - 读取最近的package.json文件。</p>
+</li>
+<li><a href="https://github.com/indexzero/node-pkginfo" rel="external nofollow noopener noreferrer" target="_blank">node-pkginfo</a> - 从package.json读取属性的简单方法。</li>
+<li><a href="https://github.com/sindresorhus/pkg-dir" rel="external nofollow noopener noreferrer" target="_blank">pkg-dir</a> - 查找npm包的根目录。</li>
+<li><a href="https://github.com/sindresorhus/read-pkg" rel="external nofollow noopener noreferrer" target="_blank">read-pkg</a> - 读取package.json文件。</li>
+<li><a href="https://github.com/sindresorhus/write-pkg" rel="external nofollow noopener noreferrer" target="_blank">write-pkg</a> - 写入package.json文件。</li>
+<li><a href="https://github.com/npm/read-package-json-fast" rel="external nofollow noopener noreferrer" target="_blank">read-package-json-fast</a> - 类似 read-package-json, 但更快。</li>
+</ul>
+<ul>
+<li><p><strong>语义化版本</strong></p>
+</li>
+<li><p><a href="https://github.com/npm/node-semver" rel="external nofollow noopener noreferrer" target="_blank">semver</a> - NPM使用的JavaScript语义化版本号解析器。</p>
+</li>
+<li><a href="https://github.com/omichelsen/compare-versions" rel="external nofollow noopener noreferrer" target="_blank">compare-versions</a> - 比较semver版本字符串，找出哪个更大，哪个相等，哪个更小。</li>
+</ul>
+<ul>
+<li><p><strong>工具</strong></p>
+</li>
+<li><p><a href="https://github.com/raineorshine/npm-check-updates" rel="external nofollow noopener noreferrer" target="_blank">npm-check-updates</a> - 查找当前package.json依赖允许的更新的版本。</p>
+</li>
+<li><a href="https://github.com/kimmobrunfeldt/concurrently" rel="external nofollow noopener noreferrer" target="_blank">concurrently</a> - 并行执行命令，类似 <code>npm run watch-js &amp; npm run watch-less</code>但更优。</li>
+<li><a href="https://github.com/mysticatea/npm-run-all" rel="external nofollow noopener noreferrer" target="_blank">npm-run-all</a> - 命令行工具，同时运行多个npm脚本（并行或串行）。</li>
+<li><a href="https://github.com/depcheck/depcheck" rel="external nofollow noopener noreferrer" target="_blank">depcheck</a> - 检查你的NPM模块未使用的依赖。</li>
+<li><a href="https://github.com/cnpm/npminstall" rel="external nofollow noopener noreferrer" target="_blank">npminstall</a> - 使 <code>npm install</code> 更快更容易。</li>
+<li><a href="https://github.com/npm/validate-npm-package-name" rel="external nofollow noopener noreferrer" target="_blank">validate-npm-package-name</a> - 校验给定的字符串 是否为 可接受的 npm 包名称。</li>
+<li><a href="https://github.com/sindresorhus/npm-home" rel="external nofollow noopener noreferrer" target="_blank">npm-home</a> - 打开npm包页面。</li>
+<li><a href="https://github.com/sindresorhus/npm-name" rel="external nofollow noopener noreferrer" target="_blank">npm-name</a> - 在npm上检查软件包名称的可用性。</li>
+<li><a href="https://github.com/npm/pacote" rel="external nofollow noopener noreferrer" target="_blank">pacote</a> - 从npm注册商下载tar压缩文件，并获取包的资源信息。</li>
+<li><a href="https://github.com/npm/npm-package-arg" rel="external nofollow noopener noreferrer" target="_blank">npm-package-arg</a> - 根据包名解析信息。</li>
+<li><a href="https://github.com/npm/npm-registry-fetch" rel="external nofollow noopener noreferrer" target="_blank">npm-registry-fetch</a> - 类型fetch()函数，但用于npm仓库。</li>
+<li><a href="https://github.com/node-modules/npm-updater" rel="external nofollow noopener noreferrer" target="_blank">npm-updater</a> - 检查npm包的更新。</li>
+</ul>
+<h2 id="Monorepo"><a href="#Monorepo" class="headerlink" title="Monorepo"></a>Monorepo</h2><p><em>(你也许喜欢 <a href="https://github.com/korfuri/awesome-monorepo" rel="external nofollow noopener noreferrer" target="_blank">awesome-monorepo</a>)</em></p>
+<ul>
+<li><a href="https://github.com/lerna/lerna" rel="external nofollow noopener noreferrer" target="_blank">lerna</a> - 用于管理具有多个包的JavaScript项目的工具。</li>
+</ul>
+<h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><ul>
+<li><p><strong>通用</strong></p>
+</li>
+<li><p><a href="https://github.com/jprichardson/node-fs-extra" rel="external nofollow noopener noreferrer" target="_blank">fs-extra</a> - 为 <code>fs</code> 模块提供额外方法。</p>
+</li>
+<li><a href="https://github.com/isaacs/node-graceful-fs" rel="external nofollow noopener noreferrer" target="_blank">graceful-fs</a> - graceful-fs可以替代fs模块，并做了各种改进。</li>
+<li><a href="https://github.com/avoidwork/filesize.js" rel="external nofollow noopener noreferrer" target="_blank">filesize.js</a> - 生成人类可读的文件大小字符串。</li>
+<li><a href="https://github.com/streamich/memfs" rel="external nofollow noopener noreferrer" target="_blank">memfs</a> - Node.js API内存文件系统。</li>
+<li><a href="https://github.com/szwacz/fs-jetpack" rel="external nofollow noopener noreferrer" target="_blank">fs-jetpack</a> - 完全重新设计的文件系统API，方便日常使用。</li>
+<li><a href="https://github.com/sindresorhus/make-dir" rel="external nofollow noopener noreferrer" target="_blank">make-dir</a> - 递归创建文件夹，类似 <code>mkdir -p</code>。</li>
+<li><a href="https://github.com/sindresorhus/find-up" rel="external nofollow noopener noreferrer" target="_blank">find-up</a> - 通过上级父目录查找文件或目录。</li>
+<li><a href="https://github.com/sindresorhus/filenamify" rel="external nofollow noopener noreferrer" target="_blank">filenamify</a> - 将字符串转换为有效的文件名。</li>
+<li><a href="https://github.com/calvinmetcalf/copyfiles" rel="external nofollow noopener noreferrer" target="_blank">copyfiles</a> - 在命令行中复制文件。</li>
+<li><a href="https://github.com/nspragg/filehound" rel="external nofollow noopener noreferrer" target="_blank">filehound</a> - 灵活流畅的文件系统搜索接口。</li>
+<li><a href="https://github.com/sindresorhus/move-file" rel="external nofollow noopener noreferrer" target="_blank">move-file</a> - 移动文件，甚至可以跨设备工作。</li>
+<li><a href="https://github.com/IndigoUnited/node-proper-lockfile" rel="external nofollow noopener noreferrer" target="_blank">proper-lockfile</a> - 进程间和机器间文件锁实用工具。</li>
+<li><a href="https://github.com/bevry/istextorbinary" rel="external nofollow noopener noreferrer" target="_blank">istextorbinary</a> - 检查文件是文本文件还是二进制文件。</li>
+<li><a href="https://github.com/isaacs/node-mkdirp" rel="external nofollow noopener noreferrer" target="_blank">mkdirp</a> - 递归创建文件夹，类似 <code>mkdir -p</code>。</li>
+<li><a href="https://github.com/gliviu/dir-compare" rel="external nofollow noopener noreferrer" target="_blank">dir-compare</a> - Node JS文件夹对比。</li>
+<li><a href="https://github.com/marc136/node-folder-hash" rel="external nofollow noopener noreferrer" target="_blank">folder-hash</a> - 为 文件夹或文件 上创建哈希检验码。</li>
+<li><a href="https://github.com/kevva/lnfs" rel="external nofollow noopener noreferrer" target="_blank">lnfs</a> - 强制创建符号链接。类似<code>ln -fs</code>.</li>
+</ul>
+<ul>
+<li><p><strong>复制</strong></p>
+</li>
+<li><p><a href="https://github.com/AvianFlu/ncp" rel="external nofollow noopener noreferrer" target="_blank">ncp</a> - 使用Node.js进行异步递归文件复制。</p>
+</li>
+<li><a href="https://github.com/sindresorhus/cpy" rel="external nofollow noopener noreferrer" target="_blank">cpy</a> - 文件拷贝。</li>
+</ul>
+<ul>
+<li><p><strong>删除</strong></p>
+</li>
+<li><p><a href="https://github.com/isaacs/rimraf" rel="external nofollow noopener noreferrer" target="_blank">rimraf</a> - 递归删除文件，类似 <code>rm -rf</code>。</p>
+</li>
+<li><a href="https://github.com/sindresorhus/del" rel="external nofollow noopener noreferrer" target="_blank">del</a> - 删除文件/文件夹。</li>
+</ul>
+<ul>
+<li><p><strong>临时</strong></p>
+</li>
+<li><p><a href="https://github.com/bruce/node-temp" rel="external nofollow noopener noreferrer" target="_blank">temp</a> - Node.js临时文件、文件夹、流。</p>
+</li>
+<li><a href="https://github.com/sindresorhus/tempy" rel="external nofollow noopener noreferrer" target="_blank">tempy</a> - 获取随机的临时文件或目录路径。</li>
+<li><a href="https://github.com/sindresorhus/temp-dir" rel="external nofollow noopener noreferrer" target="_blank">temp-dir</a> - 获取系统临时文件夹的真实路径。</li>
+</ul>
+<ul>
+<li><p><strong>监控</strong></p>
+</li>
+<li><p><a href="https://github.com/paulmillr/chokidar" rel="external nofollow noopener noreferrer" target="_blank">chokidar</a> - 最小且高效的跨平台Watch库。</p>
+</li>
+<li><a href="https://github.com/webpack/watchpack" rel="external nofollow noopener noreferrer" target="_blank">watchpack</a> - Watch文件和文件夹。</li>
+</ul>
+<ul>
+<li><p><strong>遍历查找</strong></p>
+</li>
+<li><p><a href="https://github.com/isaacs/node-glob" rel="external nofollow noopener noreferrer" target="_blank">glob</a> - Node.js版glob功能。</p>
+</li>
+<li><a href="https://github.com/sindresorhus/globby" rel="external nofollow noopener noreferrer" target="_blank">globby</a> - 基于fast-glob，但添加了很多有用的特性。</li>
+<li><a href="https://github.com/mrmlnc/fast-glob" rel="external nofollow noopener noreferrer" target="_blank">fast-glob</a> - 非常快速且高效的Node.js glob库。</li>
+<li><a href="https://github.com/AndyOGo/node-sync-glob" rel="external nofollow noopener noreferrer" target="_blank">node-sync-glob</a> - 通过glob模式在本地同步文件和文件夹，包括watch选项。</li>
+</ul>
+<h2 id="解析工具"><a href="#解析工具" class="headerlink" title="解析工具"></a>解析工具</h2><ul>
+<li><p><strong>Markdown</strong></p>
+</li>
+<li><p><a href="https://github.com/markedjs/marked" rel="external nofollow noopener noreferrer" target="_blank">marked</a> - Markdown解析器和编译器，专为提高速度而设计。</p>
+</li>
+<li><a href="https://github.com/wooorm/remark" rel="external nofollow noopener noreferrer" target="_blank">remark</a> - Markdown处理工具。</li>
+<li><a href="https://github.com/markdown-it/markdown-it" rel="external nofollow noopener noreferrer" target="_blank">markdown-it</a> - 支持100%通用Markdown标签解析的扩展&amp;语法插件。</li>
+<li><a href="https://www.npmjs.com/package/turndown" rel="external nofollow noopener noreferrer" target="_blank">turndown</a> - 用 JavaScript 编写的 HTML 到 Markdown 转换器。</li>
+</ul>
+<ul>
+<li><strong>CSV</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/mholt/PapaParse" rel="external nofollow noopener noreferrer" target="_blank">PapaParse</a> - 快速而强大的 CSV（分隔文本）解析器，可以优雅地处理大文件和格式错误的输入。</li>
+<li><a href="https://github.com/adaltas/node-csv" rel="external nofollow noopener noreferrer" target="_blank">node-csv</a> - 具有简单api的全功能CSV解析器，并针对大型数据集进行了测试。</li>
+<li><a href="https://github.com/mafintosh/csv-parser" rel="external nofollow noopener noreferrer" target="_blank">csv-parser</a> - 旨在比其他任何人都快的流式CSV解析器。</li>
+<li><a href="https://github.com/sindresorhus/neat-csv" rel="external nofollow noopener noreferrer" target="_blank">neat-csv</a> - 快速的CSV解析器。</li>
+</ul>
+<ul>
+<li><strong>YAML</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/nodeca/js-yaml" rel="external nofollow noopener noreferrer" target="_blank">js-yaml</a> - 快速的YAML解析器。</li>
+<li><a href="https://github.com/eemeli/yaml" rel="external nofollow noopener noreferrer" target="_blank">yaml</a> - YAML 的 JavaScript 解析器和字符串化。</li>
+</ul>
+<ul>
+<li><strong>XML</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/Leonidas-from-XIV/node-xml2js" rel="external nofollow noopener noreferrer" target="_blank">xml2js</a> - 将XML转换为JavaScript对象的转换器。</li>
+<li><a href="https://github.com/NaturalIntelligence/fast-xml-parser" rel="external nofollow noopener noreferrer" target="_blank">fast-xml-parser</a> - 验证&amp;解析 XML。</li>
+<li><a href="https://github.com/oozcitak/xmlbuilder-js" rel="external nofollow noopener noreferrer" target="_blank">xmlbuilder</a> - XML构建器。</li>
+<li><a href="https://github.com/michaelkourlas/node-js2xmlparser" rel="external nofollow noopener noreferrer" target="_blank">js2xmlparser</a> - 用于将 JavaScript 对象解析为 XML 的流行 Node.js 模块。</li>
+</ul>
+<ul>
+<li><strong>HTML</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/fb55/htmlparser2" rel="external nofollow noopener noreferrer" target="_blank">htmlparser2</a> - 宽容的 HTML 和 XML 解析器。</li>
+<li><a href="https://github.com/andrejewski/himalaya" rel="external nofollow noopener noreferrer" target="_blank">himalaya</a> - 将HTML转化为JSON的解析器。</li>
+</ul>
+<ul>
+<li><strong>CSS</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/postcss/postcss" rel="external nofollow noopener noreferrer" target="_blank">PostCSS</a> - CSS解析工具。</li>
+<li><a href="https://github.com/less/less.js" rel="external nofollow noopener noreferrer" target="_blank">less</a> - Less动态样式表语言。</li>
+</ul>
+<ul>
+<li><strong>SQL</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/oguimbal/pgsql-ast-parser" rel="external nofollow noopener noreferrer" target="_blank">pgsql-ast-parser</a> - 简单的Postgres SQL解析器。</li>
+<li><a href="https://github.com/DTStack/dt-sql-parser" rel="external nofollow noopener noreferrer" target="_blank">dt-sql-parser</a> - 大数据的SQL解析器，用antlr4构建。</li>
+</ul>
+<ul>
+<li><strong>Plist</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/joeferner/node-bplist-parser" rel="external nofollow noopener noreferrer" target="_blank">node-bplist-parser</a> - 二进制plist文件解析。</li>
+</ul>
+<ul>
+<li><strong>ini</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/npm/ini" rel="external nofollow noopener noreferrer" target="_blank">ini</a> - ini文件解析和序列化。</li>
+</ul>
+<ul>
+<li><strong>其他</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/mozilla/readability" rel="external nofollow noopener noreferrer" target="_blank">readability</a> - 可读内容提取库，用于Firefox Reader View的独立提取版本。</li>
+</ul>
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><ul>
+<li><a href="https://github.com/typicode/husky" rel="external nofollow noopener noreferrer" target="_blank">husky</a> - 现代化的本地Git钩子使操作更加轻松！</li>
+<li><a href="https://github.com/nodegit/nodegit" rel="external nofollow noopener noreferrer" target="_blank">nodegit</a> - <a href="https://libgit2.org/" rel="external nofollow noopener noreferrer" target="_blank">libgit2</a> 的 Node.js 绑定版本。</li>
+<li><a href="https://github.com/steveukx/git-js" rel="external nofollow noopener noreferrer" target="_blank">simple-git</a> - 一个轻量级的接口，用于在任何 node.js 应用程序中运行 git 命令。</li>
+<li><a href="https://github.com/nicoespeon/gitgraph.js/tree/master/packages/gitgraph-node" rel="external nofollow noopener noreferrer" target="_blank">gitgraph-node</a> - 在 Terminal 绘制 git 流程图（支持浏览器、React）。</li>
+<li><a href="https://github.com/observing/pre-commit" rel="external nofollow noopener noreferrer" target="_blank">pre-commit</a> - 自动在您的git储存库中安装git pre-commit脚本，该脚本在pre-commit上运行您的<code>npm test</code>。</li>
+<li><a href="https://github.com/yyx990803/yorkie" rel="external nofollow noopener noreferrer" target="_blank">yorkie</a> - husky的Fork，让 Git 钩子变得简单(在 vue3 中使用)</li>
+<li><a href="https://github.com/IonicaBizau/git-url-parse" rel="external nofollow noopener noreferrer" target="_blank">git-url-parse</a> - 高级别git解析。</li>
+<li><a href="https://github.com/piuccio/git-promise" rel="external nofollow noopener noreferrer" target="_blank">git-promise</a> - 简单的封装，可运行任何git命令，并使用promise处理其输出。</li>
+<li><a href="https://github.com/lukeed/gittar" rel="external nofollow noopener noreferrer" target="_blank">gittar</a> - 下载/提取git仓库 (GitHub, GitLab, BitBucket)，跨平台和优先离线。</li>
+<li><a href="https://github.com/jonschlinkert/parse-git-config" rel="external nofollow noopener noreferrer" target="_blank">parse-git-config</a> - 将 <code>.git/config</code> 解析为 JavaScript 对象。 同步或异步。</li>
+<li><a href="https://github.com/sindresorhus/remote-git-tags" rel="external nofollow noopener noreferrer" target="_blank">remote-git-tags</a> - 从远程仓库中获取标签。</li>
+<li><a href="https://github.com/repo-utils/giturl" rel="external nofollow noopener noreferrer" target="_blank">giturl</a> - 将Git链接转化成Web链接。</li>
+<li><a href="https://gitlab.com/flippidippi/download-git-repo" rel="external nofollow noopener noreferrer" target="_blank">download-git-repo</a> - 下载和提取Git仓库 (支持GitHub, GitLab, Bitbucket)。</li>
+</ul>
+<h2 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h2><ul>
+<li><a href="https://github.com/winstonjs/winston" rel="external nofollow noopener noreferrer" target="_blank">winston</a> - 多传输异步日志记录库。</li>
+<li><a href="https://github.com/pinojs/pino" rel="external nofollow noopener noreferrer" target="_blank">pino</a> - 受Bunyan启发的超快日志记录库。</li>
+<li><a href="https://github.com/klauscfhq/signale" rel="external nofollow noopener noreferrer" target="_blank">signale</a> - 高度可配置的日志工具。</li>
+<li><a href="https://github.com/trentm/node-bunyan" rel="external nofollow noopener noreferrer" target="_blank">bunyan</a> - 一个用于 Node.js 服务的简单快速的 JSON 日志模块。</li>
+<li><a href="https://github.com/log4js-node/log4js-node" rel="external nofollow noopener noreferrer" target="_blank">log4js-node</a> - 不同于Java log4j的日志记录库。</li>
+<li><a href="https://github.com/nuxt/consola" rel="external nofollow noopener noreferrer" target="_blank">consola</a> - 优雅的Node.js和浏览器日志记录库。</li>
+<li><a href="https://github.com/guigrpa/storyboard" rel="external nofollow noopener noreferrer" target="_blank">storyboard</a> - 一个Chrome浏览器插件，用于查看日志。</li>
+<li><a href="https://github.com/cabinjs/cabin" rel="external nofollow noopener noreferrer" target="_blank">cabin</a> - 提供日志服务和NPM包。</li>
+<li><a href="https://github.com/gulpjs/fancy-log" rel="external nofollow noopener noreferrer" target="_blank">fancy-log</a> - 带上时间前缀的日志记录库。</li>
+<li><a href="https://github.com/balderdashy/captains-log" rel="external nofollow noopener noreferrer" target="_blank">captains-log</a> - 通过简单的配置就可以使用的轻量日志记录库。</li>
+</ul>
+<h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><ul>
+<li><a href="https://github.com/Unitech/pm2" rel="external nofollow noopener noreferrer" target="_blank">PM2</a> - 高级进程管理工具。</li>
+<li><a href="https://github.com/remy/nodemon" rel="external nofollow noopener noreferrer" target="_blank">nodemon</a> - 监视应用程序中的更改并自动重新启动服务器。</li>
+<li><a href="https://github.com/foreversd/forever" rel="external nofollow noopener noreferrer" target="_blank">forever</a> - 简单的CLI工具，用于确认提供的代码持续运行。</li>
+<li><a href="https://github.com/petruisfan/node-supervisor" rel="external nofollow noopener noreferrer" target="_blank">supervisor</a> - 当脚本崩溃时重新启动脚本，或者当`*.js’文件更改时重新启动脚本。</li>
+<li><a href="https://github.com/coreybutler/node-windows" rel="external nofollow noopener noreferrer" target="_blank">node-windows</a> - 将脚本作为本机Windows服务运行，并登录到事件查看器。</li>
+<li><a href="https://github.com/coreybutler/node-mac" rel="external nofollow noopener noreferrer" target="_blank">node-mac</a> - 将脚本作为本机Mac守护进程运行，并登录到控制台应用程序。</li>
+<li><a href="https://github.com/coreybutler/node-linux" rel="external nofollow noopener noreferrer" target="_blank">node-linux</a> - 将脚本作为本机系统服务运行，并登录到syslog。</li>
+<li><a href="https://github.com/branneman/current-processes" rel="external nofollow noopener noreferrer" target="_blank">current-processes</a> - 可获取当前正在运行的进程快照（操作系统无关）。</li>
+</ul>
+<h2 id="代码校验-和-格式化工具"><a href="#代码校验-和-格式化工具" class="headerlink" title="代码校验 和 格式化工具"></a>代码校验 和 格式化工具</h2><ul>
+<li><a href="https://github.com/prettier/prettier" rel="external nofollow noopener noreferrer" target="_blank">prettier</a> - ❤”有主见”的多语言代码格式化程序。</li>
+<li><a href="https://github.com/standard/standard" rel="external nofollow noopener noreferrer" target="_blank">standard</a> - JavaScript 代码规范，自带 linter &amp; 代码自动修正。</li>
+<li><a href="https://github.com/eslint/eslint" rel="external nofollow noopener noreferrer" target="_blank">eslint</a> - 插件化并且可配置的 JavaScript 语法规则和代码风格的检查工具。</li>
+<li><a href="https://github.com/stylelint/stylelint" rel="external nofollow noopener noreferrer" target="_blank">stylelint</a> - 功能强大现代风格检查工具，帮助你避免错误和强制约定样式风格。</li>
+<li><a href="https://github.com/okonet/lint-staged" rel="external nofollow noopener noreferrer" target="_blank">lint-staged</a> - 在Git暂存文件上运行风格检查工具。</li>
+<li><a href="https://github.com/conventional-changelog/commitlint" rel="external nofollow noopener noreferrer" target="_blank">commitlint</a> - Git提交信息风格检查工具。</li>
+<li><a href="https://github.com/beautify-web/js-beautify" rel="external nofollow noopener noreferrer" target="_blank">js-beautify</a> - Javascript美化工具。</li>
+<li><a href="https://github.com/xojs/xo" rel="external nofollow noopener noreferrer" target="_blank">xo</a> - 带出色默认配置的JavaScript/TypeScript代码校验 (基于ESLint封装)</li>
+<li><a href="https://github.com/DavidAnson/markdownlint" rel="external nofollow noopener noreferrer" target="_blank">markdownlint</a> - Markdown/CommonMark风格检查工具。</li>
+<li><a href="https://github.com/textlint/textlint" rel="external nofollow noopener noreferrer" target="_blank">textlint</a> - Text 和 Markdown 校验和格式化。</li>
+<li><a href="https://github.com/azz/pretty-quick" rel="external nofollow noopener noreferrer" target="_blank">pretty-quick</a> - 快速美化。</li>
+</ul>
+<h2 id="配置工具"><a href="#配置工具" class="headerlink" title="配置工具"></a>配置工具</h2><ul>
+<li><a href="https://github.com/lorenwest/node-config" rel="external nofollow noopener noreferrer" target="_blank">node-config</a> - Node.js 应用程序配置。</li>
+<li><a href="https://github.com/indexzero/nconf" rel="external nofollow noopener noreferrer" target="_blank">nconf</a> - 可通过文件、环境变量、命令行参数和对象 合并的分层 Node.js 配置。</li>
+<li><a href="https://github.com/mozilla/node-convict/tree/master/packages/convict" rel="external nofollow noopener noreferrer" target="_blank">convict</a> - Convict 扩展了配置 node.js 应用程序的标准模式，提供了更健壮且易于访问。</li>
+<li><a href="https://github.com/dominictarr/rc" rel="external nofollow noopener noreferrer" target="_blank">rc</a> - 懒人的配置加载器。</li>
+</ul>
+<h2 id="构建工具"><a href="#构建工具" class="headerlink" title="构建工具"></a>构建工具</h2><ul>
+<li><a href="https://github.com/webpack/webpack" rel="external nofollow noopener noreferrer" target="_blank">webpack</a> - 打包浏览器的模块和资产。</li>
+<li><a href="https://github.com/parcel-bundler/parcel" rel="external nofollow noopener noreferrer" target="_blank">parcel</a> - 快速，零配置的Web应用构建工具。</li>
+<li><a href="https://github.com/gulpjs/gulp" rel="external nofollow noopener noreferrer" target="_blank">gulp</a> - 流式快速构建系统，支持代码而不是配置。</li>
+<li><a href="https://github.com/evanw/esbuild" rel="external nofollow noopener noreferrer" target="_blank">esbuild</a> - 极快的JavaScript打包压缩工具。</li>
+<li><a href="https://github.com/rollup/rollup" rel="external nofollow noopener noreferrer" target="_blank">rollup</a> - 新一代的 ES2015 打包构建工具。</li>
+<li><a href="https://github.com/zeit/pkg" rel="external nofollow noopener noreferrer" target="_blank">pkg</a> - 将Node.js项目打包成可执行文件。</li>
+<li><a href="https://github.com/gruntjs/grunt" rel="external nofollow noopener noreferrer" target="_blank">Grunt</a> - JavaScript任务执行器。</li>
+<li><a href="https://github.com/brunch/brunch" rel="external nofollow noopener noreferrer" target="_blank">Brunch</a> - 前端web应用程序构建工具，具有简单的声明性配置、快速的增量编译和自定的工作流。</li>
+<li><a href="https://github.com/fuse-box/fuse-box" rel="external nofollow noopener noreferrer" target="_blank">FuseBox</a> - 快速构建系统，结合了webpack，JSPM和SystemJS的强大功能，并具有一流的TypeScript支持。</li>
+<li><a href="https://github.com/broccolijs/broccoli" rel="external nofollow noopener noreferrer" target="_blank">Broccoli</a> - 快速、可靠的资产管道，支持固定时间重建和紧凑的构建定义。</li>
+</ul>
+<h2 id="ESM"><a href="#ESM" class="headerlink" title="ESM"></a><strong>ESM</strong></h2><ul>
+<li><a href="https://github.com/vitejs/vite" rel="external nofollow noopener noreferrer" target="_blank">Vite</a> - 新一代前端构建工具。</li>
+<li><a href="https://github.com/snowpackjs/snowpack" rel="external nofollow noopener noreferrer" target="_blank">snowpack</a> - 由ESM支持的前端构建工具。 即时，轻量级，无捆绑开发。</li>
+</ul>
+<h2 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h2><ul>
+<li><a href="https://github.com/pugjs/pug" rel="external nofollow noopener noreferrer" target="_blank">Pug</a> - 受Haml启发的高性能模板引擎。</li>
+<li><a href="https://github.com/wycats/handlebars.js" rel="external nofollow noopener noreferrer" target="_blank">handlebars.js</a> - Mustache 模板的超集，添加了强大的功能，如helper和更高级的block。</li>
+<li><a href="https://github.com/janl/mustache.js" rel="external nofollow noopener noreferrer" target="_blank">mustache.js</a> - 轻量的JavaScript模板引擎。</li>
+<li><a href="https://github.com/marko-js/marko" rel="external nofollow noopener noreferrer" target="_blank">marko</a> - 基于HTML的模板引擎，编译成CommonJS模块，支持流、异步渲染和自定义标签。</li>
+<li><a href="https://github.com/aui/art-template" rel="external nofollow noopener noreferrer" target="_blank">art-template</a> - 高性能JavaScript模板引擎。</li>
+<li><a href="https://github.com/mozilla/nunjucks" rel="external nofollow noopener noreferrer" target="_blank">nunjucks</a> - 具有继承，异步控制等功能的模板引擎（受Jinja2启发）。</li>
+<li><a href="https://github.com/mde/ejs" rel="external nofollow noopener noreferrer" target="_blank">EJS</a> - 超级简单的模板语言。</li>
+<li><a href="https://github.com/twitter/hogan.js" rel="external nofollow noopener noreferrer" target="_blank">hogan.js</a> -  样式的模板语言。</li>
+<li><a href="https://github.com/olado/doT" rel="external nofollow noopener noreferrer" target="_blank">doT</a> - 最快简洁的JavaScript模板引擎。</li>
+<li><a href="https://github.com/linkedin/dustjs" rel="external nofollow noopener noreferrer" target="_blank">dustjs</a> - 用于浏览器和服务器的异步Javascript模板。</li>
+<li><a href="https://github.com/BorisMoore/jsrender" rel="external nofollow noopener noreferrer" target="_blank">jsrender</a> - 轻巧，功能强大且高度可扩展的模板引擎。</li>
+<li><a href="https://github.com/twigjs/twig.js" rel="external nofollow noopener noreferrer" target="_blank">Twig.js</a> - Twig模板语言的JavaScript实现。</li>
+<li><a href="https://github.com/pillarjs/hbs" rel="external nofollow noopener noreferrer" target="_blank">hbs</a> - Handlebars的Express版本封装。</li>
+<li><a href="https://github.com/PaulGuo/Juicer" rel="external nofollow noopener noreferrer" target="_blank">Juicer</a> - 轻量级JavaScript模板引擎。</li>
+<li><a href="https://github.com/twigkit/tempo" rel="external nofollow noopener noreferrer" target="_blank">tempo</a> - Tempo是一个简单，直观的JavaScript渲染引擎，使您能够以纯HTML格式制作数据模板。</li>
+<li><a href="https://github.com/xtemplate/xtemplate" rel="external nofollow noopener noreferrer" target="_blank">xtemplate</a> - 用于浏览器和Node.js上的高速，可扩展模板引擎库。支持异步控制，继承，包含，逻辑表达式，自定义函数等。</li>
+</ul>
+<h2 id="内容管理系统-CMS"><a href="#内容管理系统-CMS" class="headerlink" title="内容管理系统 (CMS)"></a>内容管理系统 (CMS)</h2><ul>
+<li><a href="https://github.com/TryGhost/Ghost" rel="external nofollow noopener noreferrer" target="_blank">Ghost</a> - 用于专业发布的无头 Node.js CMS。</li>
+<li><a href="https://github.com/strapi/strapi" rel="external nofollow noopener noreferrer" target="_blank">Strapi</a> - 用于构建强大 API 的内容管理框架 (headless-CMS)。</li>
+<li><a href="https://github.com/keystonejs/keystone" rel="external nofollow noopener noreferrer" target="_blank">KeystoneJS</a> - 基于 Express 和 MongoDB 的 CMS 和 Web应用程序平台。</li>
+<li><a href="https://github.com/SoftwareBrothers/admin-bro" rel="external nofollow noopener noreferrer" target="_blank">AdminBro</a> - 为您的所有模型自动生成带有 增删查改(CRUD) 的管理面板。</li>
+<li><a href="https://github.com/apostrophecms/apostrophe" rel="external nofollow noopener noreferrer" target="_blank">ApostropheCMS</a> - 基于 Express 和 MongoDB，拥有直观的内容编辑和管理的内容管理系统。</li>
+<li><a href="https://github.com/tipeio/tipe" rel="external nofollow noopener noreferrer" target="_blank">Tipe</a> - 面向开发人员的下一代 API优先 CMS。使用离线原型和内置编辑器从 GraphQL Schema 中 生成 API优先 的 CMS。</li>
+<li><a href="https://github.com/fiction-com/factor" rel="external nofollow noopener noreferrer" target="_blank">Factor</a> - Vue.js 仪表板框架 和 无头CMS。</li>
+</ul>
+<h2 id="静态网站生成-amp-博客"><a href="#静态网站生成-amp-博客" class="headerlink" title="静态网站生成 &amp; 博客"></a>静态网站生成 &amp; 博客</h2><ul>
+<li><a href="https://github.com/gatsbyjs/gatsby" rel="external nofollow noopener noreferrer" target="_blank">gatsby</a> - 使用React构建快速、现代的应用程序和网站。</li>
+<li><a href="https://github.com/hexojs/hexo" rel="external nofollow noopener noreferrer" target="_blank">hexo</a> - 使用Node.js的快速，简单，强大的博客框架。</li>
+<li><a href="https://github.com/vuejs/vuepress" rel="external nofollow noopener noreferrer" target="_blank">vuepress</a> - 极简的Vue静态网站生成工具。</li>
+<li><a href="https://github.com/netlify/netlify-cms" rel="external nofollow noopener noreferrer" target="_blank">netlify-cms</a> - 基于Git的静态网站生成工具。</li>
+<li><a href="https://github.com/react-static/react-static" rel="external nofollow noopener noreferrer" target="_blank">react-static</a> - 渐进式的React静态网站生成工具。</li>
+<li><a href="https://github.com/gridsome/gridsome" rel="external nofollow noopener noreferrer" target="_blank">gridsome</a> - Vue.js静态网站生成工具。</li>
+<li><a href="https://github.com/vuejs/vitepress" rel="external nofollow noopener noreferrer" target="_blank">vitepress</a> - Vite &amp; Vue.js静态网站生成工具。</li>
+<li><a href="https://github.com/scullyio/scully" rel="external nofollow noopener noreferrer" target="_blank">scully</a> - Angular 应用程序的静态站点生成器。</li>
+</ul>
+<h2 id="文档生成"><a href="#文档生成" class="headerlink" title="文档生成"></a>文档生成</h2><ul>
+<li><a href="https://github.com/facebook/docusaurus" rel="external nofollow noopener noreferrer" target="_blank">Docusaurus</a> - 使用React和Markdown并具有翻译和版本控制功能的文档站点生成器。</li>
+<li><a href="https://github.com/docsifyjs/docsify" rel="external nofollow noopener noreferrer" target="_blank">docsify</a> - API文档生成器。</li>
+<li><a href="https://github.com/jsdoc3/jsdoc" rel="external nofollow noopener noreferrer" target="_blank">JSDoc</a> - API文档生成器，类似于JavaDoc或PHPDoc。</li>
+<li><a href="https://github.com/documentationjs/documentation" rel="external nofollow noopener noreferrer" target="_blank">documentation.js</a> - API文档生成器，支持ES2015+和流程注释。</li>
+<li><a href="https://github.com/jashkenas/docco" rel="external nofollow noopener noreferrer" target="_blank">Docco</a> - 文档生成器，该生成器生成一个HTML文档，该文档显示与代码混合的注释。</li>
+<li><a href="https://github.com/egoist/docute" rel="external nofollow noopener noreferrer" target="_blank">docute</a> - 毫不费力的文档，做就对了。</li>
+<li><a href="https://github.com/esdoc/esdoc" rel="external nofollow noopener noreferrer" target="_blank">ESDoc</a> - 针对ES2015的文档生成器，附加测试代码并衡量文档覆盖范围。</li>
+</ul>
+<h2 id="桌面应用程序"><a href="#桌面应用程序" class="headerlink" title="桌面应用程序"></a>桌面应用程序</h2><ul>
+<li><a href="https://github.com/atom/electron" rel="external nofollow noopener noreferrer" target="_blank">Electron</a> - 使用Web技术构建跨平台的桌面应用程序。 <em>(你也许喜欢 <a href="https://github.com/sindresorhus/awesome-electron" rel="external nofollow noopener noreferrer" target="_blank">awesome-electron</a>)</em></li>
+<li><a href="https://github.com/nwjs/nw.js" rel="external nofollow noopener noreferrer" target="_blank">nw.js</a> - 使用 Web 技术编写应用程序的新方法，并直接从 DOM/WebWorker 调用所有 Node.js 模块。</li>
+</ul>
+<h2 id="实时通信"><a href="#实时通信" class="headerlink" title="实时通信"></a>实时通信</h2><ul>
+<li><a href="https://github.com/socketio/socket.io" rel="external nofollow noopener noreferrer" target="_blank">Socket.io</a> - 实现基于事件的实时双向通信。</li>
+<li><a href="https://github.com/websockets/ws" rel="external nofollow noopener noreferrer" target="_blank">ws</a> - 简单易用，速度极快，经过全面测试的WebSocket客户端和服务器Node.js通信库。</li>
+<li><a href="https://github.com/uWebSockets/uWebSockets" rel="external nofollow noopener noreferrer" target="_blank">µWebSockets</a> - 高度可扩展的WebSocket服务器和客户端库。</li>
+<li><a href="https://github.com/mqttjs/MQTT.js" rel="external nofollow noopener noreferrer" target="_blank">MQTT.js</a> - MQTT客户端-基于Pub-sub的消息协议，用于TCP / IP。</li>
+<li><a href="https://github.com/SocketCluster/socketcluster" rel="external nofollow noopener noreferrer" target="_blank">SocketCluster</a> - 可扩展的HTTP + WebSocket引擎，可以在多个CPU内核上运行。</li>
+<li><a href="https://github.com/faye/faye" rel="external nofollow noopener noreferrer" target="_blank">Faye</a> - 基于Bayeux协议的实时客户端-服务器消息总线。</li>
+<li><a href="https://github.com/primus/primus" rel="external nofollow noopener noreferrer" target="_blank">Primus</a> - 实时框架的抽象层，以防止模块锁定。</li>
+<li><a href="https://github.com/socketio/engine.io" rel="external nofollow noopener noreferrer" target="_blank">engine.io</a> - 基于传输的跨浏览器/跨设备双向通信层的实现Socket.IO。</li>
+<li><a href="https://github.com/sockjs/sockjs-node" rel="external nofollow noopener noreferrer" target="_blank">SockJS-node</a> - WebSocket Node.js服务端实现。</li>
+<li><a href="https://github.com/mcollina/aedes" rel="external nofollow noopener noreferrer" target="_blank">Aedes</a> - 可以在任何流服务器上运行的准系统MQTT服务器。</li>
+<li><a href="https://github.com/elpheria/rpc-websockets" rel="external nofollow noopener noreferrer" target="_blank">rpc-websockets</a> - 通过WebSocket实现JSON-RPC 2.0。</li>
+<li><a href="https://github.com/deepstreamIO/deepstream.io-client-js" rel="external nofollow noopener noreferrer" target="_blank">deepstream.io</a> - 可扩展的实时通信微服务框架。</li>
+<li><a href="https://github.com/heineiuo/isomorphic-ws" rel="external nofollow noopener noreferrer" target="_blank">isomorphic-ws</a> - WebSocket 的同构实现。</li>
+<li><a href="https://github.com/kalm/kalm.js" rel="external nofollow noopener noreferrer" target="_blank">Kalm</a> - 低级套接字路由器和中间件框架。</li>
+</ul>
+<h2 id="任务队列"><a href="#任务队列" class="headerlink" title="任务队列"></a>任务队列</h2><ul>
+<li><a href="https://github.com/OptimalBits/bull" rel="external nofollow noopener noreferrer" target="_blank">bull</a> - 持久作业和消息队列。</li>
+<li><a href="https://github.com/squaremo/amqp.node" rel="external nofollow noopener noreferrer" target="_blank">amqp</a>- AMQP 0-9-1 rabbit消息队列连接库。</li>
+<li><a href="https://github.com/SOHU-Co/kafka-node" rel="external nofollow noopener noreferrer" target="_blank">kafka-node</a>- Apache Kafka 0.8 kafka客户端。</li>
+<li><a href="https://github.com/bee-queue/bee-queue" rel="external nofollow noopener noreferrer" target="_blank">bee-queue</a> - 高性能的 基于Redis的任务队列。</li>
+<li><a href="https://github.com/bee-queue/arena" rel="external nofollow noopener noreferrer" target="_blank">arena</a> - bee-queue的交互式UI仪表盘。</li>
+<li><a href="https://github.com/tulios/kafkajs" rel="external nofollow noopener noreferrer" target="_blank">kafkajs</a> - A modern Apache Kafka client for node.js.</li>
+<li><a href="https://github.com/smrchy/rsmq" rel="external nofollow noopener noreferrer" target="_blank">rsmq</a> - 基于Redis的消息队列.</li>
+<li><a href="https://github.com/bbc/sqs-consumer" rel="external nofollow noopener noreferrer" target="_blank">sqs-consumer</a> - 在没有样板文件的情况下构建基于Amazon简单队列服务（SQS）的应用程序.</li>
+<li><a href="https://github.com/taskrabbit/node-resque" rel="external nofollow noopener noreferrer" target="_blank">node-resque</a> - Redis支持的作业队列.</li>
+<li><a href="https://github.com/diamondio/better-queue" rel="external nofollow noopener noreferrer" target="_blank">better-queue</a> - 当你无法使用Redis时，简单高效的作业队列.</li>
+<li><a href="https://github.com/weyoss/redis-smq" rel="external nofollow noopener noreferrer" target="_blank">RedisSMQ</a> - 具有实时监控功能的简单高性能Redis消息队列.</li>
+<li><a href="https://github.com/nodeca/idoit" rel="external nofollow noopener noreferrer" target="_blank">idoit</a> - 具有高级作业控制的Redis支持的作业队列引擎.</li>
+</ul>
+<h2 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h2><ul>
+<li><a href="https://github.com/node-schedule/node-schedule" rel="external nofollow noopener noreferrer" target="_blank">node-schedule</a> - 类Cron和不类似Cron的Node.js定时任务。</li>
+<li><a href="https://github.com/agenda/agenda" rel="external nofollow noopener noreferrer" target="_blank">agenda</a> - Node.js轻量级定时任务。</li>
+<li><a href="https://github.com/kelektiv/node-cron" rel="external nofollow noopener noreferrer" target="_blank">node-cron</a> - 允许执行定时任务的工具。</li>
+<li><a href="https://github.com/harrisiirak/cron-parser" rel="external nofollow noopener noreferrer" target="_blank">cron-parser</a> - 用于解析crontab指令的Node.js库。</li>
+</ul>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><ul>
+<li><a href="https://github.com/node-inspector/node-inspector" rel="external nofollow noopener noreferrer" target="_blank">node-inspector</a> - 基于Blink开发者工具的调试器。</li>
+<li><a href="https://github.com/GoogleChromeLabs/ndb" rel="external nofollow noopener noreferrer" target="_blank">ndb</a> - Chrome DevTools调试体验改进工具。</li>
+<li><a href="https://github.com/visionmedia/debug" rel="external nofollow noopener noreferrer" target="_blank">debug</a> - 轻量调试工具。</li>
+<li><a href="https://github.com/s-a/iron-node" rel="external nofollow noopener noreferrer" target="_blank">ironNode</a> - 支持ES2015的Node.js开箱即用的调试器。</li>
+<li><a href="https://github.com/mafintosh/why-is-node-running" rel="external nofollow noopener noreferrer" target="_blank">why-is-node-running</a> - 当Node因不明原因继续运行时，使用的分析工具。</li>
+<li><a href="https://github.com/nodejs/llnode" rel="external nofollow noopener noreferrer" target="_blank">llnode</a> - 事后分析工具，使您可以检查对象并从崩溃的Node.js进程中获取信息。</li>
+<li><a href="https://github.com/valyouw/njstrace" rel="external nofollow noopener noreferrer" target="_blank">njsTrace</a> - 检测和跟踪您的代码，查看所有函数调用、参数、返回值以及在每个函数中花费的时间。</li>
+<li><a href="https://github.com/alidavut/locus" rel="external nofollow noopener noreferrer" target="_blank">locus</a> - Locus 是一个调试模块，它允许您通过 REPL 在运行时执行命令。</li>
+<li><a href="https://github.com/watson/stackman" rel="external nofollow noopener noreferrer" target="_blank">stackman</a> - 使用代码摘录和其他优点增强错误堆栈跟踪。</li>
+<li><a href="https://github.com/june07/nim" rel="external nofollow noopener noreferrer" target="_blank">NiM</a> - 管理DevTools调试工具流。</li>
+<li><a href="https://github.com/automation-stack/ctrace" rel="external nofollow noopener noreferrer" target="_blank">ctrace</a> - 将系统调用信息和信号，以更良好的格式显示和扩展。</li>
+<li><a href="https://github.com/joyent/node-vstream" rel="external nofollow noopener noreferrer" target="_blank">vstream</a> - 检测流。</li>
+</ul>
+<h2 id="剖析-分析"><a href="#剖析-分析" class="headerlink" title="剖析/分析"></a>剖析/分析</h2><ul>
+<li><a href="https://github.com/clinicjs/node-clinic" rel="external nofollow noopener noreferrer" target="_blank">Clinic.js</a> - Clinic.js诊断Node.js性能问题。</li>
+<li><a href="https://github.com/davidmarkclements/0x" rel="external nofollow noopener noreferrer" target="_blank">0x</a> - 火焰图分析。</li>
+<li><a href="https://github.com/bnoordhuis/node-heapdump" rel="external nofollow noopener noreferrer" target="_blank">node-heapdump</a> - 存储V8内存堆使用情况，以供以后诊断。</li>
+<li><a href="https://github.com/andywer/leakage" rel="external nofollow noopener noreferrer" target="_blank">leakage</a> - 内存写入泄漏测试。</li>
+<li><a href="https://github.com/node-inspector/v8-profiler" rel="external nofollow noopener noreferrer" target="_blank">v8-profiler</a> - V8性能探测器。</li>
+<li><a href="https://github.com/marcominetti/node-memwatch" rel="external nofollow noopener noreferrer" target="_blank">node-memwatch</a> - 一个 NodeJS 库，用于监视您的内存使用情况，并发现和隔离泄漏。</li>
+<li><a href="https://github.com/hyj1991/v8-analytics" rel="external nofollow noopener noreferrer" target="_blank">v8-analytics</a> - V8引擎CPU 和 堆内存分析。</li>
+<li><a href="https://github.com/sfninja/thetool" rel="external nofollow noopener noreferrer" target="_blank">thetool</a> - 以Chrome DevTools友好格式为您的应用捕获不同的CPU，内存和其他配置文件。</li>
+<li><a href="https://github.com/thlorenz/flamegraph" rel="external nofollow noopener noreferrer" target="_blank">flamegraph</a> - 在Node.js或浏览器中生成火焰图。</li>
+<li><a href="https://github.com/hyj1991/v8-profiler-next" rel="external nofollow noopener noreferrer" target="_blank">v8-profiler-next</a> - V8性能探测器。</li>
+<li><a href="https://github.com/nswbmw/cpu-memory-monitor" rel="external nofollow noopener noreferrer" target="_blank">cpu-memory-monitor</a> - CPU 和内存监视器，自动转储。</li>
+</ul>
+<h2 id="应用性能监控-APM"><a href="#应用性能监控-APM" class="headerlink" title="应用性能监控 (APM)"></a>应用性能监控 (APM)</h2><ul>
+<li><p><strong>解决方案</strong></p>
+</li>
+<li><p><a href="https://github.com/hyj1991/easy-monitor" rel="external nofollow noopener noreferrer" target="_blank">easy-monitor</a> - 企业级 Node.js 应用性能监控和在线故障定位解决方案。</p>
+</li>
+<li><a href="https://github.com/a597873885/webfunny_monitor" rel="external nofollow noopener noreferrer" target="_blank">webfunny_monitor</a> - Webfunny是一款轻量级的前端监控系统，也是一款前端性能监控系统，无埋点监控前端日志，实时分析前端健康状态。</li>
+</ul>
+<ul>
+<li><strong>中间件</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/slanatech/swagger-stats" rel="external nofollow noopener noreferrer" target="_blank">swagger-stats</a> - 跟踪 API 调用并监控 API 性能、运行状况和使用指标。</li>
+</ul>
+<ul>
+<li><strong>代理</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/siimon/prom-client" rel="external nofollow noopener noreferrer" target="_blank">prom-client</a> - Prometheus代理。</li>
+<li><a href="https://github.com/elastic/apm-agent-nodejs" rel="external nofollow noopener noreferrer" target="_blank">apm-agent-nodejs</a> - Elastic APM Node.js代理。</li>
+<li><a href="https://github.com/apache/skywalking-nodejs" rel="external nofollow noopener noreferrer" target="_blank">skywalking-nodejs</a> - Apache SkyWalking Node.js代理</li>
+</ul>
+<h2 id="论坛"><a href="#论坛" class="headerlink" title="论坛"></a>论坛</h2><ul>
+<li><a href="https://github.com/NodeBB/NodeBB" rel="external nofollow noopener noreferrer" target="_blank">NodeBB</a> - 基于Node.js的现代Web论坛。</li>
+<li><a href="https://github.com/cnodejs/nodeclub/" rel="external nofollow noopener noreferrer" target="_blank">nodeclub</a> - Nodeclub 是使用 Node.js 和 MongoDB 开发的社区系统</li>
+</ul>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><ul>
+<li><p><strong>驱动</strong></p>
+</li>
+<li><p><a href="https://github.com/mysqljs/mysql" rel="external nofollow noopener noreferrer" target="_blank">MySQL</a> - MySQL 客户端。</p>
+</li>
+<li><a href="https://github.com/brianc/node-postgres" rel="external nofollow noopener noreferrer" target="_blank">PostgreSQL</a> - PostgreSQL客户端。</li>
+<li><a href="https://github.com/mongodb/node-mongodb-native" rel="external nofollow noopener noreferrer" target="_blank">MongoDB</a> - 官方MongoDB驱动。</li>
+<li><a href="https://github.com/luin/ioredis" rel="external nofollow noopener noreferrer" target="_blank">ioredis</a> - Redis客户端。</li>
+<li><a href="https://github.com/Level/levelup" rel="external nofollow noopener noreferrer" target="_blank">LevelUP</a> - LevelDB客户端。</li>
+<li><a href="https://github.com/apache/couchdb-nano" rel="external nofollow noopener noreferrer" target="_blank">couchdb-nano</a> - 官方CouchDB客户端。</li>
+<li><a href="https://github.com/couchbase/couchnode" rel="external nofollow noopener noreferrer" target="_blank">Couchbase</a> - Couchbase客户端（官方）。</li>
+<li><a href="https://github.com/aerospike/aerospike-client-nodejs" rel="external nofollow noopener noreferrer" target="_blank">Aerospike</a> - Aerospike客户端。</li>
+</ul>
+<ul>
+<li><strong>ODM / ORM</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/sequelize/sequelize" rel="external nofollow noopener noreferrer" target="_blank">Sequelize</a> - 多方ORM。 支持PostgreSQL，SQLite，MySQL。</li>
+<li><a href="https://github.com/typeorm/typeorm" rel="external nofollow noopener noreferrer" target="_blank">TypeORM</a> - PostgreSQL，MariaDB，MySQL，SQLite等的ORM。</li>
+<li><a href="https://github.com/Automattic/mongoose" rel="external nofollow noopener noreferrer" target="_blank">Mongoose</a> - 优雅的MongoDB对象建模。</li>
+<li><a href="https://github.com/typegoose/typegoose" rel="external nofollow noopener noreferrer" target="_blank">typegoose</a> - Typegoose - 使用 TypeScript 类定义 Mongoose 模型。</li>
+<li><a href="https://github.com/prisma/prisma" rel="external nofollow noopener noreferrer" target="_blank">Prisma</a> - 支持PostgreSQL, MySQL &amp; SQLite，自动生成、类型安全的query builder。</li>
+<li><a href="https://github.com/bookshelf/bookshelf" rel="external nofollow noopener noreferrer" target="_blank">Bookshelf</a> - Backbone.js风格的PostgreSQL，MySQL和SQLite3的ORM。</li>
+<li><a href="https://github.com/Vincit/objection.js" rel="external nofollow noopener noreferrer" target="_blank">Objection.js</a> - 基于SQL查询生成器Knex的轻量级ORM。</li>
+<li><a href="https://github.com/balderdashy/waterline" rel="external nofollow noopener noreferrer" target="_blank">Waterline</a> - 与数据存储区无关的工具，可大大简化与一个或多个数据库的交互。</li>
+<li><a href="https://github.com/robconery/massive-js" rel="external nofollow noopener noreferrer" target="_blank">Massive</a> - PostgreSQL数据访问工具。</li>
+<li><a href="https://github.com/vitaly-t/pg-promise" rel="external nofollow noopener noreferrer" target="_blank">pg-promise</a> - 用于使用Promise的本机SQL的PostgreSQL框架。</li>
+<li><a href="https://github.com/mikro-orm/mikro-orm" rel="external nofollow noopener noreferrer" target="_blank">MikroORM</a> - 基于数据映射器，工作单元和身份映射模式的TypeScript ORM。 支持MongoDB，PostgreSQL，MySQL和SQLite。</li>
+<li><a href="https://github.com/gajus/slonik" rel="external nofollow noopener noreferrer" target="_blank">slonik</a> - 具有严格类型，详细日志记录和断言的PostgreSQL客户端。</li>
+<li><a href="https://github.com/PhilWaldmann/openrecord" rel="external nofollow noopener noreferrer" target="_blank">OpenRecord</a> - PostgreSQL，MySQL，SQLite3和RESTful数据存储的ORM。 类似于ActiveRecord</li>
+<li>Query builder</li>
+<li><a href="https://github.com/tgriesser/knex" rel="external nofollow noopener noreferrer" target="_blank">Knex</a> - PostgreSQL，MySQL和SQLite3的查询构建器，旨在灵活，可移植且易于使用。</li>
+</ul>
+<ul>
+<li><strong>SQL</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/mysqljs/sqlstring" rel="external nofollow noopener noreferrer" target="_blank">sqlstring</a> - 简单 SQL 转义和格式，用于MySQL。</li>
+</ul>
+<ul>
+<li><strong>其他</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/typicode/lowdb" rel="external nofollow noopener noreferrer" target="_blank">Lowdb</a> - 用于小型项目的微型本地 JSON 数据库（支持 Node、Electron 和浏览器）。</li>
+<li><a href="https://github.com/louischatriot/nedb" rel="external nofollow noopener noreferrer" target="_blank">NeDB</a> - 用于 Node.js、nw.js、Electron和浏览器的嵌入式持久数据库或内存数据库。</li>
+<li><a href="https://github.com/lukechilds/keyv" rel="external nofollow noopener noreferrer" target="_blank">Keyv</a> - 支持多个后端的简单键值(KV)存储。</li>
+<li><a href="https://github.com/oguimbal/pg-mem" rel="external nofollow noopener noreferrer" target="_blank">pg-mem</a> - 内存 PostgreSQL 实例。</li>
+<li><a href="https://github.com/pkosiec/mongo-seeding" rel="external nofollow noopener noreferrer" target="_blank">Mongo Seeding</a> - 使用 JavaScript 和 JSON 文件填充 MongoDB 数据库。</li>
+<li><a href="https://github.com/ForbesLindesay/atdatabases" rel="external nofollow noopener noreferrer" target="_blank">@databases</a> - 使用普通 SQL 查询 PostgreSQL、MySQL 和 SQLite3，而不会导致 SQL注入 的风险。</li>
+<li><a href="https://github.com/tommybananas/finale" rel="external nofollow noopener noreferrer" target="_blank">Finale</a> - 基于 Sequelize 模型生成 RESTful接口。</li>
+<li><a href="https://github.com/mlaanderson/database-js" rel="external nofollow noopener noreferrer" target="_blank">database-js</a> - 类似 JDBC连接 的多个数据库连接封装。</li>
+</ul>
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><ul>
+<li><a href="https://github.com/isaacs/node-lru-cache" rel="external nofollow noopener noreferrer" target="_blank">lru-cache</a> - 最近最少使用的缓存（LRU）实现。</li>
+<li><a href="https://github.com/node-cache/node-cache" rel="external nofollow noopener noreferrer" target="_blank">node-cache</a> - Node.js内存缓存模块。</li>
+<li><a href="https://github.com/3rd-Eden/memcached" rel="external nofollow noopener noreferrer" target="_blank">memcached</a> - 功能齐全的Memcached Node.js客户端库。 考虑到扩展性，因此它将支持Memcached群集和一致的哈希。</li>
+<li><a href="https://github.com/BryanDonovan/node-cache-manager" rel="external nofollow noopener noreferrer" target="_blank">node-cache-manager</a> - Node.js Cache模块。</li>
+<li><a href="https://github.com/dominictarr/hashlru" rel="external nofollow noopener noreferrer" target="_blank">hashlru</a> - 更轻量更快的LRU算法。</li>
+<li><a href="https://github.com/royriojas/flat-cache" rel="external nofollow noopener noreferrer" target="_blank">flat-cache</a> - 一个傻瓜般简单的键/值存储使用文件来持久化数据。</li>
+<li><a href="https://github.com/node-modules/ylru" rel="external nofollow noopener noreferrer" target="_blank">ylru</a> - 基于hashlru添加过期时间，允许空值。</li>
+</ul>
+<h2 id="自动化-amp-机器人流程自动化-RPA"><a href="#自动化-amp-机器人流程自动化-RPA" class="headerlink" title="自动化 &amp; 机器人流程自动化 - RPA"></a><strong>自动化 &amp; 机器人流程自动化 - RPA</strong></h2><ul>
+<li><a href="https://github.com/puppeteer/puppeteer" rel="external nofollow noopener noreferrer" target="_blank">puppeteer</a> - 无头Chrome Node.js API。</li>
+<li><a href="https://github.com/microsoft/playwright" rel="external nofollow noopener noreferrer" target="_blank">playwright</a> - 使用单一API自动操作Chromium, Firefox and WebKi。</li>
+<li><a href="https://github.com/ariya/phantomjs" rel="external nofollow noopener noreferrer" target="_blank">phantomjs</a> - 脚本化无头浏览器。</li>
+<li><a href="https://github.com/appium/appium" rel="external nofollow noopener noreferrer" target="_blank">appium</a> - iOS, Android, and Windows Apps自动化。</li>
+<li><a href="https://github.com/octalmage/robotjs" rel="external nofollow noopener noreferrer" target="_blank">robotjs</a> - Node.js桌面自动化。</li>
+<li><a href="https://github.com/nut-tree/nut.js" rel="external nofollow noopener noreferrer" target="_blank">nut.js</a> - 使用Node.js进行原生 UI 测试/控制</li>
+</ul>
+<h2 id="测试相关"><a href="#测试相关" class="headerlink" title="测试相关"></a>测试相关</h2><ul>
+<li><p><strong>断言库</strong></p>
+</li>
+<li><p><a href="https://github.com/chaijs/chai" rel="external nofollow noopener noreferrer" target="_blank">chai</a> - 基于行为驱动开发(BDD)和测试驱动开发(TDD)理念的Node.js和浏览器断言库，可与任何 JavaScript 测试框架集成。</p>
+</li>
+<li><a href="https://github.com/power-assert-js/power-assert" rel="external nofollow noopener noreferrer" target="_blank">power-assert</a> - 使用标准assert接口提供的描述型断言消息。</li>
+<li><a href="https://github.com/Automattic/expect.js" rel="external nofollow noopener noreferrer" target="_blank">expect.js</a> - 适用于Node.JS和浏览器的简约BDD风格的断言库。</li>
+<li><a href="https://github.com/shouldjs/should.js" rel="external nofollow noopener noreferrer" target="_blank">should.js</a> - Node.JS的行为驱动开发(BDD)风格断言库。</li>
+<li><a href="https://github.com/tj/better-assert" rel="external nofollow noopener noreferrer" target="_blank">better-assert</a> - C语言风格的Node.js断言，将表达式字符串报告为错误消息。</li>
+<li><a href="https://github.com/jshttp/http-assert" rel="external nofollow noopener noreferrer" target="_blank">http-assert</a> - 带状态码的断言。</li>
+</ul>
+<ul>
+<li><strong>假数据生成</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/marak/Faker.js/" rel="external nofollow noopener noreferrer" target="_blank">faker.js</a> - 在Node.js和浏览器中生成大量逼真的假数据。</li>
+<li><a href="https://github.com/boo1ean/casual" rel="external nofollow noopener noreferrer" target="_blank">casual</a> - JavaScript假数据生成。</li>
+<li><a href="https://github.com/captainsafia/fony" rel="external nofollow noopener noreferrer" target="_blank">fony</a> - 一个简单的命令行工具，从字符串模板中生成假数据。</li>
+</ul>
+<ul>
+<li><strong>Mock</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/nuysoft/Mock" rel="external nofollow noopener noreferrer" target="_blank">Mock.js</a> - 浏览器和 Node 均可用，支持自定义 schema 和 随机数据。</li>
+<li><a href="https://github.com/pgte/nock" rel="external nofollow noopener noreferrer" target="_blank">Nock</a> - HTTP mock和期望。</li>
+<li><a href="https://github.com/sinonjs/sinon" rel="external nofollow noopener noreferrer" target="_blank">Sinon.JS</a> - 通过间谍函数(spies), 目标函数替换（stubs）和mocks功能提供的Mock库。</li>
+<li><a href="https://github.com/easy-mock/easy-mock" rel="external nofollow noopener noreferrer" target="_blank">easy-mock</a> - 可视化，并且能快速生成模拟数据的持久化服务。</li>
+<li><a href="https://github.com/node-modules/mm" rel="external nofollow noopener noreferrer" target="_blank">mm</a> - 简单但灵活的 mock(或者叫stub) 包, mock伴侣。</li>
+<li><a href="https://github.com/sinedied/smoke" rel="external nofollow noopener noreferrer" target="_blank">smoke</a> - 具有记录功能的，简单但功能强大的基于文件的Mock服务器。</li>
+</ul>
+<ul>
+<li><strong>端到端的测试(E2E) / 自动化UI</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/nightwatchjs/nightwatch" rel="external nofollow noopener noreferrer" target="_blank">nightwatch</a> - 用 Node.js 编写，并使用 Webdriver API 的端到端测试框架。</li>
+<li><a href="https://github.com/codeceptjs/CodeceptJS" rel="external nofollow noopener noreferrer" target="_blank">CodeceptJS</a> - Node.js端到端测试框架。</li>
+</ul>
+<ul>
+<li><strong>测试框架</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/facebook/jest" rel="external nofollow noopener noreferrer" target="_blank">jest</a> - 愉悦的JavaScript测试。</li>
+<li><a href="https://github.com/mochajs/mocha" rel="external nofollow noopener noreferrer" target="_blank">mocha</a> - 简单、灵活、有趣的功能丰富的Node.js和浏览器测试框架。</li>
+<li><a href="https://github.com/avajs/ava" rel="external nofollow noopener noreferrer" target="_blank">ava</a> - 面向未来的测试运行程序。</li>
+<li><a href="https://github.com/jasmine/jasmine" rel="external nofollow noopener noreferrer" target="_blank">jasmine</a> - 简单的Node.js和浏览器测试框架。</li>
+<li><a href="https://github.com/visionmedia/supertest" rel="external nofollow noopener noreferrer" target="_blank">supertest</a> - 使用流畅的API，基于Super-agent库测试Node.js HTTP服务器。</li>
+<li><a href="https://github.com/tapjs/node-tap" rel="external nofollow noopener noreferrer" target="_blank">node-tap</a> - 用于Node.js测试任何协议的工具。</li>
+</ul>
+<ul>
+<li><strong>覆盖率</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/istanbuljs/nyc" rel="external nofollow noopener noreferrer" target="_blank">nyc</a> - Istanbul的命令行工具。</li>
+<li><a href="https://github.com/nickmerwin/node-coveralls" rel="external nofollow noopener noreferrer" target="_blank">node-coveralls</a> - 借助持续集成服务(Travis CI 或 Jenkins) 向用户报告自动测试的测试覆盖率；为README添加一个很酷的覆盖率按钮。</li>
+<li><a href="https://github.com/codecov/codecov-node" rel="external nofollow noopener noreferrer" target="_blank">codecov</a> - NodeJS中代码覆盖率报告上载器。</li>
+</ul>
+<ul>
+<li><strong>基准测试</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/bestiejs/benchmark.js" rel="external nofollow noopener noreferrer" target="_blank">Benchmark.js</a> - 基准测试库，支持高分辨率计时器并返回具有统计意义的结果。</li>
+<li><a href="https://github.com/logicalparadox/matcha" rel="external nofollow noopener noreferrer" target="_blank">matcha</a> - 基准测试的简化方法。</li>
+<li><a href="https://github.com/caderek/benny" rel="external nofollow noopener noreferrer" target="_blank">benny</a> - 一个非常简单的 JS/TS 库基准测试框架。</li>
+<li><a href="https://github.com/sidorares/node-wrk" rel="external nofollow noopener noreferrer" target="_blank">node-wrk</a> - Wrk负载测试工具Node.js版封装。</li>
+</ul>
+<ul>
+<li><strong>解决方案</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/alibaba/macaca" rel="external nofollow noopener noreferrer" target="_blank">macaca</a> - 多端自动化解决方案。</li>
+</ul>
+<h2 id="办公软件"><a href="#办公软件" class="headerlink" title="办公软件"></a>办公软件</h2><ul>
+<li><p><strong>Excel</strong></p>
+</li>
+<li><p><a href="https://github.com/SheetJS/sheetjs" rel="external nofollow noopener noreferrer" target="_blank">sheetjs</a> - 电子表格数据工具箱。</p>
+</li>
+<li><a href="https://github.com/exceljs/exceljs" rel="external nofollow noopener noreferrer" target="_blank">exceljs</a> - Excel工作表管理工具。</li>
+<li><a href="https://github.com/dtjohnson/xlsx-populate" rel="external nofollow noopener noreferrer" target="_blank">xlsx-populate</a> - Excel XLSX生成和解析工具，可运行在Node和浏览器。</li>
+</ul>
+<ul>
+<li><strong>Word</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/Ziv-Barber/officegen" rel="external nofollow noopener noreferrer" target="_blank">officegen</a> - 使用Javascript，生成可打开Word（docx）、PowerPoint（pptx）和Excel（xlsx）的XML文件（需Microsoft Office 2007及更高版本），输出是一个stream。</li>
+<li><a href="https://github.com/mwilliamson/mammoth.js" rel="external nofollow noopener noreferrer" target="_blank">Mammoth</a> - 将Word文档(.docx文件)转化为HTML。</li>
+<li><a href="https://github.com/dolanmiu/docx" rel="external nofollow noopener noreferrer" target="_blank">docx</a> - 通过良好定义的API,在NodeJS和浏览器中，使用JS/TS轻松的生成docx文件。</li>
+</ul>
+<ul>
+<li><strong>PDF</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/MrRio/jsPDF" rel="external nofollow noopener noreferrer" target="_blank">jsPDF</a> - 使用JavaScript生成PDF文件的库。</li>
+<li><a href="https://github.com/foliojs/pdfkit" rel="external nofollow noopener noreferrer" target="_blank">PDFKit</a> - 在Node.js和浏览器中生成PDF的库。</li>
+<li><a href="https://github.com/danburzo/percollate" rel="external nofollow noopener noreferrer" target="_blank">percollate</a> - 一个命令行工具，可将网页转换为漂亮的，可读的PDF，EPUB或HTML文档。</li>
+<li><a href="https://github.com/Hopding/pdf-lib" rel="external nofollow noopener noreferrer" target="_blank">pdf-lib</a> - 在任意JavaScript环境中创建和修改PDF文档。</li>
+<li><a href="https://github.com/modesty/pdf2json" rel="external nofollow noopener noreferrer" target="_blank">pdf2json</a> - PDF文件解析器，它将PDF二进制文件转换为基于文本的JSON。</li>
+</ul>
+<ul>
+<li><strong>PPT</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/ksky521/nodeppt" rel="external nofollow noopener noreferrer" target="_blank">nodeppt</a> - Web端展示端PPT工具。</li>
+</ul>
+<h2 id="操作系统识别"><a href="#操作系统识别" class="headerlink" title="操作系统识别"></a>操作系统识别</h2><ul>
+<li><a href="https://github.com/sebhildebrandt/systeminformation" rel="external nofollow noopener noreferrer" target="_blank">systeminformation</a> - 获取硬件和软件系统信息。</li>
+<li><a href="https://github.com/sindresorhus/is-wsl" rel="external nofollow noopener noreferrer" target="_blank">is-wsl</a> - 判断当前是否是否为WSL (适用于Linux的Windows子系统)。</li>
+<li><a href="https://github.com/sindresorhus/os-name" rel="external nofollow noopener noreferrer" target="_blank">os-name</a> - 获取当前操作系统的名字。</li>
+<li><a href="https://github.com/retrohacker/getos" rel="external nofollow noopener noreferrer" target="_blank">getos</a> - 获取当前操作系统名称，包括Linux的发行版名称。</li>
+<li><a href="https://github.com/jonschlinkert/is-windows" rel="external nofollow noopener noreferrer" target="_blank">is-windows</a> - 判断当前系统是否为Windows。</li>
+</ul>
+<h2 id="文件压缩解压"><a href="#文件压缩解压" class="headerlink" title="文件压缩解压"></a>文件压缩解压</h2><ul>
+<li><a href="https://github.com/Stuk/jszip" rel="external nofollow noopener noreferrer" target="_blank">jszip</a> - 使用JavaScript创建、读取、编辑.zip文件。</li>
+<li><a href="https://github.com/cthackers/adm-zip" rel="external nofollow noopener noreferrer" target="_blank">adm-zip</a> - 使用JavaScript创建、读取、编辑.zip文件。</li>
+<li><a href="https://github.com/npm/node-tar" rel="external nofollow noopener noreferrer" target="_blank">node-tar</a> - 快速且功能齐全的Tar。</li>
+<li><a href="https://github.com/thejoshwolfe/yauzl" rel="external nofollow noopener noreferrer" target="_blank">yauzl</a> - Node.js unzip解压库。</li>
+<li><a href="https://github.com/mafintosh/tar-fs" rel="external nofollow noopener noreferrer" target="_blank">tar-fs</a> - tar-fs允许您将目录打包到tar格式压缩包中，并将tar格式压缩包提取到目录中。</li>
+<li><a href="https://github.com/node-modules/compressing" rel="external nofollow noopener noreferrer" target="_blank">compressing</a> - 压缩和解压缩你所需的一切。</li>
+<li><a href="https://github.com/thejoshwolfe/yazl" rel="external nofollow noopener noreferrer" target="_blank">yazl</a> - Node.js zip压缩库。</li>
+<li><a href="https://github.com/fritx/win-7zip" rel="external nofollow noopener noreferrer" target="_blank">7zip</a> - Windows包压缩/解压 - 7zip。</li>
+</ul>
+<h2 id="最小化"><a href="#最小化" class="headerlink" title="最小化"></a>最小化</h2><ul>
+<li><a href="https://github.com/mishoo/UglifyJS" rel="external nofollow noopener noreferrer" target="_blank">UglifyJS</a> - JavaScript压缩工具。</li>
+<li><a href="https://github.com/imagemin/imagemin" rel="external nofollow noopener noreferrer" target="_blank">imagemin</a> - Image压缩工具。</li>
+<li><a href="https://github.com/babel/minify" rel="external nofollow noopener noreferrer" target="_blank">babel-minify</a> - 基于Babel工具链的 ES6+ 压缩库。</li>
+<li><a href="https://github.com/cssnano/cssnano" rel="external nofollow noopener noreferrer" target="_blank">cssnano</a> - 建立在PostCSS生态系统之上模块化的压缩工具。</li>
+<li><a href="https://github.com/jakubpawlowicz/clean-css" rel="external nofollow noopener noreferrer" target="_blank">clean-css</a> - CSS压缩工具。</li>
+<li><a href="https://github.com/Swaagie/minimize" rel="external nofollow noopener noreferrer" target="_blank">minimize</a> - HTML压缩工具。</li>
+<li><a href="https://github.com/sindresorhus/strip-css-comments" rel="external nofollow noopener noreferrer" target="_blank">strip-css-comments</a> - CSS注释剔除工具。</li>
+</ul>
+<h2 id="邮箱"><a href="#邮箱" class="headerlink" title="邮箱"></a>邮箱</h2><ul>
+<li><a href="https://github.com/nylas/nylas-mail" rel="external nofollow noopener noreferrer" target="_blank">Nylas Mail</a> - 构建在现代Web技术的高扩展性邮件客户端程序。</li>
+<li><a href="https://github.com/nodemailer/nodemailer" rel="external nofollow noopener noreferrer" target="_blank">Nodemailer</a> - 使用Node.js轻松发送电子邮件。</li>
+<li><a href="https://github.com/forwardemail/email-templates" rel="external nofollow noopener noreferrer" target="_blank">Email Templates</a> - 创建、预览和发送自定义电子邮件模板。</li>
+<li><a href="https://github.com/eleith/emailjs" rel="external nofollow noopener noreferrer" target="_blank">emailjs</a> - 向任何SMTP服务器发送带有附件的文本/HTML电子邮件。</li>
+<li><a href="https://github.com/mjmlio/mjml" rel="external nofollow noopener noreferrer" target="_blank">mjml</a> - 旨在减少创建响应电子邮件的痛苦的标记语言。</li>
+</ul>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><ul>
+<li><p><strong>IP</strong></p>
+</li>
+<li><p><a href="https://github.com/indutny/node-ip" rel="external nofollow noopener noreferrer" target="_blank">node-ip</a> - NodeJS IP地址工具。</p>
+</li>
+<li><a href="https://github.com/sindresorhus/public-ip" rel="external nofollow noopener noreferrer" target="_blank">public-ip</a> - 非常快的获取你的公网IP地址。</li>
+<li><a href="https://github.com/pbojinov/request-ip" rel="external nofollow noopener noreferrer" target="_blank">request-ip</a> - 在服务器中获取请求的IP地址。</li>
+<li><a href="https://github.com/whitequark/ipaddr.js" rel="external nofollow noopener noreferrer" target="_blank">ipaddr.js</a> - JavaScript 中的 IP 地址操作库。</li>
+<li><a href="https://github.com/sindresorhus/internal-ip" rel="external nofollow noopener noreferrer" target="_blank">internal-ip</a> - 获取您的内网IP地址。</li>
+<li><a href="https://github.com/sindresorhus/ipify" rel="external nofollow noopener noreferrer" target="_blank">ipify</a> - 获取你的公网IP地址。</li>
+<li><a href="https://github.com/node-modules/address" rel="external nofollow noopener noreferrer" target="_blank">address</a> - 获取当前机器IP地址和MAC地址。</li>
+</ul>
+<ul>
+<li><strong>端口</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/http-party/node-portfinder" rel="external nofollow noopener noreferrer" target="_blank">node-portfinder</a> - 在当前机器上查找开放端口 或 域套接字的简单工具。</li>
+<li><a href="https://github.com/sindresorhus/get-port" rel="external nofollow noopener noreferrer" target="_blank">get-port</a> - 获取一个可用的端口。</li>
+<li><a href="https://github.com/node-modules/detect-port" rel="external nofollow noopener noreferrer" target="_blank">detect-port</a> - 端口探测的Node.JS实现。</li>
+</ul>
+<ul>
+<li><strong>隧道代理</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/koichik/node-tunnel" rel="external nofollow noopener noreferrer" target="_blank">node-tunnel</a> - 用于隧道代理的 HTTP/HTTPS代理。</li>
+<li><a href="https://github.com/request/tunnel-agent" rel="external nofollow noopener noreferrer" target="_blank">tunnel-agent</a> - HTTP 隧道代理。以前是 mikeal/request 的一部分，现在是一个独立的模块。</li>
+</ul>
+<ul>
+<li><strong>其他</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/roccomuso/netcat" rel="external nofollow noopener noreferrer" target="_blank">netcat</a> - 纯JS中的Netcat端口。</li>
+<li><a href="https://github.com/bevry/getmac" rel="external nofollow noopener noreferrer" target="_blank">getmac</a> - 获取电脑的MAC地址。</li>
+<li><a href="https://github.com/infusion/node-dhcp" rel="external nofollow noopener noreferrer" target="_blank">DHCP</a> - DHCP客户端和服务器。</li>
+<li><a href="https://github.com/silverwind/default-gateway" rel="external nofollow noopener noreferrer" target="_blank">default-gateway</a> - 获取默认网络网关(跨平台)。</li>
+</ul>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><ul>
+<li><p><strong>请求库</strong></p>
+</li>
+<li><p><a href="https://github.com/mzabriskie/axios" rel="external nofollow noopener noreferrer" target="_blank">axios</a> - 基于Promise 的HTTP客户端（也可以在浏览器中工作）。</p>
+</li>
+<li><a href="https://github.com/request/request" rel="external nofollow noopener noreferrer" target="_blank">request</a> - 简单的 HTTP 请求客户端。</li>
+<li><a href="https://github.com/visionmedia/superagent" rel="external nofollow noopener noreferrer" target="_blank">superagent</a> - HTTP请求库。</li>
+<li><a href="https://github.com/sindresorhus/got" rel="external nofollow noopener noreferrer" target="_blank">got</a> - 更好的基于内建“http”模块接口实现。</li>
+<li><a href="https://github.com/bitinn/node-fetch" rel="external nofollow noopener noreferrer" target="_blank">node-fetch</a> - Node.js的 <code>window.fetch</code> 实现。</li>
+<li><a href="https://github.com/tomas/needle" rel="external nofollow noopener noreferrer" target="_blank">needle</a> - 灵活，基于流的HTTP Node.js客户端请求库。支持proxy，iconv，cookie，deflate和multipart。</li>
+<li><a href="https://github.com/node-modules/urllib" rel="external nofollow noopener noreferrer" target="_blank">urllib</a> - 在复杂世界中请求HTTP/HTTPS的URL。</li>
+<li><a href="https://github.com/ethanent/phin" rel="external nofollow noopener noreferrer" target="_blank">phin</a> - Node HTTP client.</li>
+<li><a href="https://github.com/khaosdoctor/gotql" rel="external nofollow noopener noreferrer" target="_blank">gotql</a> - 基于<a href="https://github.com/sindresorhus/got" rel="external nofollow noopener noreferrer" target="_blank">got</a>构建的GraphQL请求库。</li>
+<li><a href="https://github.com/hapijs/wreck" rel="external nofollow noopener noreferrer" target="_blank">wreck</a> - HTTP 客户端工具。</li>
+<li><a href="https://github.com/lukechilds/cacheable-request" rel="external nofollow noopener noreferrer" target="_blank">cacheable-request</a> - 使用符合RFC的缓存封装的本机HTTP请求库。</li>
+<li><a href="https://github.com/sindresorhus/gh-got" rel="external nofollow noopener noreferrer" target="_blank">gh-got</a> - 基于”got”封装，与GitHub API更方便的交互。</li>
+<li><a href="https://github.com/bbc/flashheart" rel="external nofollow noopener noreferrer" target="_blank">flashheart</a> - REST 客户端。</li>
+</ul>
+<ul>
+<li><strong>服务端库</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/http-party/http-server" rel="external nofollow noopener noreferrer" target="_blank">http-server</a> - 零配置的命令行Http服务端。</li>
+<li><a href="https://github.com/JacksonTian/anywhere" rel="external nofollow noopener noreferrer" target="_blank">anywhere</a> - 随启随用的静态文件服务器。</li>
+<li><a href="https://github.com/micromata/http-fake-backend" rel="external nofollow noopener noreferrer" target="_blank">http-fake-backend</a> - 通过可配置的路由，提供JSON文件或JavaScript对象来构建伪造的后端。</li>
+<li><a href="https://github.com/typicode/json-server" rel="external nofollow noopener noreferrer" target="_blank">json-server</a> - 在不到30秒的时间内获得具有零编码的完整伪造的REST API。</li>
+</ul>
+<ul>
+<li><strong>代理</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/nodejitsu/node-http-proxy" rel="external nofollow noopener noreferrer" target="_blank">http-proxy</a> - HTTP代理。</li>
+<li><a href="https://github.com/TooTallNate/node-https-proxy-agent" rel="external nofollow noopener noreferrer" target="_blank">https-proxy-agent</a> - HTTP(S) 代理 <code>http.Agent</code>实现。</li>
+<li><a href="https://github.com/gajus/global-agent" rel="external nofollow noopener noreferrer" target="_blank">global-agent</a> - 可以使用环境变量配置的全局 HTTP/HTTPS 代理。</li>
+<li><a href="https://github.com/fastify/fast-proxy" rel="external nofollow noopener noreferrer" target="_blank">fast-proxy</a> - Node.js框架，使您可以将http请求转发到另一个HTTP服务器。 支持的协议：HTTP，HTTPS，HTTP2。</li>
+<li><a href="https://github.com/argo/argo" rel="external nofollow noopener noreferrer" target="_blank">argo</a> - 一个可扩展的异步 HTTP 反向代理和源服务器。</li>
+</ul>
+<ul>
+<li><strong>中间件</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/chimurai/http-proxy-middleware" rel="external nofollow noopener noreferrer" target="_blank">http-proxy-middleware</a> - ⚡用于connect，express和browser-sync的单线Node.js Http代理中间件。</li>
+</ul>
+<ul>
+<li><strong>下载</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/kevva/download" rel="external nofollow noopener noreferrer" target="_blank">download</a> - 轻松下载和提取文件。</li>
+<li><a href="https://github.com/maxogden/nugget" rel="external nofollow noopener noreferrer" target="_blank">nugget</a> - 使用Node.js编写的极简主义wget clone。 HTTP GET文件并将其下载到当前目录。</li>
+</ul>
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a><strong>验证</strong></h2><ul>
+<li><a href="https://github.com/jaredhanson/passport" rel="external nofollow noopener noreferrer" target="_blank">Passport</a> - 简单的身份验证。</li>
+<li><a href="https://github.com/simov/grant" rel="external nofollow noopener noreferrer" target="_blank">Grant</a> - 适用于Express，Koa，Hapi，Fastify，AWS Lambda，Azure，Google Cloud，Vercel等的OAuth程序。</li>
+<li><a href="https://github.com/ianstormtaylor/permit" rel="external nofollow noopener noreferrer" target="_blank">permit</a> - 用于构建Node.js API的非标准认证库。</li>
+</ul>
+<h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><ul>
+<li><a href="https://github.com/stalniy/casl" rel="external nofollow noopener noreferrer" target="_blank">CASL</a> - 同构授权用于可视化界面和API。</li>
+<li><a href="https://github.com/casbin/node-casbin" rel="external nofollow noopener noreferrer" target="_blank">node-casbin</a> - 支持访问控制模型（如ACL，RBAC和ABAC）的授权库。</li>
+<li><a href="https://github.com/jshttp/basic-auth" rel="external nofollow noopener noreferrer" target="_blank">basic-auth</a> - 通用基础身份验证授权头字段解析器。</li>
+</ul>
+<h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><ul>
+<li><a href="https://github.com/alexguan/node-zookeeper-client" rel="external nofollow noopener noreferrer" target="_blank">node-zookeeper-client</a> - 纯JavaScript ZooKeeper客户端。</li>
+</ul>
+<h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><ul>
+<li><a href="https://github.com/protobufjs/protobuf.js" rel="external nofollow noopener noreferrer" target="_blank">protobuf</a> - Protocol Buffers实现。</li>
+<li><a href="https://github.com/node-modules/hessian.js" rel="external nofollow noopener noreferrer" target="_blank">hessian.js</a> - JavaScript hessian 二进制web服务协议实现，支持与 java 通信。</li>
+<li><a href="https://github.com/kesla/node-snappy" rel="external nofollow noopener noreferrer" target="_blank">snappy</a> - Google 的 Snappy 压缩库的原生绑定（Native bindings）。</li>
+<li><a href="https://github.com/compactr/compactr.js" rel="external nofollow noopener noreferrer" target="_blank">compactr</a> - Compactr协议的实现。</li>
+</ul>
+<h2 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h2><ul>
+<li><a href="https://github.com/grpc/grpc-node/tree/master/packages/grpc-js" rel="external nofollow noopener noreferrer" target="_blank">grpc-js</a> - 纯JavaScript gRPC客户端。</li>
+<li><a href="https://github.com/tedeh/jayson" rel="external nofollow noopener noreferrer" target="_blank">jayson</a> - Jayson是用于Node.js的简单但功能强大的JSON-RPC 2.0 / 1.0客户端和服务器。</li>
+<li><a href="https://github.com/sofastack/sofa-rpc-node" rel="external nofollow noopener noreferrer" target="_blank">sofa-rpc-node</a> - SOFARPC Node是高性能、高可扩展性、产品级Node.js RPC框架。</li>
+</ul>
+<h2 id="服务端DOM"><a href="#服务端DOM" class="headerlink" title="服务端DOM"></a>服务端DOM</h2><ul>
+<li><a href="https://github.com/cheeriojs/cheerio" rel="external nofollow noopener noreferrer" target="_blank">cheerio</a> - 运行在服务器端，快速、灵活和精益的jQuery核心功能实现。</li>
+<li><a href="https://github.com/jsdom/jsdom" rel="external nofollow noopener noreferrer" target="_blank">jsdom</a> - Node.js版Web标准实现。</li>
+<li><a href="https://github.com/fgnass/domino" rel="external nofollow noopener noreferrer" target="_blank">domino</a> - 基于 Mozilla的dom.js的服务器端DOM实现。</li>
+</ul>
+<h2 id="爬虫"><a href="#爬虫" class="headerlink" title="爬虫"></a>爬虫</h2><ul>
+<li><a href="https://github.com/bda-research/node-crawler" rel="external nofollow noopener noreferrer" target="_blank">node-crawler</a> - NodeJS Web爬虫 + 服务端jQuery。</li>
+<li><a href="https://github.com/lapwinglabs/x-ray" rel="external nofollow noopener noreferrer" target="_blank">x-ray</a> - 具有分页的Web抓取爬虫。</li>
+<li><a href="https://github.com/yujiosaka/headless-chrome-crawler" rel="external nofollow noopener noreferrer" target="_blank">headless-chrome-crawler</a> - 使用Chrome无头浏览器的分布式爬虫。</li>
+<li><a href="https://github.com/rchipka/node-osmosis" rel="external nofollow noopener noreferrer" target="_blank">node-osmosis</a> - Node.js的HTML / XML解析器和Web抓取工具。</li>
+<li><a href="https://github.com/IonicaBizau/scrape-it" rel="external nofollow noopener noreferrer" target="_blank">scrape-it</a> - 适用于人类的Node.js抓取工具。</li>
+<li><a href="https://github.com/ruipgil/scraperjs" rel="external nofollow noopener noreferrer" target="_blank">scraperjs</a> - 完整而多功能的Web抓取器。</li>
+<li><a href="https://github.com/cgiffard/node-simplecrawler" rel="external nofollow noopener noreferrer" target="_blank">simplecrawler</a> - 事件驱动的Web爬虫。</li>
+<li><a href="https://github.com/martinsbalodis/web-scraper-chrome-extension" rel="external nofollow noopener noreferrer" target="_blank">web-scraper-chrome-extension</a> -实现为Chrome插件的Web数据抽取工具。</li>
+<li><a href="https://github.com/zhuyingda/webster" rel="external nofollow noopener noreferrer" target="_blank">webster</a> - 一个可靠的Web爬虫框架，可以在网页中抓取Ajax和js呈现的内容。</li>
+<li><a href="https://github.com/brendonboshell/supercrawler" rel="external nofollow noopener noreferrer" target="_blank">supercrawler</a> - 定义自定义处理程序以解析内容。 遵守robots.txt，速率限制和并发限制。</li>
+<li><a href="https://github.com/n0tan3rd/squidwarc" rel="external nofollow noopener noreferrer" target="_blank">Squidwarc</a> - 高保真度，用户可编写脚本的归档爬虫程序，使用带头或不带头的Chrome或Chromium。</li>
+<li><a href="https://github.com/antivanov/js-crawler" rel="external nofollow noopener noreferrer" target="_blank">js-crawler</a> - 适用于Node.JS的Web爬虫，同时支持HTTP和HTTPS。</li>
+</ul>
+<h2 id="AST"><a href="#AST" class="headerlink" title="AST"></a>AST</h2><ul>
+<li><p><strong>解析器</strong></p>
+</li>
+<li><p><a href="https://github.com/babel/babel/tree/master/packages/babel-parser" rel="external nofollow noopener noreferrer" target="_blank">babel-parser</a> - JavaScript解析器。</p>
+</li>
+<li><a href="https://github.com/antlr/antlr4" rel="external nofollow noopener noreferrer" target="_blank">antlr</a> - ANTLR (ANother Tool for Language Recognition)是一个用于阅读、处理、执行和翻译结构化文本或二进制文件的强大的解析生成器。</li>
+<li><a href="https://github.com/acornjs/acorn/tree/master/acorn" rel="external nofollow noopener noreferrer" target="_blank">acorn</a> - 小巧、快速的JavaScript解析器。</li>
+<li><a href="https://github.com/jquery/esprima" rel="external nofollow noopener noreferrer" target="_blank">esprima</a> - 高性能、符合ECMASCRIPT标准的解析器。</li>
+<li><a href="https://github.com/benjamn/recast" rel="external nofollow noopener noreferrer" target="_blank">recast</a> - JavaScript语法树转换器，非破坏性漂亮print和自动source map生成器。</li>
+<li><a href="https://github.com/kach/nearley" rel="external nofollow noopener noreferrer" target="_blank">nearley</a> - JavaScript的简单、快速、功能强大的解析工具集。</li>
+<li><a href="https://github.com/eslint/espree" rel="external nofollow noopener noreferrer" target="_blank">espree</a> - 与Esprima兼容的JavaScript解析器。</li>
+<li><a href="https://github.com/csstree/csstree" rel="external nofollow noopener noreferrer" target="_blank">csstree</a> - 基于W3C标准和浏览器标准实现，包含快速详细的解析器、遍历器、生成器、词法解析的CSS工具集。</li>
+<li><a href="https://github.com/guybedford/es-module-lexer" rel="external nofollow noopener noreferrer" target="_blank">es-module-lexer</a> - 低开销的词法分析器，专门用于ES模块快速分析解析。</li>
+</ul>
+<ul>
+<li><strong>遍历</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/acornjs/acorn/tree/master/acorn-walk" rel="external nofollow noopener noreferrer" target="_blank">acorn-walker</a> - 小巧、快速的JavaScript解析器。</li>
+<li><a href="https://github.com/estools/estraverse" rel="external nofollow noopener noreferrer" target="_blank">estraverse</a> - ECMAScript JS AST遍历功能。</li>
+</ul>
+<ul>
+<li><strong>代码生成</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/estools/escodegen" rel="external nofollow noopener noreferrer" target="_blank">escodegen</a> - ECMAScript代码生成。</li>
+<li><a href="https://github.com/davidbonnet/astring" rel="external nofollow noopener noreferrer" target="_blank">astring</a> - 小巧快速的JavaScript代码生成器（通过ESTree兼容的AST）。</li>
+</ul>
+<ul>
+<li><strong>JavaScript解释器</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/NeilFraser/JS-Interpreter" rel="external nofollow noopener noreferrer" target="_blank">JS-Interpreter</a> - JavaScript中沙箱解释器。</li>
+<li><a href="https://github.com/bramblex/jsjs" rel="external nofollow noopener noreferrer" target="_blank">jsjs</a> - 简易的 JavaScript 元循环解释器。</li>
+<li><a href="https://github.com/Siubaak/sval" rel="external nofollow noopener noreferrer" target="_blank">sval</a> - 使用JavaScript编写的JavaScript解释器。</li>
+</ul>
+<ul>
+<li><strong>其他</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/fkling/astexplorer" rel="external nofollow noopener noreferrer" target="_blank">astexplorer</a> - 使用多种解析器的AST Web可视化工具。</li>
+<li><a href="https://github.com/Rich-Harris/estree-walker" rel="external nofollow noopener noreferrer" target="_blank">estree-walker</a> - 用于遍历ESTree兼容树的AST。</li>
+<li><a href="https://github.com/Rich-Harris/periscopic" rel="external nofollow noopener noreferrer" target="_blank">periscopic</a> - 用于分析符合ESTree的AST的作用域的工具。</li>
+</ul>
+<h2 id="WebAssembly"><a href="#WebAssembly" class="headerlink" title="WebAssembly"></a>WebAssembly</h2><ul>
+<li><a href="https://github.com/dcodeIO/webassembly" rel="external nofollow noopener noreferrer" target="_blank">webassembly</a> - 用于生成和运行 WebAssembly 模块的最小工具包和运行时。</li>
+</ul>
+<h2 id="设计稿转代码（D2C）"><a href="#设计稿转代码（D2C）" class="headerlink" title="设计稿转代码（D2C）"></a>设计稿转代码（D2C）</h2><ul>
+<li><a href="https://github.com/meltingice/psd.js" rel="external nofollow noopener noreferrer" target="_blank">psd.js</a> - 在Node.js和浏览器中解析Photoshop PSD文件。</li>
+</ul>
+<h2 id="沙箱"><a href="#沙箱" class="headerlink" title="沙箱"></a>沙箱</h2><ul>
+<li><a href="https://github.com/patriksimek/vm2" rel="external nofollow noopener noreferrer" target="_blank">vm2</a> - Node.js高级虚拟机/沙箱。</li>
+<li><a href="https://github.com/gf3/sandbox" rel="external nofollow noopener noreferrer" target="_blank">sandbox</a> - 用于Node.js漂亮的JavaScript沙箱。</li>
+</ul>
+<h2 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h2><ul>
+<li><a href="https://github.com/rwaldron/johnny-five" rel="external nofollow noopener noreferrer" target="_blank">johnny-five</a> - 基于Firmata的Arduino框架。</li>
+<li><a href="https://github.com/voodootikigod/node-serialport" rel="external nofollow noopener noreferrer" target="_blank">serialport</a> - 访问串行端口以进行读写。</li>
+<li><a href="https://github.com/nonolith/node-usb" rel="external nofollow noopener noreferrer" target="_blank">usb</a> - USB 库。</li>
+<li><a href="https://github.com/fivdi/onoff" rel="external nofollow noopener noreferrer" target="_blank">onoff</a> - GPIO访问和中断检测.</li>
+<li><a href="https://github.com/fivdi/pigpio" rel="external nofollow noopener noreferrer" target="_blank">pigpio</a> - 树莓派（Raspberry Pi）上的快速GPIO，PWM，伺服控制，状态更改通知和中断处理。</li>
+<li><a href="https://github.com/song940/node-escpos" rel="external nofollow noopener noreferrer" target="_blank">node-escpos</a> - ESC/POS打印机驱动程序。</li>
+<li><a href="https://github.com/fivdi/i2c-bus" rel="external nofollow noopener noreferrer" target="_blank">i2c-bus</a> - I2C串行总线访问。</li>
+<li><a href="https://github.com/infusion/GPS.js" rel="external nofollow noopener noreferrer" target="_blank">gps</a> - NMEA解析器，用于处理GPS接收器。</li>
+<li><a href="https://github.com/song940/node-bluetooth" rel="external nofollow noopener noreferrer" target="_blank">node-bluetooth</a> - Node.js 的蓝牙串口通信。</li>
+<li><a href="https://github.com/fivdi/spi-device" rel="external nofollow noopener noreferrer" target="_blank">spi-device</a> - SPI串行总线访问。</li>
+</ul>
+<h2 id="物联网IoT"><a href="#物联网IoT" class="headerlink" title="物联网IoT"></a>物联网IoT</h2><ul>
+<li><a href="https://github.com/zettajs/zetta" rel="external nofollow noopener noreferrer" target="_blank">zetta</a> - 面向物联网的 API 优先的开源软件平台。</li>
+<li><a href="https://github.com/ibm-watson-iot/iot-nodejs" rel="external nofollow noopener noreferrer" target="_blank">iot-nodejs</a> - 用于使用 nodejs 连接到 IBM Watson IoT 的客户端库和示例。</li>
+</ul>
+<h2 id="机器学习-和-神经网络"><a href="#机器学习-和-神经网络" class="headerlink" title="机器学习 和 神经网络"></a>机器学习 和 神经网络</h2><ul>
+<li><a href="https://github.com/tensorflow/tfjs" rel="external nofollow noopener noreferrer" target="_blank">tfjs</a> - 一个WebGL加速的JavaScript库，用于训练和部署ML模型（Tensorflow官方）。</li>
+<li><a href="https://github.com/lutzroeder/netron" rel="external nofollow noopener noreferrer" target="_blank">netron</a> - 神经网络、深度学习和机器学习模型的可视化工具。</li>
+<li><a href="https://github.com/BrainJS/brain.js" rel="external nofollow noopener noreferrer" target="_blank">brain.js</a> - 基于模型训练的神经网络 JS 库，支持浏览器和 Node.js。</li>
+<li><a href="https://github.com/alibaba/pipcook" rel="external nofollow noopener noreferrer" target="_blank">pipcook</a> - 为Web开发者提供的机器学习平台。</li>
+<li><a href="https://github.com/microsoft/onnxjs" rel="external nofollow noopener noreferrer" target="_blank">onnxjs</a> - 使用JavaScript运行ONNX模型。</li>
+<li><a href="https://github.com/yorkie/tensorflow-nodejs" rel="external nofollow noopener noreferrer" target="_blank">tensorflow-nodejs</a> - TensorFlow Node.js为Node.js用户提供常用的JavaScript语言绑定和高级API。</li>
+</ul>
+<h2 id="自然语言处理"><a href="#自然语言处理" class="headerlink" title="自然语言处理"></a>自然语言处理</h2><ul>
+<li><a href="https://github.com/spencermountain/compromise" rel="external nofollow noopener noreferrer" target="_blank">compromise</a> - 自然语言处理。</li>
+<li><a href="https://github.com/NaturalNode/natural" rel="external nofollow noopener noreferrer" target="_blank">natural</a> - 自然语言设施。</li>
+<li><a href="https://github.com/axa-group/nlp.js" rel="external nofollow noopener noreferrer" target="_blank">nlp.js</a> - 构建机器人，具有实体提取、情感分析、自动语言识别等功能。</li>
+<li><a href="https://github.com/wooorm/franc" rel="external nofollow noopener noreferrer" target="_blank">franc</a> - 检测文本使用的语言。</li>
+<li><a href="https://github.com/thisandagain/sentiment" rel="external nofollow noopener noreferrer" target="_blank">sentiment</a> - 基于AFINN的Node.js情感判断库。</li>
+<li><a href="https://github.com/wooorm/retext" rel="external nofollow noopener noreferrer" target="_blank">retext</a> - 一个可扩展的自然语言系统。</li>
+<li><a href="https://github.com/sindresorhus/leven" rel="external nofollow noopener noreferrer" target="_blank">leven</a> - 使用Levenshtein距离算法测量两个字符串之间的差异。</li>
+</ul>
+<h2 id="OCR"><a href="#OCR" class="headerlink" title="OCR"></a>OCR</h2><ul>
+<li><a href="https://github.com/naptha/tesseract.js" rel="external nofollow noopener noreferrer" target="_blank">tesseract.js</a> - 100 多种语言的纯 Javascript OCR。</li>
+<li><a href="https://github.com/axa-group/Parsr" rel="external nofollow noopener noreferrer" target="_blank">Parsr</a> - 将 PDF、文档和图像转换为丰富的结构化数据。</li>
+</ul>
+<h2 id="比特币"><a href="#比特币" class="headerlink" title="比特币"></a>比特币</h2><ul>
+<li><a href="https://github.com/cjb/GitTorrent" rel="external nofollow noopener noreferrer" target="_blank">GitTorrent</a> - 使用 BitTorrent 和比特币的 GitHub 去中心化。</li>
+<li><a href="https://github.com/bitcoinjs/bitcoinjs-lib" rel="external nofollow noopener noreferrer" target="_blank">bitcoinjs-lib</a> - 一个用于 node.js 和浏览器的 javascript 比特币库。</li>
+<li><a href="https://github.com/bitpay/bitcore" rel="external nofollow noopener noreferrer" target="_blank">bitcore</a> - 比特币和基于区块链的应用程序的全栈。</li>
+</ul>
+<h2 id="低代码（Lowcode）"><a href="#低代码（Lowcode）" class="headerlink" title="低代码（Lowcode）"></a>低代码（Lowcode）</h2><p><em>(你也许会喜欢 <a href="https://github.com/taowen/awesome-lowcode" rel="external nofollow noopener noreferrer" target="_blank">awesome-lowcode</a>)</em></p>
+<ul>
+<li><p><strong>H5/PC</strong></p>
+</li>
+<li><p><a href="https://github.com/baidu/amis" rel="external nofollow noopener noreferrer" target="_blank">amis</a> - 前端低代码框架，通过 JSON 配置就能生成各种页面。</p>
+</li>
+</ul>
+<ul>
+<li><strong>H5</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/MrXujiang/h5-Dooring" rel="external nofollow noopener noreferrer" target="_blank">h5-Dooring</a> - 让H5制作像搭积木一样简单, 轻松搭建H5页面, H5网站, PC端网站, 可视化设计,LowCode平台。</li>
+<li><a href="https://github.com/ly525/luban-h5" rel="external nofollow noopener noreferrer" target="_blank">luban-h5</a> - 类似易企秀的H5制作、建站工具、可视化搭建系统。</li>
+<li><a href="https://github.com/ymm-tech/gods-pen" rel="external nofollow noopener noreferrer" target="_blank">gods-pen</a> - 基于vue的高扩展在线网页制作平台，可自定义组件，可添加脚本，可数据统计。</li>
+</ul>
+<ul>
+<li><strong>PC</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/MrXujiang/pc-Dooring" rel="external nofollow noopener noreferrer" target="_blank">pc-Dooring</a> - 让网页制作像搭积木一样简单, 轻松搭建PC页面, Web网站, PC端网站. lowcode(low-code)可视化搭建平台。</li>
+</ul>
+<ul>
+<li><strong>逻辑编排</strong></li>
+</ul>
+<ul>
+<li><a href="https://github.com/node-red/node-red" rel="external nofollow noopener noreferrer" target="_blank">node-red</a> - 事件驱动应用的低代码编程。</li>
+<li><a href="https://github.com/ykfe/imove" rel="external nofollow noopener noreferrer" target="_blank">imove</a> - iMove 是一个逻辑可复用的，面向函数的，流程可视化的 JavaScript 工具库。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+     <div>
+        
+          
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2023/08/01/好用的node包汇总/">好用的node包汇总</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Water 的个人博客">Water</a></p>
+  <p><span>发布时间:</span>2023年08月01日 - 14:08</p>
+  <p><span>最后更新:</span>2023年08月01日 - 06:08</p>
+  <p><span>原始链接:</span><a href="/2023/08/01/好用的node包汇总/" title="好用的node包汇总">https://water.buging.cn/2023/08/01/好用的node包汇总/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://water.buging.cn/2023/08/01/好用的node包汇总/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+        
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/weixinpay.jpg" alt="Water 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Water 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/07/27/全网echarts案例资源大总结和echarts的高效使用技巧（细节版）/" rel="next" title="全网echarts案例资源大总结和echarts的高效使用技巧（细节版）">
+                <i class="fa fa-chevron-left"></i> 全网echarts案例资源大总结和echarts的高效使用技巧（细节版）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank" rel="external nofollow noopener noreferrer">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="vcomments"></div>
+    </div>
+  
+
+  
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://cdn.jsdelivr.net/gh/wangyuan0108/image/1.jpeg" alt="Water">
+            
+              <p class="site-author-name" itemprop="name">Water</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">93</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wangyuan0108" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/web-kai-fa-zhe" target="_blank" title="知乎" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/2207475076971533/posts" target="_blank" title="掘金" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+
+
+            
+
+          </div>
+          <!--<div>
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=509313150&auto=1&height=66"></iframe>
+          </div>-->
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web框架"><span class="nav-number">1.</span> <span class="nav-text">Web框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Serverless"><span class="nav-number">2.</span> <span class="nav-text">Serverless</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本"><span class="nav-number">3.</span> <span class="nav-text">文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字"><span class="nav-number">4.</span> <span class="nav-text">数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数学运算"><span class="nav-number">5.</span> <span class="nav-text">数学运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期和时间"><span class="nav-number">6.</span> <span class="nav-text">日期和时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则-通配符匹配"><span class="nav-number">7.</span> <span class="nav-text">正则/通配符匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL"><span class="nav-number">8.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON"><span class="nav-number">9.</span> <span class="nav-text">JSON</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图像处理"><span class="nav-number">10.</span> <span class="nav-text">图像处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视频处理"><span class="nav-number">11.</span> <span class="nav-text">视频处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字体"><span class="nav-number">12.</span> <span class="nav-text">字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#颜色"><span class="nav-number">13.</span> <span class="nav-text">颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加解密"><span class="nav-number">14.</span> <span class="nav-text">加解密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流"><span class="nav-number">15.</span> <span class="nav-text">流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检测-判断"><span class="nav-number">16.</span> <span class="nav-text">检测/判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据校验"><span class="nav-number">17.</span> <span class="nav-text">数据校验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数式编程"><span class="nav-number">18.</span> <span class="nav-text">函数式编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制反转-依赖注入"><span class="nav-number">19.</span> <span class="nav-text">控制反转/依赖注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell"><span class="nav-number">20.</span> <span class="nav-text">Shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">21.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件"><span class="nav-number">22.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行工具"><span class="nav-number">23.</span> <span class="nav-text">命令行工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js管理工具"><span class="nav-number">24.</span> <span class="nav-text">Node.js管理工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NPM"><span class="nav-number">25.</span> <span class="nav-text">NPM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Monorepo"><span class="nav-number">26.</span> <span class="nav-text">Monorepo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统"><span class="nav-number">27.</span> <span class="nav-text">文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析工具"><span class="nav-number">28.</span> <span class="nav-text">解析工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git"><span class="nav-number">29.</span> <span class="nav-text">Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日志"><span class="nav-number">30.</span> <span class="nav-text">日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程管理"><span class="nav-number">31.</span> <span class="nav-text">进程管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码校验-和-格式化工具"><span class="nav-number">32.</span> <span class="nav-text">代码校验 和 格式化工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置工具"><span class="nav-number">33.</span> <span class="nav-text">配置工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建工具"><span class="nav-number">34.</span> <span class="nav-text">构建工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ESM"><span class="nav-number">35.</span> <span class="nav-text">ESM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板引擎"><span class="nav-number">36.</span> <span class="nav-text">模板引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容管理系统-CMS"><span class="nav-number">37.</span> <span class="nav-text">内容管理系统 (CMS)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态网站生成-amp-博客"><span class="nav-number">38.</span> <span class="nav-text">静态网站生成 &amp; 博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文档生成"><span class="nav-number">39.</span> <span class="nav-text">文档生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桌面应用程序"><span class="nav-number">40.</span> <span class="nav-text">桌面应用程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实时通信"><span class="nav-number">41.</span> <span class="nav-text">实时通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务队列"><span class="nav-number">42.</span> <span class="nav-text">任务队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时任务"><span class="nav-number">43.</span> <span class="nav-text">定时任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调试"><span class="nav-number">44.</span> <span class="nav-text">调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#剖析-分析"><span class="nav-number">45.</span> <span class="nav-text">剖析/分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用性能监控-APM"><span class="nav-number">46.</span> <span class="nav-text">应用性能监控 (APM)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#论坛"><span class="nav-number">47.</span> <span class="nav-text">论坛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库"><span class="nav-number">48.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存"><span class="nav-number">49.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动化-amp-机器人流程自动化-RPA"><span class="nav-number">50.</span> <span class="nav-text">自动化 &amp; 机器人流程自动化 - RPA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试相关"><span class="nav-number">51.</span> <span class="nav-text">测试相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#办公软件"><span class="nav-number">52.</span> <span class="nav-text">办公软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统识别"><span class="nav-number">53.</span> <span class="nav-text">操作系统识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件压缩解压"><span class="nav-number">54.</span> <span class="nav-text">文件压缩解压</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小化"><span class="nav-number">55.</span> <span class="nav-text">最小化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#邮箱"><span class="nav-number">56.</span> <span class="nav-text">邮箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络"><span class="nav-number">57.</span> <span class="nav-text">网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP"><span class="nav-number">58.</span> <span class="nav-text">HTTP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证"><span class="nav-number">59.</span> <span class="nav-text">验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#授权"><span class="nav-number">60.</span> <span class="nav-text">授权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式"><span class="nav-number">61.</span> <span class="nav-text">分布式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列化"><span class="nav-number">62.</span> <span class="nav-text">序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RPC"><span class="nav-number">63.</span> <span class="nav-text">RPC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端DOM"><span class="nav-number">64.</span> <span class="nav-text">服务端DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#爬虫"><span class="nav-number">65.</span> <span class="nav-text">爬虫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AST"><span class="nav-number">66.</span> <span class="nav-text">AST</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebAssembly"><span class="nav-number">67.</span> <span class="nav-text">WebAssembly</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计稿转代码（D2C）"><span class="nav-number">68.</span> <span class="nav-text">设计稿转代码（D2C）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#沙箱"><span class="nav-number">69.</span> <span class="nav-text">沙箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#硬件"><span class="nav-number">70.</span> <span class="nav-text">硬件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#物联网IoT"><span class="nav-number">71.</span> <span class="nav-text">物联网IoT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习-和-神经网络"><span class="nav-number">72.</span> <span class="nav-text">机器学习 和 神经网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自然语言处理"><span class="nav-number">73.</span> <span class="nav-text">自然语言处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OCR"><span class="nav-number">74.</span> <span class="nav-text">OCR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比特币"><span class="nav-number">75.</span> <span class="nav-text">比特币</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#低代码（Lowcode）"><span class="nav-number">76.</span> <span class="nav-text">低代码（Lowcode）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Water</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">博客全站共&#58;</span>
+    
+    <span title="博客全站共">143.8k字</span>
+  
+</div>
+<div>
+  <a href="http://www.beian.miit.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">
+    浙ICP备17051886号-1
+  </a>
+</div>
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7-rc3/dist/Valine.min.js"></script>
+  <script type="text/javascript">
+    new Valine({
+        av: AV,
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        app_id: '07n3074XAQEb58DvjBF5HnlV-gzGzoHsz',
+        app_key: '0HbRzaC25zC1hFausmSxplaV',
+        placeholder: '各位道友，请举手发言'
+    });
+  </script>
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("07n3074XAQEb58DvjBF5HnlV-gzGzoHsz", "0HbRzaC25zC1hFausmSxplaV");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/src/love.js"></script> -->
